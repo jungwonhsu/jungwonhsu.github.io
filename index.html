@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nghiên cứu Internet Business: Giao diện A (Thông tin truyền thống)</title>
+    <title>인터넷비즈니스론 연구: 버전 A (전통적인 상품 정보 제공)</title>
     <style>
         :root {
             --primary: #2563eb;
@@ -19,7 +19,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
         }
 
         body {
@@ -45,23 +45,13 @@
 
         header h1 {
             color: var(--primary);
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin-bottom: 10px;
         }
 
         header p {
             color: var(--text-muted);
             font-size: 0.95rem;
-        }
-
-        .team-info {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            flex-wrap: wrap;
         }
 
         .version-badge {
@@ -75,7 +65,7 @@
             font-size: 1.05rem;
         }
 
-        /* Danh sách sản phẩm */
+        /* 상품 그리드 */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -151,7 +141,7 @@
             background: #d97706;
         }
 
-        /* Bảng thống kê kết quả */
+        /* 통계 패널 */
         .stats-panel {
             background: white;
             padding: 20px;
@@ -175,68 +165,57 @@
 <body>
 
 <div class="container">
-    <!-- Tiêu đề đề tài -->
     <header>
-        <h1>Đề tài: Tác động của việc cung cấp thông tin tiêu chí lựa chọn đến tỷ lệ nhấp chuột (CTR)</h1>
-        <p>Môn: Internet Business (Lớp B)</p>
-        <div class="team-info">
-            <span>Nhóm: B</span>
-            <span>Thành viên 1: 25221307 - Nguyễn Thị Hồng Thắm</span>
-            <span>Thành viên 2: 25221308 - Phan Thị Kim Ngọc</span>
-            <span>Thành viên 3: 25221329 - Nguyễn Văn Chung</span>
-            <span>Thành viên 4: 25221315 - Nguyễn Văn Hiệp</span>
-        </div>
+        <h1>인터넷 쇼핑몰 상품 탐색</h1>
+        <p>상품 탐색 과정에서의 정보 제공 인터페이스</p>
     </header>
 
-    <!-- Nhãn chỉ định phiên bản A -->
     <div class="version-badge">
-        🖥️ Phiên bản A: Giao diện truyền thống (Thông tin thô, không gợi ý tiêu chí lựa chọn)
+        🖥️ 버전 A: 전통적인 인터페이스 (선택 기준 가이드 없이 원시 상품 정보만 제공)
     </div>
 
-    <!-- Danh sách sản phẩm mẫu -->
     <div class="product-grid">
         <div class="product-card">
             <div>
-                <div class="product-img">Hình ảnh sản phẩm 1</div>
-                <div class="product-title">Tai nghe Alpha Sound X</div>
-                <div class="product-specs">Pin 35h • ANC chủ động • Trọng lượng 240g • Bluetooth 5.3 • Đánh giá 4.8★ (1,200 review)</div>
+                <div class="product-img">상품 이미지 1</div>
+                <div class="product-title">알파 사운드 X 무선 이어폰</div>
+                <div class="product-specs">배터리 35시간 • 액티브 노이즈 캔슬링(ANC) • 무게 240g • 블루투스 5.3 • 평점 4.8★ (리뷰 1,200개)</div>
             </div>
             <div class="product-footer">
-                <span class="price">2.490.000 đ</span>
-                <button class="click-btn" onclick="recordClick('Alpha Sound X')">Xem chi tiết</button>
+                <span class="price">249,000 원</span>
+                <button class="click-btn" onclick="recordClick('알파 사운드 X')">상세보기</button>
             </div>
         </div>
 
         <div class="product-card">
             <div>
-                <div class="product-img">Hình ảnh sản phẩm 2</div>
-                <div class="product-title">Tai nghe BetaBass Pro</div>
-                <div class="product-specs">Pin 20h • Không có ANC • Trọng lượng 290g • Bluetooth 5.0 • Đánh giá 4.2★ (450 review)</div>
+                <div class="product-img">상품 이미지 2</div>
+                <div class="product-title">베타베이스 프로 무선 이어폰</div>
+                <div class="product-specs">배터리 20시간 • 노이즈 캔슬링 미지원 • 무게 290g • 블루투스 5.0 • 평점 4.2★ (리뷰 450개)</div>
             </div>
             <div class="product-footer">
-                <span class="price">1.890.000 đ</span>
-                <button class="click-btn" onclick="recordClick('BetaBass Pro')">Xem chi tiết</button>
+                <span class="price">189,000 원</span>
+                <button class="click-btn" onclick="recordClick('베타베이스 프로')">상세보기</button>
             </div>
         </div>
 
         <div class="product-card">
             <div>
-                <div class="product-img">Hình ảnh sản phẩm 3</div>
-                <div class="product-title">Tai nghe Gamma Wireless</div>
-                <div class="product-specs">Pin 40h • ANC nâng cao • Trọng lượng 220g • Bluetooth 5.4 • Đánh giá 4.9★ (3,400 review)</div>
+                <div class="product-img">상품 이미지 3</div>
+                <div class="product-title">감마 와이어리스 이어폰</div>
+                <div class="product-specs">배터리 40시간 • 고급 ANC 탑재 • 무게 220g • 블루투스 5.4 • 평점 4.9★ (리뷰 3,400개)</div>
             </div>
             <div class="product-footer">
-                <span class="price">3.290.000 đ</span>
-                <button class="click-btn" onclick="recordClick('Gamma Wireless')">Xem chi tiết</button>
+                <span class="price">329,000 원</span>
+                <button class="click-btn" onclick="recordClick('감마 와이어리스')">상세보기</button>
             </div>
         </div>
     </div>
 
-    <!-- Thống kê thao tác nhấp chuột -->
     <div class="stats-panel">
-        <h3>Số lần nhấp chuột (Clicks) ghi nhận ở Phiên bản A:</h3>
+        <h3>버전 A에서 기록된 상품 클릭 수 (Clicks):</h3>
         <div class="stats-number" id="clickCount">0</div>
-        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 5px;">(Đo lường hành vi tương tác khi người dùng tự tìm kiếm thông tin không có sự định hướng tiêu chí)</p>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 5px;">(선택 기준 안내가 없는 상태에서의 사용자 탐색 및 클릭 행동 측정)</p>
     </div>
 </div>
 
@@ -246,7 +225,7 @@
     function recordClick(productName) {
         clicks++;
         document.getElementById('clickCount').innerText = clicks;
-        alert(`[Phiên bản A] Bạn đã nhấp xem chi tiết sản phẩm: "${productName}"`);
+        alert(`[버전 A] "${productName}" 상품의 상세보기 버튼을 클릭했습니다.`);
     }
 </script>
 
