@@ -90,15 +90,12 @@
         }
 
         .product-img {
-            background: #e2e8f0;
-            height: 140px;
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-weight: 600;
             margin-bottom: 15px;
+            border: 1px solid var(--border);
         }
 
         .product-title {
@@ -175,7 +172,11 @@
     <div class="product-grid">
         <div class="product-card">
             <div>
-                <div class="product-img">상품 이미지 1</div>
+                <img src="
+
+http://googleusercontent.com/generated_image_content/0
+
+" alt="알파 사운드 X" class="product-img">
                 <div class="product-title">알파 사운드 X 무선 이어폰</div>
                 <div class="product-specs">배터리 35시간 • 액티브 노이즈 캔슬링(ANC) • 무게 240g • 블루투스 5.3 • 평점 4.8★ (리뷰 1,200개)</div>
             </div>
@@ -187,7 +188,7 @@
 
         <div class="product-card">
             <div>
-                <div class="product-img">상품 이미지 2</div>
+                <img src="watermarked_img_3755853242752808124.png" alt="베타베이스 프로" class="product-img">
                 <div class="product-title">베타베이스 프로 무선 이어폰</div>
                 <div class="product-specs">배터리 20시간 • 노이즈 캔슬링 미지원 • 무게 290g • 블루투스 5.0 • 평점 4.2★ (리뷰 450개)</div>
             </div>
@@ -199,7 +200,7 @@
 
         <div class="product-card">
             <div>
-                <div class="product-img">상품 이미지 3</div>
+                <img src="watermarked_img_3755853242752808124.png" alt="감마 와이어리스" class="product-img">
                 <div class="product-title">감마 와이어리스 이어폰</div>
                 <div class="product-specs">배터리 40시간 • 고급 ANC 탑재 • 무게 220g • 블루투스 5.4 • 평점 4.9★ (리뷰 3,400개)</div>
             </div>
