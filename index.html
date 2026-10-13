@@ -96,6 +96,7 @@
             border-radius: 8px;
             margin-bottom: 15px;
             border: 1px solid var(--border);
+            background-color: #f1f5f9;
         }
 
         .product-title {
@@ -170,13 +171,10 @@
     </div>
 
     <div class="product-grid">
+        <!-- Sản phẩm 1 -->
         <div class="product-card">
             <div>
-                <img src="
-
-http://googleusercontent.com/generated_image_content/0
-
-" alt="알파 사운드 X" class="product-img">
+                <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="알파 사운드 X" class="product-img">
                 <div class="product-title">알파 사운드 X 무선 이어폰</div>
                 <div class="product-specs">배터리 35시간 • 액티브 노이즈 캔슬링(ANC) • 무게 240g • 블루투스 5.3 • 평점 4.8★ (리뷰 1,200개)</div>
             </div>
@@ -186,9 +184,10 @@ http://googleusercontent.com/generated_image_content/0
             </div>
         </div>
 
+        <!-- Sản phẩm 2 -->
         <div class="product-card">
             <div>
-                <img src="watermarked_img_3755853242752808124.png" alt="베타베이스 프로" class="product-img">
+                <img src="https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="베타베이스 프로" class="product-img">
                 <div class="product-title">베타베이스 프로 무선 이어폰</div>
                 <div class="product-specs">배터리 20시간 • 노이즈 캔슬링 미지원 • 무게 290g • 블루투스 5.0 • 평점 4.2★ (리뷰 450개)</div>
             </div>
@@ -198,9 +197,10 @@ http://googleusercontent.com/generated_image_content/0
             </div>
         </div>
 
+        <!-- Sản phẩm 3 -->
         <div class="product-card">
             <div>
-                <img src="watermarked_img_3755853242752808124.png" alt="감마 와이어리스" class="product-img">
+                <img src="https://images.unsplash.com/photo-1606741965326-cb934336c53e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="감마 와이어리스" class="product-img">
                 <div class="product-title">감마 와이어리스 이어폰</div>
                 <div class="product-specs">배터리 40시간 • 고급 ANC 탑재 • 무게 220g • 블루투스 5.4 • 평점 4.9★ (리뷰 3,400개)</div>
             </div>
