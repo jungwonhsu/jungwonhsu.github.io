@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nghiên cứu Internet Business: Giao diện A (Thông tin truyền thống)</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --accent: #f59e0b;
+            --bg-light: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .team-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+
+        .version-badge {
+            background: #e2e8f0;
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        /* Danh sách sản phẩm */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+        }
+
+        .product-img {
+            background: #e2e8f0;
+            height: 140px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .product-specs {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-weight: 700;
+            color: #16a34a;
+            font-size: 1.1rem;
+        }
+
+        .click-btn {
+            background: var(--accent);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .click-btn:hover {
+            background: #d97706;
+        }
+
+        /* Bảng thống kê kết quả */
+        .stats-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .stats-panel h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .stats-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Tiêu đề đề tài -->
+    <header>
+        <h1>Đề tài: Tác động của việc cung cấp thông tin tiêu chí lựa chọn đến tỷ lệ nhấp chuột (CTR)</h1>
+        <p>Môn: Internet Business (Lớp B)</p>
+        <div class="team-info">
+            <span>Nhóm: B</span>
+            <span>Thành viên 1: 25221307 - Nguyễn Thị Hồng Thắm</span>
+            <span>Thành viên 2: 25221308 - Phan Thị Kim Ngọc</span>
+            <span>Thành viên 3: 25221329 - Nguyễn Văn Chung</span>
+            <span>Thành viên 4: 25221315 - Nguyễn Văn Hiệp</span>
+        </div>
+    </header>
+
+    <!-- Nhãn chỉ định phiên bản A -->
+    <div class="version-badge">
+        🖥️ Phiên bản A: Giao diện truyền thống (Thông tin thô, không gợi ý tiêu chí lựa chọn)
+    </div>
+
+    <!-- Danh sách sản phẩm mẫu -->
+    <div class="product-grid">
+        <div class="product-card">
+            <div>
+                <div class="product-img">Hình ảnh sản phẩm 1</div>
+                <div class="product-title">Tai nghe Alpha Sound X</div>
+                <div class="product-specs">Pin 35h • ANC chủ động • Trọng lượng 240g • Bluetooth 5.3 • Đánh giá 4.8★ (1,200 review)</div>
+            </div>
+            <div class="product-footer">
+                <span class="price">2.490.000 đ</span>
+                <button class="click-btn" onclick="recordClick('Alpha Sound X')">Xem chi tiết</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div>
+                <div class="product-img">Hình ảnh sản phẩm 2</div>
+                <div class="product-title">Tai nghe BetaBass Pro</div>
+                <div class="product-specs">Pin 20h • Không có ANC • Trọng lượng 290g • Bluetooth 5.0 • Đánh giá 4.2★ (450 review)</div>
+            </div>
+            <div class="product-footer">
+                <span class="price">1.890.000 đ</span>
+                <button class="click-btn" onclick="recordClick('BetaBass Pro')">Xem chi tiết</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div>
+                <div class="product-img">Hình ảnh sản phẩm 3</div>
+                <div class="product-title">Tai nghe Gamma Wireless</div>
+                <div class="product-specs">Pin 40h • ANC nâng cao • Trọng lượng 220g • Bluetooth 5.4 • Đánh giá 4.9★ (3,400 review)</div>
+            </div>
+            <div class="product-footer">
+                <span class="price">3.290.000 đ</span>
+                <button class="click-btn" onclick="recordClick('Gamma Wireless')">Xem chi tiết</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thống kê thao tác nhấp chuột -->
+    <div class="stats-panel">
+        <h3>Số lần nhấp chuột (Clicks) ghi nhận ở Phiên bản A:</h3>
+        <div class="stats-number" id="clickCount">0</div>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 5px;">(Đo lường hành vi tương tác khi người dùng tự tìm kiếm thông tin không có sự định hướng tiêu chí)</p>
+    </div>
+</div>
+
+<script>
+    let clicks = 0;
+
+    function recordClick(productName) {
+        clicks++;
+        document.getElementById('clickCount').innerText = clicks;
+        alert(`[Phiên bản A] Bạn đã nhấp xem chi tiết sản phẩm: "${productName}"`);
+    }
+</script>
+
+</body>
+</html>
