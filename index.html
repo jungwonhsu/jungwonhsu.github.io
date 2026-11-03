@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Điện Máy Xanh Audio - Siêu Thị Tai Nghe Chính Hãng</title>
+    <title>Điện Máy Hansung Audio - Siêu Thị Tai Nghe Chính Hãng</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -78,7 +78,7 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center font-semibold">
             <div class="flex items-center gap-2">
                 <span class="bg-dmx-red text-white text-[10px] px-2 py-0.5 rounded-full font-black animate-pulse">HOT</span>
-                <span class="truncate">Siêu thị Tai Nghe & Audio Điện Máy Xanh - Giao siêu tốc 2h</span>
+                <span class="truncate">Siêu thị Tai Nghe & Audio Điện Máy Hansung - Giao siêu tốc 2h</span>
             </div>
             <div class="hidden md:flex items-center gap-6 text-xs text-blue-100">
                 <span><i class="fa-solid fa-headset text-dmx-yellow mr-1.5"></i>Tư vấn âm thanh: <strong>1800.1061</strong></span>
@@ -97,7 +97,7 @@
                     <i class="fa-solid fa-headphones-simple"></i>
                 </div>
                 <div class="flex flex-col leading-none">
-                    <span class="font-black text-white text-xl md:text-2xl tracking-tight uppercase">ĐIỆN MÁY <span class="text-dmx-yellow">XANH</span></span>
+                    <span class="font-black text-white text-xl md:text-2xl tracking-tight uppercase">ĐIỆN MÁY <span class="text-dmx-yellow">HANSUNG</span></span>
                     <span class="text-[10px] text-blue-300 tracking-widest uppercase font-bold">Audio & Premium Sound</span>
                 </div>
             </a>
@@ -160,7 +160,6 @@
 
         <!-- ========================================================= -->
         <!-- 🎯 THE HERO PRODUCT SPOTLIGHT (CHIẾM TRỌN ÁNH NHÌN) 🎯 -->
-        <!-- ========================================================= -->
         <section id="heroSpotlight" class="relative hero-glow-bg border-b border-blue-500/20 pt-8 pb-16 px-4 overflow-hidden">
             
             <!-- Ambient Background Effects -->
@@ -172,7 +171,7 @@
                 <div class="text-center mb-6 space-y-2">
                     <div class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500/20 via-yellow-400/30 to-red-500/20 border border-yellow-400/40 text-dmx-yellow px-4 py-1.5 rounded-full text-xs font-black tracking-widest uppercase animate-pulse">
                         <i class="fa-solid fa-star text-amber-400"></i>
-                        <span>SẢN PHẨM ĐẶC BIỆT NHẤT 2026 - ĐIỆN MÁY XANH AUDIO EXCLUSIVE</span>
+                        <span>SẢN PHẨM ĐẶC BIỆT NHẤT 2026 - ĐIỆN MÁY HANSUNG AUDIO EXCLUSIVE</span>
                         <i class="fa-solid fa-star text-amber-400"></i>
                     </div>
                     <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase">
@@ -341,7 +340,7 @@
                 <i class="fa-solid fa-sliders text-3xl text-dmx-blue"></i>
                 <div>
                     <h4 class="font-bold text-xs text-white">Thử Âm Thanh Miễn Phí</h4>
-                    <p class="text-[11px] text-slate-400">Tại 3.385 Siêu thị ĐMX</p>
+                    <p class="text-[11px] text-slate-400">Tại các Siêu thị ĐM Hansung</p>
                 </div>
             </div>
             <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
@@ -370,7 +369,7 @@
                     <div class="bg-dmx-yellow text-dmx-navy p-1.5 rounded-lg font-black text-lg">
                         <i class="fa-solid fa-headphones-simple"></i>
                     </div>
-                    <span class="font-black text-white text-lg">ĐIỆN MÁY <span class="text-dmx-yellow">XANH</span> AUDIO</span>
+                    <span class="font-black text-white text-lg">ĐIỆN MÁY <span class="text-dmx-yellow">HANSUNG</span> AUDIO</span>
                 </div>
                 <p class="text-slate-400 leading-relaxed">Chuyên kênh cung cấp thiết bị âm thanh, tai nghe cao cấp chính hãng hàng đầu Việt Nam.</p>
             </div>
@@ -472,7 +471,7 @@
                     </div>
 
                     <div class="text-center">
-                        <span class="text-[11px] text-slate-400"><i class="fa-solid fa-shield-halved text-dmx-yellow mr-1"></i> Đội ngũ kỹ thuật Điện Máy Xanh hỗ trợ bàn giao tận nơi</span>
+                        <span class="text-[11px] text-slate-400"><i class="fa-solid fa-shield-halved text-dmx-yellow mr-1"></i> Đội ngũ kỹ thuật Điện Máy Hansung hỗ trợ bàn giao tận nơi</span>
                     </div>
 
                 </div>
@@ -855,7 +854,7 @@
             modalContent.innerHTML = `
                 <div class="flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-slate-800 pb-4 md:pb-0 md:pr-6">
                     <img src="${product.image}" class="w-full h-56 object-contain rounded-xl" alt="${product.name}">
-                    <span class="mt-4 text-xs bg-red-950 text-red-400 px-3 py-1 rounded-full font-bold">Giảm giá ${discount}% tại Điện Máy Xanh</span>
+                    <span class="mt-4 text-xs bg-red-950 text-red-400 px-3 py-1 rounded-full font-bold">Giảm giá ${discount}% tại Điện Máy Hansung</span>
                 </div>
                 <div class="space-y-4">
                     <div>
@@ -978,7 +977,7 @@
                 showToast("Giỏ hàng của bạn đang trống!");
                 return;
             }
-            alert("🎉 ĐẶT HÀNG THÀNH CÔNG!\nKỹ thuật viên Điện Máy Xanh sẽ liên hệ giao hàng & hỗ trợ cân chỉnh âm thanh tận nhà trong 2h.");
+            alert("🎉 ĐẶT HÀNG THÀNH CÔNG!\nKỹ thuật viên Điện Máy Hansung sẽ liên hệ giao hàng & hỗ trợ cân chỉnh âm thanh tận nhà trong 2h.");
             cart = [];
             saveCart();
             updateCartUI();
