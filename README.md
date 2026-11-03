@@ -224,7 +224,7 @@
     function recordClick(productName) {
         clicks++;
         document.getElementById('clickCount').innerText = clicks;
-        alert(`[버전 A] "${productName}" 상품의 상세보기 버튼을 클릭했습니다.`);
+        alert(`상품의 상세보기 버튼을 클릭했습니다.`);
     }
 </script>
 
