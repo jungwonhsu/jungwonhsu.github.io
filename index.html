@@ -51,50 +51,50 @@
             color: #f3f4f6;
         }
         /* Glassmorphic utilities */
-        .glass-card {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .hero-glow-bg {
-            background: radial-gradient(circle at 50% 40%, rgba(0, 136, 218, 0.35) 0%, rgba(255, 242, 0, 0.15) 35%, rgba(11, 19, 32, 1) 75%);
-        }
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #0088da;
-            border-radius: 3px;
-        }
-    </style>
-</head>
-<body class="antialiased selection:bg-dmx-yellow selection:text-black min-h-screen flex flex-col justify-between">
+                            <!-- Stock Progress & Purchase Counter -->
+                            <div class="space-y-1 bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+                                <div class="flex justify-between text-xs font-bold">
+                                    <span class="text-red-400"><i class="fa-solid fa-fire mr-1"></i>Chỉ còn lại <span id="heroStockCount">2</span> chiếc</span>
+                                    <span class="text-dmx-yellow font-black">Lượt mua: <span id="heroSalesCounter" class="text-white text-sm">1.248</span></span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden p-0.5 border border-slate-700">
+                                    <div class="bg-gradient-to-r from-yellow-400 to-red-500 h-full rounded-full w-[85%] animate-pulse"></div>
+                                </div>
+                            </div>
 
-    <!-- TOP ANNOUNCEMENT BAR -->
-    <div class="bg-gradient-to-r from-dmx-navy via-dmx-blue to-blue-900 text-white text-xs py-2 px-4 border-b border-blue-400/20">
-        <div class="max-w-7xl mx-auto flex justify-between items-center font-semibold">
-            <div class="flex items-center gap-2">
-                <span class="bg-dmx-red text-white text-[10px] px-2 py-0.5 rounded-full font-black animate-pulse">HOT</span>
-                <span class="truncate">Siêu thị Tai Nghe & Audio Điện Máy Hansung - Giao siêu tốc 2h</span>
-            </div>
-            <div class="hidden md:flex items-center gap-6 text-xs text-blue-100">
-                <span><i class="fa-solid fa-headset text-dmx-yellow mr-1.5"></i>Tư vấn âm thanh: <strong>1800.1061</strong></span>
-                <span><i class="fa-solid fa-shield-halved text-dmx-yellow mr-1.5"></i>Bao xài đổi trả 12 tháng</span>
-            </div>
-        </div>
-    </div>
+                            <!-- THE DECISION BUTTONS (MUA HAY KHÔNG MUA) -->
+                            <div class="space-y-2.5 pt-2">
+                                <button onclick="triggerCoreProductPurchase()" class="w-full bg-gradient-to-r from-dmx-yellow via-amber-400 to-yellow-500 text-dmx-navy font-black py-3.5 px-4 rounded-xl shadow-xl shadow-yellow-500/20 hover:brightness-110 transition transform active:scale-95 text-sm uppercase tracking-wider flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-crown text-base"></i>
+                                    <span>QUYẾT ĐỊNH MUA NGAY</span>
+                                </button>
+                                
+                                <button onclick="openHeroDecisionModal()" class="w-full bg-blue-600/80 hover:bg-blue-600 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-circle-info"></i> Xem Banner Quyết Định
+                                </button>
+                            </div>
 
-    <!-- MAIN HEADER -->
-    <header class="bg-dmx-navy/90 backdrop-blur-md sticky top-0 z-40 border-b border-blue-500/20 shadow-xl">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+                            <p class="text-[11px] text-slate-400"><i class="fa-solid fa-truck-fast text-dmx-blue mr-1"></i> Giao hàng tận nhà bằng Chuyên xe Vip</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- AUDIO CATEGORY CATALOG (SHOWCASE PRODUCTS) -->
+        <!-- ========================================================= -->
+        <section class="max-w-7xl mx-auto px-4 space-y-6">
             
-            <!-- LOGO -->
-            <a href="#" onclick="filterByCategory('all'); return false;" class="flex items-center gap-2 group flex-shrink-0">
-                <div class="bg-dmx-yellow text-dmx-navy p-2 rounded-xl font-black text-2xl flex items-center justify-center w-11 h-11 shadow-lg shadow-yellow-500/20 group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-headphones-simple"></i>
+            <!-- Section Header -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900/80 p-5 rounded-2xl border border-slate-800">
+                <div>
+                    <h2 id="currentCategoryTitle" class="text-xl sm:text-2xl font-black text-white uppercase tracking-tight flex items-center gap-2.5">
+                        <i class="fa-solid fa-headphones text-dmx-yellow"></i>
+                        <span>Bộ Sưu Tập Tai Nghe Tham Khảo</span>
+                    </h2>
+                    <p class="text-xs text-slate-400">*Ghi chú: Các tai nghe phụ bên dưới dùng để tham khảo & trưng bày giao diện. Mua hàng dành cho Siêu Phẩm HE-1.</p>
                 </div>
                 <div class="flex flex-col leading-none">
                     <span class="font-black text-white text-xl md:text-2xl tracking-tight uppercase">ĐIỆN MÁY <span class="text-dmx-yellow">HANSUNG</span></span>
@@ -452,12 +452,12 @@
                         <div class="text-xs font-bold text-center text-slate-300 uppercase tracking-wider">ĐƯA RA QUYẾT ĐỊNH CỦA BẠN:</div>
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <!-- OPTION A: MUA NGAY -->
-                            <button onclick="handleInstantBuyHero()" class="bg-gradient-to-r from-red-600 via-rose-600 to-amber-500 hover:brightness-110 text-white font-black py-4 px-3 rounded-2xl shadow-xl shadow-red-600/30 transition transform hover:scale-105 text-center flex flex-col items-center justify-center gap-1 group">
+                            <!-- OPTION A: MUA NGAY KẢO HẾT -->
+                            <button onclick="triggerCoreProductPurchase(); closeHeroDecisionModal();" class="bg-gradient-to-r from-red-600 via-rose-600 to-amber-500 hover:brightness-110 text-white font-black py-4 px-3 rounded-2xl shadow-xl shadow-red-600/30 transition transform hover:scale-105 text-center flex flex-col items-center justify-center gap-1 group">
                                 <span class="text-sm font-extrabold flex items-center gap-1.5 group-hover:scale-110 transition-transform">
                                     <i class="fa-solid fa-fire text-dmx-yellow"></i> MUA NGAY KẺO HẾT!
                                 </span>
-                                <span class="text-[10px] text-red-100 font-semibold">Chấp nhận sở hữu siêu phẩm</span>
+                                <span class="text-[10px] text-red-100 font-semibold">Tăng +1 lượt mua & xác nhận đơn</span>
                             </button>
 
                             <!-- OPTION B: BỎ QUA -->
@@ -465,7 +465,7 @@
                                 <span class="text-xs text-slate-300 flex items-center gap-1">
                                     <i class="fa-solid fa-xmark"></i> Bỏ Qua Cơ Hội
                                 </span>
-                                <span class="text-[10px] text-slate-500">Xem các tai nghe khác</span>
+                                <span class="text-[10px] text-slate-500">Xem thêm thông số</span>
                             </button>
                         </div>
                     </div>
@@ -477,6 +477,29 @@
                 </div>
 
             </div>
+        </div>
+    </div>
+
+    <!-- ORDER SUCCESS CONFIRMATION MODAL -->
+    <div id="orderSuccessModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-slate-900 border-2 border-green-500/80 rounded-3xl max-w-md w-full p-6 text-center shadow-[0_0_50px_rgba(34,197,94,0.3)] relative overflow-hidden">
+            <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 border border-emerald-500/40 animate-bounce">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            
+            <h3 class="text-2xl font-black text-white uppercase mb-1">MUA HÀNG THÀNH CÔNG!</h3>
+            <p class="text-xs text-emerald-400 font-bold mb-4"><i class="fa-solid fa-circle-dot animate-pulse mr-1"></i> Đã tính +1 lượt mua cho Siêu Phẩm Cốt Lõi</p>
+            
+            <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 text-left text-xs space-y-2 mb-5">
+                <div class="flex justify-between"><span class="text-slate-400">Sản phẩm:</span> <span class="font-bold text-white text-right">Sennheiser HE-1 Titanium 8D</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">Mã đơn hàng:</span> <span id="successOrderCode" class="font-mono text-dmx-yellow font-bold">#HS-98241</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">Giá thanh toán:</span> <span class="font-bold text-dmx-yellow">49.990.000₫</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">Tổng lượt mua hiện tại:</span> <span id="successTotalSales" class="font-black text-green-400">1.249</span></div>
+            </div>
+
+            <button onclick="closeOrderSuccessModal()" class="w-full bg-gradient-to-r from-emerald-500 to-green-600 hover:brightness-110 text-white font-extrabold py-3.5 rounded-xl uppercase text-xs tracking-wider shadow-lg">
+                Xác Nhận & Quay Lại Trang Chủ
+            </button>
         </div>
     </div>
 
@@ -497,7 +520,7 @@
             <div class="bg-dmx-navy p-4 text-white flex items-center justify-between border-b border-blue-500/20">
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-bag-shopping text-dmx-yellow text-xl"></i>
-                    <h3 class="font-black text-base uppercase">Giỏ Hàng Âm Thanh</h3>
+                    <h3 class="font-black text-base uppercase">Đơn Hàng Cốt Lõi</h3>
                 </div>
                 <button onclick="toggleCartDrawer(false)" class="text-slate-400 hover:text-white text-xl">
                     <i class="fa-solid fa-xmark"></i>
@@ -511,8 +534,8 @@
                     <span class="text-slate-400">Tổng tiền tạm tính:</span>
                     <span id="cartTotalPrice" class="text-xl font-black text-dmx-yellow">0₫</span>
                 </div>
-                <button onclick="checkoutSimulated()" class="w-full bg-gradient-to-r from-dmx-yellow to-amber-500 text-dmx-navy font-black py-3 rounded-xl shadow-lg hover:brightness-110 transition uppercase tracking-wider flex items-center justify-center gap-2">
-                    Tiến Hành Đặt Hàng <i class="fa-solid fa-arrow-right"></i>
+                <button onclick="checkoutCoreProductFromCart()" class="w-full bg-gradient-to-r from-dmx-yellow to-amber-500 text-dmx-navy font-black py-3 rounded-xl shadow-lg hover:brightness-110 transition uppercase tracking-wider flex items-center justify-center gap-2">
+                    Xác Nhận Đặt Hàng Siêu Phẩm <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
         </div>
@@ -527,14 +550,15 @@
         const products = [
             {
                 id: 1,
-                name: "Sennheiser HE-1 Titanium 8D (Flagship Special)",
+                isCoreProduct: true,
+                name: "Sennheiser HE-1 Titanium 8D (Flagship Core)",
                 category: "flagship",
                 price: 49990000,
                 oldPrice: 76990000,
                 rating: 5.0,
                 reviews: 49,
                 image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
-                badge: "Siêu Phẩm Số 1",
+                badge: "Siêu Phẩm Cốt Lõi",
                 specs: {
                     driver: "Màng loa Graphene 50mm mạ vàng",
                     anc: "ANC Ultra 100dB Chống ồn tuyệt đối",
@@ -544,6 +568,7 @@
             },
             {
                 id: 2,
+                isCoreProduct: false,
                 name: "Sony WH-1000XM5 Wireless Noise Canceling",
                 category: "audiophile",
                 price: 7990000,
@@ -551,7 +576,7 @@
                 rating: 4.9,
                 reviews: 215,
                 image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=600&q=80",
-                badge: "Bán Chạy nhất",
+                badge: "Hàng Trưng Bày",
                 specs: {
                     driver: "30mm Precision Driver",
                     anc: "Bộ xử lý QN1 Chống ồn đỉnh cao",
@@ -561,6 +586,7 @@
             },
             {
                 id: 3,
+                isCoreProduct: false,
                 name: "AirPods Pro Gen 2 Type-C (MagSafe Case)",
                 category: "earbuds",
                 price: 5890000,
@@ -568,7 +594,7 @@
                 rating: 4.8,
                 reviews: 340,
                 image: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=600&q=80",
-                badge: "Trả góp 0%",
+                badge: "Hàng Trưng Bày",
                 specs: {
                     chip: "Apple H2 Headphone Chip",
                     anc: "Chống ồn chủ động x2 lần",
@@ -578,6 +604,7 @@
             },
             {
                 id: 4,
+                isCoreProduct: false,
                 name: "Razer BlackShark V2 Pro Gaming Headset",
                 category: "gaming",
                 price: 4390000,
@@ -585,7 +612,7 @@
                 rating: 4.7,
                 reviews: 128,
                 image: "https://images.unsplash.com/photo-1599669454699-24889d6df33b?auto=format&fit=crop&w=600&q=80",
-                badge: "Gaming Chuyên Nghiệp",
+                badge: "Hàng Trưng Bày",
                 specs: {
                     driver: "TriForce Titanium 50mm",
                     mic: "Micro HyperClear Supercardioid",
@@ -595,6 +622,7 @@
             },
             {
                 id: 5,
+                isCoreProduct: false,
                 name: "Bose QuietComfort Earbuds II",
                 category: "earbuds",
                 price: 6490000,
@@ -602,7 +630,7 @@
                 rating: 4.9,
                 reviews: 87,
                 image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80",
-                badge: "Âm Bass Đỉnh",
+                badge: "Hàng Trưng Bày",
                 specs: {
                     anc: "Công nghệ CustomTune cá nhân hóa",
                     battery: "6 Giờ liên tục",
@@ -612,6 +640,7 @@
             },
             {
                 id: 6,
+                isCoreProduct: false,
                 name: "JBL Endurance Peak 3 Sports Earphones",
                 category: "sports",
                 price: 2290000,
@@ -619,7 +648,7 @@
                 rating: 4.6,
                 reviews: 94,
                 image: "https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?auto=format&fit=crop&w=600&q=80",
-                badge: "Chống Nước IP68",
+                badge: "Hàng Trưng Bày",
                 specs: {
                     design: "Móc tai PowerHook ôm sát",
                     battery: "50 Giờ tổng cộng",
@@ -629,6 +658,7 @@
             },
             {
                 id: 7,
+                isCoreProduct: false,
                 name: "Sennheiser Momentum 4 Wireless",
                 category: "audiophile",
                 price: 8490000,
@@ -636,7 +666,7 @@
                 rating: 4.8,
                 reviews: 112,
                 image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80",
-                badge: "Pin 60 Giờ",
+                badge: "Hàng Trưng Bày",
                 specs: {
                     driver: "42mm Audiophile-inspired",
                     battery: "60 Giờ phát nhạc",
@@ -646,6 +676,7 @@
             },
             {
                 id: 8,
+                isCoreProduct: false,
                 name: "Logitech G PRO X 2 LIGHTSPEED Wireless",
                 category: "gaming",
                 price: 5990000,
@@ -653,7 +684,7 @@
                 rating: 4.9,
                 reviews: 165,
                 image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=600&q=80",
-                badge: "Màng Loa Graphene",
+                badge: "Hàng Trưng Bày",
                 specs: {
                     driver: "Màng Loa Graphene 50mm",
                     connection: "LIGHTSPEED, Bluetooth, 3.5mm",
@@ -666,18 +697,49 @@
         let currentFilter = 'all';
         let searchQuery = '';
         let sortOption = 'featured';
-        let cart = JSON.parse(localStorage.getItem('dmx_audio_cart')) || [];
+        let cart = [];
         let isPlayingAudio = false;
+
+        // Core Product Sales Counter logic
+        let coreProductSalesCount = parseInt(localStorage.getItem('dmx_core_sales_count')) || 1248;
 
         function formatVND(amount) {
             return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            updateSalesCounterDisplay();
             renderProducts();
             updateCartUI();
             startHeroTimer();
         });
+
+        function updateSalesCounterDisplay() {
+            const formatted = new Intl.NumberFormat('vi-VN').format(coreProductSalesCount);
+            document.getElementById('heroSalesCounter').innerText = formatted;
+        }
+
+        // TRIGGER CORE PRODUCT PURCHASE (+1 SALES COUNT)
+        function triggerCoreProductPurchase() {
+            coreProductSalesCount += 1;
+            localStorage.setItem('dmx_core_sales_count', coreProductSalesCount);
+            updateSalesCounterDisplay();
+
+            // Generate Random Order Code
+            const orderCode = '#HS-' + Math.floor(10000 + Math.random() * 90000);
+            document.getElementById('successOrderCode').innerText = orderCode;
+            document.getElementById('successTotalSales').innerText = new Intl.NumberFormat('vi-VN').format(coreProductSalesCount);
+
+            // Show Success Modal
+            const modal = document.getElementById('orderSuccessModal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+
+            showToast(`🎉 MUA HÀNG THÀNH CÔNG! Đã cộng +1 lượt mua cho Siêu Phẩm HE-1.`);
+        }
+
+        function closeOrderSuccessModal() {
+            document.getElementById('orderSuccessModal').classList.add('opacity-0', 'pointer-events-none');
+        }
 
         // Navigation filter
         function filterByCategory(cat) {
@@ -693,8 +755,8 @@
             });
 
             const titles = {
-                all: "Bộ Sưu Tập Tai Nghe Cao Cấp",
-                flagship: "Siêu Phẩm Đặc Biệt Chiếm Trọn Ánh Nhìn",
+                all: "Bộ Sưu Tập Tai Nghe Tham Khảo",
+                flagship: "Siêu Phẩm Đặc Biệt Cốt Lõi",
                 earbuds: "Tai Nghe True Wireless Nhỏ Gọn",
                 gaming: "Tai Nghe Gaming Chuyên Nghiệp",
                 audiophile: "Tai Nghe Chụp Tai Hi-Res",
@@ -737,16 +799,16 @@
 
             grid.innerHTML = filtered.map(item => {
                 const discount = Math.round(((item.oldPrice - item.price) / item.oldPrice) * 100);
-                const isHero = item.id === 1;
+                const isHero = item.isCoreProduct;
 
                 return `
-                    <div class="glass-card rounded-2xl p-4 border border-slate-800 hover:border-dmx-yellow/50 transition duration-300 flex flex-col justify-between group relative ${isHero ? 'ring-2 ring-yellow-400/60' : ''}">
-                        ${isHero ? '<span class="absolute -top-2 -right-2 bg-gradient-to-r from-red-600 to-amber-500 text-white text-[9px] font-black px-2 py-0.5 rounded-md uppercase z-10 shadow">Đặc biệt nhất</span>' : ''}
+                    <div class="glass-card rounded-2xl p-4 border border-slate-800 hover:border-dmx-yellow/50 transition duration-300 flex flex-col justify-between group relative ${isHero ? 'ring-2 ring-yellow-400/80 bg-slate-900/90' : 'opacity-90'}">
+                        ${isHero ? '<span class="absolute -top-2 -right-2 bg-gradient-to-r from-red-600 to-amber-500 text-white text-[9px] font-black px-2 py-0.5 rounded-md uppercase z-10 shadow">Siêu Phẩm Cốt Lõi</span>' : ''}
                         
                         <div>
                             <!-- Badges -->
                             <div class="flex items-center justify-between text-[10px] font-extrabold mb-2">
-                                <span class="bg-blue-950 text-dmx-blue px-2 py-0.5 rounded border border-blue-800">${item.badge}</span>
+                                <span class="${isHero ? 'bg-amber-950 text-amber-300 border-amber-600' : 'bg-slate-800 text-slate-400 border-slate-700'} px-2 py-0.5 rounded border">${item.badge}</span>
                                 <span class="bg-red-950 text-red-400 px-1.5 py-0.5 rounded font-bold">-${discount}%</span>
                             </div>
 
@@ -760,7 +822,7 @@
                                 ${item.name}
                             </h3>
 
-                            <!-- Specs Specs Chips -->
+                            <!-- Specs Chips -->
                             <div class="text-[11px] text-slate-400 bg-slate-950/60 p-2 rounded-xl mb-3 space-y-1 border border-slate-800">
                                 <p class="truncate"><i class="fa-solid fa-circle-check text-dmx-yellow mr-1"></i>${Object.values(item.specs)[0]}</p>
                                 <p class="truncate"><i class="fa-solid fa-circle-check text-dmx-yellow mr-1"></i>${Object.values(item.specs)[1]}</p>
@@ -783,14 +845,24 @@
                                 <button onclick="openProductModal(${item.id})" class="bg-slate-800 hover:bg-slate-700 text-slate-300 py-2 rounded-xl text-xs font-bold transition">
                                     Chi tiết
                                 </button>
-                                <button onclick="addToCart(${item.id})" class="bg-dmx-blue hover:bg-blue-600 text-white py-2 rounded-xl text-xs font-bold transition shadow flex items-center justify-center gap-1">
-                                    <i class="fa-solid fa-cart-plus"></i> Chọn mua
-                                </button>
+                                ${isHero ? `
+                                    <button onclick="triggerCoreProductPurchase()" class="bg-gradient-to-r from-red-600 to-amber-500 hover:brightness-110 text-white py-2 rounded-xl text-xs font-black transition shadow flex items-center justify-center gap-1">
+                                        <i class="fa-solid fa-fire"></i> MUA NGAY
+                                    </button>
+                                ` : `
+                                    <button onclick="handleDisplayProductClick('${item.name}')" class="bg-slate-800 hover:bg-slate-700 text-slate-400 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1">
+                                        <i class="fa-solid fa-eye"></i> Trưng bày
+                                    </button>
+                                `}
                             </div>
                         </div>
                     </div>
                 `;
             }).join('');
+        }
+
+        function handleDisplayProductClick(productName) {
+            showToast(`ℹ️ <strong>${productName}</strong> là sản phẩm trưng bày dùng để tham khảo thông số.`);
         }
 
         // Search & Sort Handlers
@@ -812,13 +884,6 @@
         function closeHeroDecisionModal() {
             const modal = document.getElementById('heroDecisionModal');
             modal.classList.add('opacity-0', 'pointer-events-none');
-        }
-
-        function handleInstantBuyHero() {
-            addToCart(1);
-            closeHeroDecisionModal();
-            toggleCartDrawer(true);
-            showToast("🔥 Đã chọn mua Siêu Phẩm Sennheiser HE-1! Hãy tiến hành đặt hàng.");
         }
 
         function scrollToHero() {
@@ -858,7 +923,7 @@
                 </div>
                 <div class="space-y-4">
                     <div>
-                        <span class="text-xs bg-blue-950 text-dmx-blue font-bold px-2.5 py-1 rounded border border-blue-800">${product.badge}</span>
+                        <span class="text-xs ${product.isCoreProduct ? 'bg-amber-950 text-amber-300 border-amber-600' : 'bg-slate-800 text-slate-400'} font-bold px-2.5 py-1 rounded border">${product.badge}</span>
                         <h3 class="text-xl font-extrabold text-white mt-2">${product.name}</h3>
                     </div>
 
@@ -868,7 +933,7 @@
                     </div>
 
                     <div class="space-y-2">
-                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Thông Số Kỹ Thuật Đột Phá</h4>
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Thông Số Kỹ Thuật Chi Tiết</h4>
                         <div class="bg-slate-950 rounded-xl p-3 text-xs space-y-1.5 border border-slate-800">
                             ${Object.entries(product.specs).map(([k, v]) => `
                                 <div class="flex justify-between py-1 border-b border-slate-800/60 last:border-0">
@@ -879,9 +944,18 @@
                         </div>
                     </div>
 
-                    <button onclick="addToCart(${product.id}); closeProductModal();" class="w-full bg-dmx-blue hover:bg-blue-600 text-white font-extrabold py-3 rounded-xl shadow-lg transition text-xs uppercase flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-cart-plus"></i> Thêm Vào Giỏ Hàng
-                    </button>
+                    ${product.isCoreProduct ? `
+                        <button onclick="closeProductModal(); triggerCoreProductPurchase();" class="w-full bg-gradient-to-r from-red-600 to-amber-500 hover:brightness-110 text-white font-black py-3.5 rounded-xl shadow-lg transition text-xs uppercase flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-fire text-dmx-yellow"></i> QUYẾT ĐỊNH MUA NGAY SIÊU PHẨM CỐT LÕI
+                        </button>
+                    ` : `
+                        <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+                            <p class="text-xs text-slate-400 font-medium mb-2">Mẫu tai nghe này chỉ dành cho mục đích tham khảo thông số & làm đẹp website.</p>
+                            <button onclick="closeProductModal(); scrollToHero();" class="bg-dmx-blue text-white font-bold py-2 px-4 rounded-xl text-xs">
+                                Xem Siêu Phẩm Cốt Lõi HE-1
+                            </button>
+                        </div>
+                    `}
                 </div>
             `;
             modal.classList.remove('opacity-0', 'pointer-events-none');
@@ -891,36 +965,19 @@
             document.getElementById('productModal').classList.add('opacity-0', 'pointer-events-none');
         }
 
-        // Cart Drawer
+        // Cart Drawer logic (Pre-filled with core product)
         function addToCart(id) {
-            const product = products.find(p => p.id === id);
-            const existing = cart.find(i => i.id === id);
-            if (existing) {
-                existing.quantity += 1;
+            if (id === 1) {
+                cart = [{ ...products[0], quantity: 1 }];
+                updateCartUI();
+                toggleCartDrawer(true);
             } else {
-                cart.push({ ...product, quantity: 1 });
+                handleDisplayProductClick(products.find(p => p.id === id)?.name || "Sản phẩm");
             }
-            saveCart();
-            updateCartUI();
-            showToast(`Đã thêm <strong>${product.name}</strong> vào giỏ hàng!`);
-        }
-
-        function updateCartQuantity(id, delta) {
-            const idx = cart.findIndex(i => i.id === id);
-            if (idx !== -1) {
-                cart[idx].quantity += delta;
-                if (cart[idx].quantity <= 0) cart.splice(idx, 1);
-            }
-            saveCart();
-            updateCartUI();
-        }
-
-        function saveCart() {
-            localStorage.setItem('dmx_audio_cart', JSON.stringify(cart));
         }
 
         function updateCartUI() {
-            const totalCount = cart.reduce((s, i) => s + i.quantity, 0);
+            const totalCount = cart.length;
             const totalPrice = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
 
             document.getElementById('cartBadge').innerText = totalCount;
@@ -930,30 +987,35 @@
             if (cart.length === 0) {
                 container.innerHTML = `
                     <div class="h-full flex flex-col items-center justify-center text-slate-500 py-12 space-y-2">
-                        <i class="fa-solid fa-bag-shopping text-5xl text-slate-700"></i>
-                        <p class="text-xs">Giỏ hàng tai nghe đang trống</p>
+                        <i class="fa-solid fa-headphones text-5xl text-slate-700"></i>
+                        <p class="text-xs">Chưa chọn Siêu Phẩm Cốt Lõi vào đơn hàng</p>
+                        <button onclick="addToCart(1)" class="bg-dmx-yellow text-dmx-navy font-bold px-3 py-1.5 rounded-xl text-xs mt-2">
+                            Thêm Siêu Phẩm HE-1
+                        </button>
                     </div>
                 `;
                 return;
             }
 
             container.innerHTML = cart.map(item => `
-                <div class="flex items-center gap-3 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                <div class="flex items-center gap-3 bg-slate-950 p-3 rounded-xl border border-amber-500/40">
                     <img src="${item.image}" class="w-14 h-14 object-contain rounded bg-slate-900 p-1 border border-slate-800">
                     <div class="flex-1 min-w-0">
+                        <span class="text-[9px] bg-red-600 text-white px-1.5 py-0.5 rounded font-black">CORE</span>
                         <h4 class="text-xs font-bold text-white truncate">${item.name}</h4>
                         <div class="text-dmx-yellow font-black text-xs mt-0.5">${formatVND(item.price)}</div>
-                        <div class="flex items-center gap-2 mt-1.5">
-                            <button onclick="updateCartQuantity(${item.id}, -1)" class="w-5 h-5 rounded bg-slate-800 text-white font-bold text-xs">-</button>
-                            <span class="text-xs font-bold text-white">${item.quantity}</span>
-                            <button onclick="updateCartQuantity(${item.id}, 1)" class="w-5 h-5 rounded bg-slate-800 text-white font-bold text-xs">+</button>
-                        </div>
                     </div>
-                    <button onclick="updateCartQuantity(${item.id}, -${item.quantity})" class="text-slate-500 hover:text-red-400 p-1">
-                        <i class="fa-regular fa-trash-can"></i>
-                    </button>
                 </div>
             `).join('');
+        }
+
+        function checkoutCoreProductFromCart() {
+            if (cart.length === 0) {
+                showToast("Vui lòng chọn Siêu Phẩm HE-1 trước khi tiến hành.");
+                return;
+            }
+            toggleCartDrawer(false);
+            triggerCoreProductPurchase();
         }
 
         function toggleCartDrawer(open) {
@@ -972,18 +1034,6 @@
             }
         }
 
-        function checkoutSimulated() {
-            if (cart.length === 0) {
-                showToast("Giỏ hàng của bạn đang trống!");
-                return;
-            }
-            alert("🎉 ĐẶT HÀNG THÀNH CÔNG!\nKỹ thuật viên Điện Máy Hansung sẽ liên hệ giao hàng & hỗ trợ cân chỉnh âm thanh tận nhà trong 2h.");
-            cart = [];
-            saveCart();
-            updateCartUI();
-            toggleCartDrawer(false);
-        }
-
         function showToast(msg) {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
@@ -994,7 +1044,7 @@
             setTimeout(() => {
                 toast.classList.add('opacity-0', 'translate-y-2');
                 setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            }, 3500);
         }
 
         function startHeroTimer() {
