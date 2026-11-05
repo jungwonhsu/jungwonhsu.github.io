@@ -1,393 +1,222 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한성유니 Store - 무선 이어폰/헤드폰 전문점 (Version A)</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Noto Sans KR -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Noto Sans KR', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Custom Modern Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>한성유니 Store - AirPods Max (Version A)</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #ff6b00;
+      --bg-light: #f4f6f9;
+      --card-bg: #ffffff;
+      --text-dark: #222222;
+      --text-muted: #666666;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg-light); color: var(--text-dark); padding-bottom: 50px; }
+
+    /* Top Announcement Bar */
+    .top-bar { background-color: var(--primary-color); color: white; text-align: center; padding: 8px 15px; font-size: 14px; font-weight: 600; }
+
+    /* Header Navigation */
+    header { background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.08); sticky: top; top: 0; z-index: 100; }
+    .header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; }
+    .logo { font-size: 24px; font-weight: 800; color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .search-box { display: flex; flex: 1; max-width: 500px; margin: 0 30px; }
+    .search-box input { width: 100%; padding: 10px 15px; border: 2px solid var(--primary-color); border-radius: 6px 0 0 6px; outline: none; font-size: 14px; }
+    .search-box button { background: var(--primary-color); color: white; border: none; padding: 0 20px; border-radius: 0 6px 6px 0; cursor: pointer; font-size: 16px; }
+
+    /* Hero Banner */
+    .hero-banner { max-width: 1200px; margin: 20px auto; background: linear-gradient(135deg, #0056b3 0%, #002c5c 100%); border-radius: 12px; color: white; padding: 40px; display: flex; align-items: center; justify-content: space-between; }
+    .hero-text h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+    .hero-text p { font-size: 16px; opacity: 0.9; }
+
+    /* Container */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* Product Grid */
+    .section-title { font-size: 22px; font-weight: 700; margin: 30px 0 20px 0; border-left: 5px solid var(--primary-color); padding-left: 10px; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; }
+
+    .product-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; position: relative; }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+
+    .discount-badge { position: absolute; top: 15px; left: 15px; background: #e63946; color: white; padding: 4px 8px; border-radius: 4px; font-weight: 700; font-size: 12px; }
+
+    .product-img { width: 100%; height: 230px; object-fit: contain; padding: 20px; background-color: #fafafa; }
+    .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+
+    .price-container { margin-bottom: 15px; }
+    .original-price { text-decoration: line-through; color: var(--text-muted); font-size: 13px; }
+    .current-price { font-size: 20px; font-weight: 800; color: #e63946; }
+
+    /* Heavy Raw Specs List for Version A (Information Overload) */
+    .specs-list { background: #f8f9fa; padding: 12px; border-radius: 6px; font-size: 12px; color: #444; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; border: 1px solid #e9ecef; }
+    .specs-list li { list-style: none; margin-bottom: 4px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 3px; }
+    .specs-list li:last-child { border-bottom: none; }
+
+    /* Buy Button */
+    .btn-buy { width: 100%; background: var(--secondary-color); color: white; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn-buy:hover { background: #e05d00; }
+
+    footer { text-align: center; margin-top: 50px; padding: 20px; color: var(--text-muted); font-size: 13px; border-top: 1px solid #ddd; }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+<body>
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-slate-900 text-slate-300 py-2 px-4 text-xs text-center border-b border-slate-800">
-        <span class="font-bold text-amber-400 mr-2">[버전 A - 통제군]</span>
-        한성유니 Store 신학기 정품 오디오 특가 기획전 (무료 배송 & A/S 2년 보장)
+  <div class="top-bar">
+    ⚡ 한성유니 Store 프리미엄 혜택: Apple 정품 신학기 특별 할인 진행 중!
+  </div>
+
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo"><i class="fa-solid fa-headphones"></i> 한성유니 Store</a>
+      <div class="search-box">
+        <input type="text" placeholder="AirPods Max 색상 및 사양 검색...">
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
     </div>
+  </header>
 
-    <!-- Main Navigation Bar -->
-    <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-blue-500/20">
-                    <i class="fa-solid fa-headphones text-xl"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-black tracking-tight text-slate-900 flex items-center gap-2">
-                        한성유니 Store
-                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-bold border border-slate-200">Ver A</span>
-                    </h1>
-                    <p class="text-xs text-slate-500">Premium Audio Collection</p>
-                </div>
-            </div>
-
-            <!-- Search Bar -->
-            <div class="hidden md:flex flex-1 max-w-md mx-8">
-                <div class="relative w-full">
-                    <input type="text" placeholder="노이즈 캔슬링 헤드폰 및 무선 이어폰 검색..." 
-                        class="w-full bg-slate-100 border border-slate-200 rounded-full py-2 pl-4 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition">
-                    <button class="absolute right-3 top-2.5 text-slate-400 hover:text-blue-600">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Header Utility Icons -->
-            <div class="flex items-center space-x-6 text-slate-600 text-sm">
-                <a href="#" class="hover:text-blue-600 flex flex-col items-center gap-0.5"><i class="fa-regular fa-heart text-lg"></i><span class="text-[10px]">위시리스트</span></a>
-                <a href="#" class="hover:text-blue-600 flex flex-col items-center gap-0.5 relative">
-                    <i class="fa-solid fa-shopping-bag text-lg"></i>
-                    <span class="text-[10px]">장바구니</span>
-                    <span class="absolute -top-1 -right-1 bg-blue-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content Container -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
-        <!-- Category Hero Banner -->
-        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 rounded-3xl p-6 sm:p-10 text-white shadow-xl mb-10 relative overflow-hidden">
-            <div class="relative z-10 max-w-2xl">
-                <span class="text-blue-400 font-bold text-xs tracking-widest uppercase mb-2 block">Official Audio Collection</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-3">프리미엄 무선 음향 기기 라인업</h2>
-                <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-                    각 브랜드 최상위 모델의 세부 스펙, 드라이버 사양, 지원 코덱, 주파수 응답 및 배터리 성능 정보를 상세히 확인하시고 최적의 제품을 선택하세요.
-                </p>
-            </div>
-        </div>
-
-        <!-- Section Title -->
-        <div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-200">
-            <div>
-                <h3 class="text-xl font-bold text-slate-900">전체 상품 목록</h3>
-                <p class="text-xs text-slate-500 mt-0.5">상세 사양 정보를 비교해 보세요.</p>
-            </div>
-            <span class="text-xs text-slate-500 font-semibold">총 4개 상품</span>
-        </div>
-
-        <!-- Product Grid (4 Products) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            <!-- PRODUCT 1: SONY -->
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden">
-                <div class="relative bg-slate-100 p-6 flex items-center justify-center h-52">
-                    <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">BEST SELLER</span>
-                    <!-- Sony SVG Illustration -->
-                    <svg class="w-36 h-36 object-contain" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M60 120 C60 70, 180 70, 180 120" stroke="#334155" stroke-width="14" stroke-linecap="round"/>
-                        <rect x="40" y="110" width="35" height="55" rx="16" fill="#1e293b"/>
-                        <rect x="165" y="110" width="35" height="55" rx="16" fill="#1e293b"/>
-                        <rect x="46" y="118" width="23" height="39" rx="10" fill="#475569"/>
-                        <rect x="171" y="118" width="23" height="39" rx="10" fill="#475569"/>
-                        <circle cx="57.5" cy="137.5" r="4" fill="#94a3b8"/>
-                        <circle cx="182.5" cy="137.5" r="4" fill="#94a3b8"/>
-                    </svg>
-                </div>
-
-                <div class="p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="text-xs font-bold text-blue-600 mb-1">소니 (Sony)</div>
-                        <h4 class="font-bold text-slate-900 text-base mb-1">WH-1000XM5 무선 헤드폰</h4>
-                        <div class="flex items-center space-x-1 text-amber-400 text-xs mb-3">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span class="text-slate-500 font-semibold ml-1">4.9 (1,240)</span>
-                        </div>
-                        <div class="text-xl font-black text-slate-900 mb-4">479,000원</div>
-
-                        <!-- VERSION A DETAILED SPECIFICATIONS (INFORMATION OVERLOAD) -->
-                        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 mb-5 text-[11px] text-slate-600 space-y-1.5 leading-tight">
-                            <div class="font-bold text-slate-800 border-b border-slate-200 pb-1 mb-2 flex justify-between">
-                                <span>상세 스펙 사양</span>
-                                <span class="text-slate-400 text-[10px]">Full Spec</span>
-                            </div>
-                            <p><strong class="text-slate-700">드라이버:</strong> 30mm 신개발 전용 드라이버</p>
-                            <p><strong class="text-slate-700">주파수 응답:</strong> 4Hz - 40,000Hz (JEITA)</p>
-                            <p><strong class="text-slate-700">오디오 코덱:</strong> LDAC, AAC, SBC 지원</p>
-                            <p><strong class="text-slate-700">프로세서:</strong> Integrated Processor V1 + QN1</p>
-                            <p><strong class="text-slate-700">블루투스:</strong> Bluetooth Ver 5.2</p>
-                            <p><strong class="text-slate-700">마이크:</strong> 8개 마이크 & 멀티 빔포밍</p>
-                            <p><strong class="text-slate-700">배터리:</strong> 최대 30시간 (ANC ON) / 40시간 (OFF)</p>
-                            <p><strong class="text-slate-700">충전:</strong> USB-PD 3분 충전 시 3시간 재생</p>
-                            <p><strong class="text-slate-700">무게:</strong> 약 250g</p>
-                            <p><strong class="text-slate-700">케이블:</strong> 약 1.2m OFC 선 포함</p>
-                        </div>
-                    </div>
-
-                    <!-- BUY BUTTON FOR VERSION A (VWO ELEMENT TRACKING ID: #buy-btn-sony) -->
-                    <button id="buy-btn-sony" class="buy-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition duration-200 flex items-center justify-center space-x-2 active:scale-95">
-                        <i class="fa-solid fa-cart-shopping text-sm"></i>
-                        <span>구매하기</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- PRODUCT 2: APPLE -->
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden">
-                <div class="relative bg-slate-100 p-6 flex items-center justify-center h-52">
-                    <span class="absolute top-3 left-3 bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">PREMIUM</span>
-                    <!-- Apple AirPods Max SVG Illustration -->
-                    <svg class="w-36 h-36 object-contain" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M55 115 C55 60, 185 60, 185 115" stroke="#64748b" stroke-width="14" stroke-linecap="round"/>
-                        <rect x="40" y="105" width="40" height="60" rx="18" fill="#94a3b8"/>
-                        <rect x="160" y="105" width="40" height="60" rx="18" fill="#94a3b8"/>
-                        <rect x="46" y="112" width="28" height="46" rx="12" fill="#cbd5e1"/>
-                        <rect x="166" y="112" width="28" height="46" rx="12" fill="#cbd5e1"/>
-                    </svg>
-                </div>
-
-                <div class="p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="text-xs font-bold text-slate-700 mb-1">애플 (Apple)</div>
-                        <h4 class="font-bold text-slate-900 text-base mb-1">AirPods Max 무선 헤드폰</h4>
-                        <div class="flex items-center space-x-1 text-amber-400 text-xs mb-3">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <span class="text-slate-500 font-semibold ml-1">4.8 (980)</span>
-                        </div>
-                        <div class="text-xl font-black text-slate-900 mb-4">769,000원</div>
-
-                        <!-- VERSION A DETAILED SPECIFICATIONS -->
-                        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 mb-5 text-[11px] text-slate-600 space-y-1.5 leading-tight">
-                            <div class="font-bold text-slate-800 border-b border-slate-200 pb-1 mb-2 flex justify-between">
-                                <span>상세 스펙 사양</span>
-                                <span class="text-slate-400 text-[10px]">Full Spec</span>
-                            </div>
-                            <p><strong class="text-slate-700">칩셋:</strong> 각 컵에 Apple H1 헤드폰 칩 탑재</p>
-                            <p><strong class="text-slate-700">오디오:</strong> Apple 자체 설계 다이내믹 드라이버</p>
-                            <p><strong class="text-slate-700">공간 오디오:</strong> 동적 헤드 트래킹 기술 지원</p>
-                            <p><strong class="text-slate-700">센서:</strong> 광학 센서, 위치 센서, 케이스 감지</p>
-                            <p><strong class="text-slate-700">마이크:</strong> 총 9개 마이크 (ANC용 8개)</p>
-                            <p><strong class="text-slate-700">제어:</strong> Digital Crown (볼륨, 재생, Siri)</p>
-                            <p><strong class="text-slate-700">배터리:</strong> 최대 20시간 (ANC 및 공간 음향 ON)</p>
-                            <p><strong class="text-slate-700">충전:</strong> Lightning / USB-C 5분 충전 시 1.5시간</p>
-                            <p><strong class="text-slate-700">무게:</strong> 384.8g (Smart Case 134.5g)</p>
-                            <p><strong class="text-slate-700">이어쿠션:</strong> 니트 메쉬 헤드밴드 & 메모리 폼</p>
-                        </div>
-                    </div>
-
-                    <!-- BUY BUTTON FOR VERSION A (VWO ELEMENT TRACKING ID: #buy-btn-apple) -->
-                    <button id="buy-btn-apple" class="buy-btn w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl shadow-md transition duration-200 flex items-center justify-center space-x-2 active:scale-95">
-                        <i class="fa-solid fa-cart-shopping text-sm"></i>
-                        <span>구매하기</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- PRODUCT 3: BOSE -->
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden">
-                <div class="relative bg-slate-100 p-6 flex items-center justify-center h-52">
-                    <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">NEW RELEASE</span>
-                    <!-- Bose QuietComfort Ultra SVG Illustration -->
-                    <svg class="w-36 h-36 object-contain" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50 120 C50 60, 190 60, 190 120" stroke="#0f172a" stroke-width="16" stroke-linecap="round"/>
-                        <rect x="35" y="105" width="40" height="60" rx="18" fill="#334155"/>
-                        <rect x="165" y="105" width="40" height="60" rx="18" fill="#334155"/>
-                        <circle cx="55" cy="135" r="8" fill="#94a3b8"/>
-                        <circle cx="185" cy="135" r="8" fill="#94a3b8"/>
-                    </svg>
-                </div>
-
-                <div class="p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="text-xs font-bold text-emerald-600 mb-1">보스 (Bose)</div>
-                        <h4 class="font-bold text-slate-900 text-base mb-1">QuietComfort Ultra 헤드폰</h4>
-                        <div class="flex items-center space-x-1 text-amber-400 text-xs mb-3">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span class="text-slate-500 font-semibold ml-1">4.9 (850)</span>
-                        </div>
-                        <div class="text-xl font-black text-slate-900 mb-4">499,000원</div>
-
-                        <!-- VERSION A DETAILED SPECIFICATIONS -->
-                        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 mb-5 text-[11px] text-slate-600 space-y-1.5 leading-tight">
-                            <div class="font-bold text-slate-800 border-b border-slate-200 pb-1 mb-2 flex justify-between">
-                                <span>상세 스펙 사양</span>
-                                <span class="text-slate-400 text-[10px]">Full Spec</span>
-                            </div>
-                            <p><strong class="text-slate-700">공간 오디오:</strong> Bose Immersive Audio 기술</p>
-                            <p><strong class="text-slate-700">소음 제어:</strong> CustomTune 기술 자동 맞춤</p>
-                            <p><strong class="text-slate-700">모드 지원:</strong> Quiet, Aware, Immersion 모드</p>
-                            <p><strong class="text-slate-700">블루투스:</strong> Bluetooth Ver 5.3 (Snapdragon Sound)</p>
-                            <p><strong class="text-slate-700">코덱:</strong> aptX Adaptive, AAC, SBC</p>
-                            <p><strong class="text-slate-700">마이크:</strong> 어레이 마이크 음성 전용 시스템</p>
-                            <p><strong class="text-slate-700">배터리:</strong> 최대 24시간 (몰입 오디오 ON 시 18시간)</p>
-                            <p><strong class="text-slate-700">충전:</strong> USB-C 15분 충전 시 2.5시간 재생</p>
-                            <p><strong class="text-slate-700">무게:</strong> 약 252g</p>
-                            <p><strong class="text-slate-700">재질:</strong> 고급 인조 가죽 및 캐스트 알루미늄</p>
-                        </div>
-                    </div>
-
-                    <!-- BUY BUTTON FOR VERSION A (VWO ELEMENT TRACKING ID: #buy-btn-bose) -->
-                    <button id="buy-btn-bose" class="buy-btn w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition duration-200 flex items-center justify-center space-x-2 active:scale-95">
-                        <i class="fa-solid fa-cart-shopping text-sm"></i>
-                        <span>구매하기</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- PRODUCT 4: SAMSUNG -->
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden">
-                <div class="relative bg-slate-100 p-6 flex items-center justify-center h-52">
-                    <span class="absolute top-3 left-3 bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">POPULAR</span>
-                    <!-- Samsung Galaxy Buds 3 Pro SVG Illustration -->
-                    <svg class="w-36 h-36 object-contain" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="65" y="85" width="110" height="75" rx="25" fill="#cbd5e1"/>
-                        <path d="M80 95 L95 150 L110 95" stroke="#475569" stroke-width="6" stroke-linecap="round"/>
-                        <path d="M130 95 L145 150 L160 95" stroke="#475569" stroke-width="6" stroke-linecap="round"/>
-                    </svg>
-                </div>
-
-                <div class="p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="text-xs font-bold text-purple-600 mb-1">삼성전자 (Samsung)</div>
-                        <h4 class="font-bold text-slate-900 text-base mb-1">Galaxy Buds3 Pro 무선 이어폰</h4>
-                        <div class="flex items-center space-x-1 text-amber-400 text-xs mb-3">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span class="text-slate-500 font-semibold ml-1">4.7 (1,890)</span>
-                        </div>
-                        <div class="text-xl font-black text-slate-900 mb-4">319,000원</div>
-
-                        <!-- VERSION A DETAILED SPECIFICATIONS -->
-                        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 mb-5 text-[11px] text-slate-600 space-y-1.5 leading-tight">
-                            <div class="font-bold text-slate-800 border-b border-slate-200 pb-1 mb-2 flex justify-between">
-                                <span>상세 스펙 사양</span>
-                                <span class="text-slate-400 text-[10px]">Full Spec</span>
-                            </div>
-                            <p><strong class="text-slate-700">스피커:</strong> 2-Way (10.5mm 우퍼 + 6.1mm 트위터)</p>
-                            <p><strong class="text-slate-700">오디오 sampling:</strong> 24bit / 96kHz Hi-Fi 오디오</p>
-                            <p><strong class="text-slate-700">AI 통번역:</strong> Galaxy AI 실시간 통역 연동</p>
-                            <p><strong class="text-slate-700">소음 제어:</strong> 적응형 ANC & 사이렌/사이렌 감지</p>
-                            <p><strong class="text-slate-700">방수방진:</strong> IP57 등급 지원</p>
-                            <p><strong class="text-slate-700">블루투스:</strong> Bluetooth Ver 5.4</p>
-                            <p><strong class="text-slate-700">코덱:</strong> SSC (Seamless Codec), AAC, SBC</p>
-                            <p><strong class="text-slate-700">배터리:</strong> 최대 7시간 (케이스 포함 30시간)</p>
-                            <p><strong class="text-slate-700">무게:</strong> 유닛당 5.4g (케이스 46.5g)</p>
-                            <p><strong class="text-slate-700">라이팅:</strong> 블레이드 라이트 (Blade Lights) 적용</p>
-                        </div>
-                    </div>
-
-                    <!-- BUY BUTTON FOR VERSION A (VWO ELEMENT TRACKING ID: #buy-btn-samsung) -->
-                    <button id="buy-btn-samsung" class="buy-btn w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition duration-200 flex items-center justify-center space-x-2 active:scale-95">
-                        <i class="fa-solid fa-cart-shopping text-sm"></i>
-                        <span>구매하기</span>
-                    </button>
-                </div>
-            </div>
-
-        </div>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-8 text-slate-500 text-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-2">
-            <p class="font-bold text-slate-700">한성대학교 인터넷 비즈니스 이론 수업 A/B 테스트 실증 연구 프로젝트 [버전 A - 통제군]</p>
-            <p>본 웹사이트는 소비자 행동 이론 (Information Overload) 실험을 위해 제작된 대조군(Control Group) 프로토타입입니다.</p>
-            <p class="text-slate-400">© 2026 HansungUni Store Experiment Team. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Toast Notification for Click Action Feedback -->
-    <div id="toast-notification" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl transition-all duration-300 transform translate-y-32 opacity-0 flex items-center space-x-3 z-50 border border-slate-700">
-        <div class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center">
-            <i class="fa-solid fa-check text-sm"></i>
-        </div>
-        <div>
-            <div id="toast-title" class="font-bold text-sm">구매하기 클릭 이벤트</div>
-            <div id="toast-message" class="text-xs text-slate-300">VWO 추적 코드로 이벤트가 수집되었습니다.</div>
-        </div>
+  <div class="hero-banner">
+    <div class="hero-text">
+      <h1>Apple AirPods Max 라인업</h1>
+      <p>하이파이 오디오와 독보적인 디자인의 완벽한 조화</p>
     </div>
+  </div>
 
-    <!-- Click Listener Script for VWO Goal Simulation -->
-    <script>
-        document.querySelectorAll('.buy-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const elementId = this.id;
-                const productName = this.parentElement.querySelector('h4').textContent;
-                
-                // Show Toast Notification
-                showToast(productName, elementId);
+  <div class="container">
+    <div class="section-title">전체 AirPods Max 상품 목록</div>
 
-                // Log Event for VWO Verification
-                console.log(`[VWO GOAL TRACKED] Element ID: #${elementId} | Product: ${productName} | Timestamp: ${new Date().toISOString()}`);
-            });
-        });
+    <div class="product-grid">
 
-        function showToast(productName, elementId) {
-            const toast = document.getElementById('toast-notification');
-            const title = document.getElementById('toast-title');
-            const msg = document.getElementById('toast-message');
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="discount-badge">15% OFF</div>
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max Space Gray" class="product-img">
+        <div class="product-info">
+          <div class="product-title">AirPods Max - 스페이스 그레이</div>
+          <div class="price-container">
+            <span class="original-price">769,000원</span><br>
+            <span class="current-price">653,650원</span>
+          </div>
+          
+          <ul class="specs-list">
+            <li><strong>드라이버:</strong> Apple 자체 설계 다이나믹 드라이버</li>
+            <li><strong>칩셋:</strong> Apple H1 헤드폰 칩 (양쪽 각각 탑재)</li>
+            <li><strong>마이크:</strong> 총 9개의 마이크 (ANC용 8개)</li>
+            <li><strong>무게:</strong> 384.8g</li>
+            <li><strong>배터리:</strong> ANC 활성화 시 최대 20시간 연속 재생</li>
+            <li><strong>충전 방식:</strong> Lightning 단자 충전 지원</li>
+            <li><strong>디스플레이:</strong> Smart Case 보관 시 초저전력 상태 전환</li>
+            <li><strong>연결:</strong> Bluetooth 5.0 기술 적용</li>
+          </ul>
 
-            title.textContent = `'${productName}' 구매 클릭!`;
-            msg.textContent = `ID: #${elementId} 클릭 데이터가 VWO Goal에 등록되었습니다.`;
+          <button id="buy-btn-airpods-max-space-gray" class="btn-buy" onclick="handleBuyClick('AirPods Max Space Gray')">
+            <i class="fa-solid fa-cart-shopping"></i> 구매하기
+          </button>
+        </div>
+      </div>
 
-            toast.classList.remove('translate-y-32', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="discount-badge">12% OFF</div>
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-silver-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max Silver" class="product-img">
+        <div class="product-info">
+          <div class="product-title">AirPods Max - 실버</div>
+          <div class="price-container">
+            <span class="original-price">769,000원</span><br>
+            <span class="current-price">676,720원</span>
+          </div>
+          
+          <ul class="specs-list">
+            <li><strong>드라이버:</strong> Apple 자체 설계 다이나믹 드라이버</li>
+            <li><strong>칩셋:</strong> Apple H1 헤드폰 칩 (양쪽 각각 탑재)</li>
+            <li><strong>마이크:</strong> 총 9개의 마이크 (ANC용 8개)</li>
+            <li><strong>무게:</strong> 384.8g</li>
+            <li><strong>배터리:</strong> ANC 활성화 시 최대 20시간 연속 재생</li>
+            <li><strong>이어쿠션:</strong> 니트 메쉬 캐노피 및 메모리 폼 쿠션</li>
+            <li><strong>센서:</strong> 광학 센서, 위치 센서, 케이스 감지 센서</li>
+            <li><strong>연결:</strong> Bluetooth 5.0 기술 적용</li>
+          </ul>
 
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-32', 'opacity-0');
-            }, 3000);
-        }
-    </script>
+          <button id="buy-btn-airpods-max-silver" class="btn-buy" onclick="handleBuyClick('AirPods Max Silver')">
+            <i class="fa-solid fa-cart-shopping"></i> 구매하기
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="discount-badge">10% OFF</div>
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-skyblue-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max Sky Blue" class="product-img">
+        <div class="product-info">
+          <div class="product-title">AirPods Max - 스카이 블루</div>
+          <div class="price-container">
+            <span class="original-price">769,000원</span><br>
+            <span class="current-price">692,100원</span>
+          </div>
+          
+          <ul class="specs-list">
+            <li><strong>드라이버:</strong> Apple 자체 설계 다이나믹 드라이버</li>
+            <li><strong>칩셋:</strong> Apple H1 헤드폰 칩 (양쪽 각각 탑재)</li>
+            <li><strong>마이크:</strong> 총 9개의 마이크 (음성 픽업 겸용 3개)</li>
+            <li><strong>무게:</strong> 384.8g</li>
+            <li><strong>배터리:</strong> 5분 충전 시 약 1.5시간 사용 가능</li>
+            <li><strong>오디오:</strong> 공간 음향 및 동적 헤드 추적 기능</li>
+            <li><strong>제어:</strong> Digital Crown 볼륨 조절 및 트랙 건너뛰기</li>
+            <li><strong>연결:</strong> Bluetooth 5.0 기술 적용</li>
+          </ul>
+
+          <button id="buy-btn-airpods-max-sky-blue" class="btn-buy" onclick="handleBuyClick('AirPods Max Sky Blue')">
+            <i class="fa-solid fa-cart-shopping"></i> 구매하기
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="discount-badge">14% OFF</div>
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-pink-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max Pink" class="product-img">
+        <div class="product-info">
+          <div class="product-title">AirPods Max - 핑크</div>
+          <div class="price-container">
+            <span class="original-price">769,000원</span><br>
+            <span class="current-price">661,340원</span>
+          </div>
+          
+          <ul class="specs-list">
+            <li><strong>드라이버:</strong> Apple 자체 설계 다이나믹 드라이버</li>
+            <li><strong>칩셋:</strong> Apple H1 헤드폰 칩 (양쪽 각각 탑재)</li>
+            <li><strong>마이크:</strong> 총 9개의 마이크 (ANC용 8개)</li>
+            <li><strong>무게:</strong> 384.8g</li>
+            <li><strong>배터리:</strong> ANC 활성화 시 최대 20시간 연속 재생</li>
+            <li><strong>외형:</strong> 양각 처리된 아노다이즈드 알루미늄 이어컵</li>
+            <li><strong>액세서리:</strong> Smart Case 및 Lightning 케이블 동봉</li>
+            <li><strong>연결:</strong> Bluetooth 5.0 기술 적용</li>
+          </ul>
+
+          <button id="buy-btn-airpods-max-pink" class="btn-buy" onclick="handleBuyClick('AirPods Max Pink')">
+            <i class="fa-solid fa-cart-shopping"></i> 구매하기
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 HansungUni Internet Business Research Center. All rights reserved. (Control Group Page)
+  </footer>
+
+  <script>
+    function handleBuyClick(productName) {
+      console.log('Purchase Intent Event (Version A):', productName);
+      alert(productName + ' 상품 구매 페이지로 이동합니다.');
+    }
+  </script>
 </body>
 </html>
