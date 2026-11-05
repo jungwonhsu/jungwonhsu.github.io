@@ -17,7 +17,6 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     html { scroll-behavior: smooth; }
     
-    /* Background Campus Image & Snow Canvas */
     body { 
       background: linear-gradient(rgba(244, 247, 250, 0.88), rgba(244, 247, 250, 0.88)),
                   url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
@@ -29,15 +28,12 @@
 
     #snow-canvas {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
       z-index: 99;
     }
 
-    /* Welcome Modal Styles */
+    /* Welcome Modal Styles - Circular Frame & Fireworks */
     .welcome-modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -48,51 +44,64 @@
       justify-content: center;
       z-index: 10000;
       animation: fadeIn 0.4s ease;
+      transition: opacity 0.5s ease;
     }
     .welcome-modal {
       background: white;
       width: 90%;
-      max-width: 440px;
-      border-radius: 24px;
-      padding: 30px 25px;
+      max-width: 400px;
+      border-radius: 30px;
+      padding: 35px 25px;
       text-align: center;
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       position: relative;
       animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: visible;
     }
-    .mascot-box {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 15px;
+
+    /* Circular Mascot Frame with Overflow for Upper Body */
+    .mascot-frame-container {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 20px;
+    }
+    .mascot-circle {
+      width: 130px;
+      height: 130px;
       background: #eef6ff;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       border: 4px solid var(--primary-color);
-      box-shadow: 0 8px 16px rgba(0,86,179,0.2);
+      box-shadow: 0 8px 20px rgba(0,86,179,0.25);
+      position: relative;
+      overflow: hidden;
     }
     .mascot-img {
-      width: 90px;
-      height: 90px;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: auto;
       object-fit: contain;
       animation: bounce 2s infinite;
     }
-    .welcome-modal h2 { font-size: 22px; color: var(--primary-color); font-weight: 800; margin-bottom: 8px; }
-    .welcome-modal p { font-size: 15px; color: #444; line-height: 1.5; margin-bottom: 22px; font-weight: 600; }
-    .btn-modal-close {
-      background: linear-gradient(135deg, var(--primary-color), #003679);
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 25px;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,86,179,0.3);
-      transition: all 0.2s;
+
+    /* Fireworks Stars */
+    .firework-star {
+      position: absolute;
+      color: #ffcc00;
+      font-size: 20px;
+      animation: fireworkBurst 1.2s infinite ease-out;
+      opacity: 0;
     }
-    .btn-modal-close:hover { transform: scale(1.05); }
+    .star-1 { top: -10px; left: 15px; animation-delay: 0.1s; color: #ff4d4d; }
+    .star-2 { top: -20px; right: 25px; animation-delay: 0.4s; color: #ffcc00; }
+    .star-3 { top: 40px; left: -15px; animation-delay: 0.2s; color: #00d2d3; }
+    .star-4 { top: 30px; right: -15px; animation-delay: 0.5s; color: #ff6b81; }
+
+    .welcome-modal h2 { font-size: 22px; color: var(--primary-color); font-weight: 800; margin-bottom: 8px; }
+    .welcome-modal p { font-size: 15px; color: #444; line-height: 1.5; font-weight: 600; }
 
     /* Top Announcement Bar */
     .top-bar { background: linear-gradient(90deg, #004494, #0066cc); color: white; text-align: center; padding: 9px 15px; font-size: 14px; font-weight: 600; letter-spacing: 0.5px; }
@@ -186,7 +195,11 @@
     /* Animations */
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes popUp { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-6px); } }
+    @keyframes fireworkBurst {
+      0% { transform: scale(0.2); opacity: 1; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
     @keyframes floatHeadphone { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
     @keyframes move-forever { 0% { transform: translate3d(-90px,0,0); } 100% { transform: translate3d(85px,0,0); } }
 
@@ -198,26 +211,21 @@
   <!-- Snowfall Canvas -->
   <canvas id="snow-canvas"></canvas>
 
-  <!-- Welcome Mascot Modal -->
+  <!-- Welcome Mascot Modal (Auto close after 3 seconds) -->
   <div class="welcome-modal-overlay" id="welcomeModal">
     <div class="welcome-modal">
-      <div class="mascot-box">
-        <svg class="mascot-img" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="42" fill="#ffcc00" stroke="#0056b3" stroke-width="4"/>
-          <circle cx="35" cy="42" r="5" fill="#222"/>
-          <circle cx="65" cy="42" r="5" fill="#222"/>
-          <circle cx="37" cy="40" r="2" fill="#fff"/>
-          <circle cx="67" cy="40" r="2" fill="#fff"/>
-          <circle cx="26" cy="52" r="6" fill="#ff6b6b" opacity="0.6"/>
-          <circle cx="74" cy="52" r="6" fill="#ff6b6b" opacity="0.6"/>
-          <path d="M 35 56 Q 50 72 65 56" fill="none" stroke="#222" stroke-width="4" stroke-linecap="round"/>
-          <polygon points="50,12 20,24 50,32 80,24" fill="#0056b3"/>
-          <rect x="42" y="27" width="16" height="8" fill="#003679"/>
-        </svg>
+      <div class="mascot-frame-container">
+        <i class="fa-solid fa-star firework-star star-1"></i>
+        <i class="fa-solid fa-star firework-star star-2"></i>
+        <i class="fa-solid fa-star firework-star star-3"></i>
+        <i class="fa-solid fa-star firework-star star-4"></i>
+        
+        <div class="mascot-circle">
+          <img src="https://i.ibb.co/6y40H69/17938983905365647802920861682610.jpg" alt="Hansung Mascot" class="mascot-img">
+        </div>
       </div>
       <h2>한성유니 Store</h2>
       <p>✨ 환영합니다! ✨<br>한성유니 쇼핑 천국에 오신 것을<br>진심으로 환영합니다!</p>
-      <button class="btn-modal-close" onclick="closeWelcomeModal()">쇼핑 시작하기 <i class="fa-solid fa-arrow-right"></i></button>
     </div>
   </div>
 
@@ -384,10 +392,18 @@
   </footer>
 
   <script>
-    function closeWelcomeModal() {
-      document.getElementById('welcomeModal').style.display = 'none';
-    }
+    /* Auto close modal after 3 seconds */
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const modal = document.getElementById('welcomeModal');
+        if (modal) {
+          modal.style.opacity = '0';
+          setTimeout(() => modal.style.display = 'none', 500);
+        }
+      }, 3000);
+    });
 
+    /* Snowfall Animation Engine */
     const canvas = document.getElementById('snow-canvas');
     const ctx = canvas.getContext('2d');
 
