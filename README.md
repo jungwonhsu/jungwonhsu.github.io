@@ -20,8 +20,8 @@
     /* Top Announcement Bar */
     .top-bar { background-color: var(--primary-color); color: white; text-align: center; padding: 8px 15px; font-size: 14px; font-weight: 600; }
 
-    /* Header Navigation */
-    header { background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.08); sticky: top; top: 0; z-index: 100; }
+    /* Header Navigation - Fixed Sticky syntax */
+    header { background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
     .header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; }
     .logo { font-size: 24px; font-weight: 800; color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 8px; }
     .search-box { display: flex; flex: 1; max-width: 500px; margin: 0 30px; }
@@ -54,8 +54,8 @@
     .current-price { font-size: 20px; font-weight: 800; color: #e63946; }
 
     /* Heavy Raw Specs List for Version A (Information Overload) */
-    .specs-list { background: #f8f9fa; padding: 12px; border-radius: 6px; font-size: 12px; color: #444; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; border: 1px solid #e9ecef; }
-    .specs-list li { list-style: none; margin-bottom: 4px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 3px; }
+    .specs-list { background: #f8f9fa; padding: 12px; border-radius: 6px; font-size: 12px; color: #444; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; border: 1px solid #e9ecef; list-style: none; }
+    .specs-list li { margin-bottom: 4px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 3px; }
     .specs-list li:last-child { border-bottom: none; }
 
     /* Buy Button */
