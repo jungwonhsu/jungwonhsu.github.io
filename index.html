@@ -76,14 +76,13 @@
       position: relative;
       overflow: hidden;
     }
-    .mascot-img {
+    .mascot-svg {
       position: absolute;
-      bottom: -10px;
+      bottom: -15px;
       left: 50%;
       transform: translateX(-50%);
-      width: 110px;
+      width: 115px;
       height: auto;
-      object-fit: contain;
       animation: bounce 2s infinite;
     }
 
@@ -221,7 +220,22 @@
         <i class="fa-solid fa-star firework-star star-4"></i>
         
         <div class="mascot-circle">
-          <img src="https://i.ibb.co/6y40H69/17938983905365647802920861682610.jpg" alt="Hansung Mascot" class="mascot-img">
+          <!-- Embedded Precise Vector Mascot HSU -->
+          <svg class="mascot-svg" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- Head Background White -->
+            <path d="M100 15 A 65 65 0 0 1 165 80 A 65 65 0 0 1 100 145 A 65 65 0 0 1 35 80 A 65 65 0 0 1 100 15 Z" fill="#ffffff" stroke="#003366" stroke-width="8"/>
+            <!-- Cute Face Features -->
+            <path d="M75 55 Q 85 45 95 55" fill="none" stroke="#003366" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="70" cy="70" r="4" fill="#003366"/>
+            <circle cx="130" cy="70" r="4" fill="#003366"/>
+            <circle cx="55" cy="80" r="12" fill="#b3d1ff" opacity="0.7"/>
+            <circle cx="145" cy="80" r="12" fill="#b3d1ff" opacity="0.7"/>
+            <path d="M 85 82 Q 100 95 115 82" fill="none" stroke="#003366" stroke-width="5" stroke-linecap="round"/>
+            <!-- Hoodie Body HSU -->
+            <path d="M 50 145 L 35 210 Q 100 220 165 210 L 150 145 Z" fill="#003366"/>
+            <path d="M 85 150 Q 100 140 115 150" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+            <text x="100" y="190" font-family="Arial, sans-serif" font-weight="900" font-size="28" fill="#ffffff" text-anchor="middle">HSU</text>
+          </svg>
         </div>
       </div>
       <h2>한성유니 Store</h2>
