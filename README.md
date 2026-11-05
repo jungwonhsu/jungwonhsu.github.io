@@ -9,94 +9,211 @@
     :root {
       --primary-color: #0056b3;
       --secondary-color: #ff6b00;
-      --bg-light: #f4f6f9;
+      --bg-light: #f4f7fa;
       --card-bg: #ffffff;
       --text-dark: #222222;
       --text-muted: #666666;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background-color: var(--bg-light); color: var(--text-dark); padding-bottom: 50px; }
+    
+    /* Background Pattern */
+    body { 
+      background-color: var(--bg-light); 
+      background-image: radial-gradient(#d0d7de 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: var(--text-dark); 
+      padding-bottom: 50px; 
+    }
 
     /* Top Announcement Bar */
-    .top-bar { background-color: var(--primary-color); color: white; text-align: center; padding: 8px 15px; font-size: 14px; font-weight: 600; }
+    .top-bar { background: linear-gradient(90deg, #004494, #0066cc); color: white; text-align: center; padding: 9px 15px; font-size: 14px; font-weight: 600; letter-spacing: 0.5px; }
+    .top-bar i { margin-right: 6px; color: #ffcc00; animation: pulse 1.5s infinite; }
 
-    /* Header Navigation - Fixed Sticky syntax */
-    header { background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
+    /* Header Navigation */
+    header { background-color: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; }
     .header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; }
-    .logo { font-size: 24px; font-weight: 800; color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo { font-size: 24px; font-weight: 800; color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 38px; height: 38px; background: var(--primary-color); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
     .search-box { display: flex; flex: 1; max-width: 500px; margin: 0 30px; }
-    .search-box input { width: 100%; padding: 10px 15px; border: 2px solid var(--primary-color); border-radius: 6px 0 0 6px; outline: none; font-size: 14px; }
-    .search-box button { background: var(--primary-color); color: white; border: none; padding: 0 20px; border-radius: 0 6px 6px 0; cursor: pointer; font-size: 16px; }
+    .search-box input { width: 100%; padding: 11px 18px; border: 2px solid var(--primary-color); border-radius: 8px 0 0 8px; outline: none; font-size: 14px; }
+    .search-box button { background: var(--primary-color); color: white; border: none; padding: 0 22px; border-radius: 0 8px 8px 0; cursor: pointer; font-size: 16px; transition: background 0.2s; }
+    .search-box button:hover { background: #004085; }
 
-    /* Hero Banner */
-    .hero-banner { max-width: 1200px; margin: 20px auto; background: linear-gradient(135deg, #0056b3 0%, #002c5c 100%); border-radius: 12px; color: white; padding: 40px; display: flex; align-items: center; justify-content: space-between; }
-    .hero-text h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
-    .hero-text p { font-size: 16px; opacity: 0.9; }
+    /* Animated Dynamic Hero Banner */
+    .hero-banner { 
+      max-width: 1200px; 
+      margin: 25px auto; 
+      background: linear-gradient(135deg, #003679 0%, #0056b3 50%, #001f4d 100%); 
+      border-radius: 20px; 
+      color: white; 
+      padding: 40px 50px; 
+      position: relative; 
+      overflow: hidden; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0, 86, 179, 0.25);
+    }
+
+    /* Floating particles background */
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 10%, transparent 20%);
+      background-size: 30px 30px;
+      animation: floatBg 20s linear infinite;
+    }
+
+    .hero-text { z-index: 2; max-width: 600px; }
+    .hero-tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; backdrop-filter: blur(5px); }
+    .hero-text h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+    .hero-text p { font-size: 16px; opacity: 0.9; line-height: 1.5; }
+    
+    .hero-img-box { z-index: 2; position: relative; }
+    .hero-img-box img { width: 260px; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4)); animation: floatHeadphone 4s ease-in-out infinite; }
+
+    /* Waves Animation at Banner Bottom */
+    .waves { position: absolute; bottom: 0; left: 0; width: 100%; height: 40px; margin-bottom: -1px; }
+    .parallax > use { animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite; }
+    .parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; fill: rgba(244,247,250,0.3); }
+    .parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; fill: rgba(244,247,250,0.5); }
+    .parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; fill: rgba(244,247,250,0.8); }
+    .parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; fill: var(--bg-light); }
 
     /* Container */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
     /* Product Grid */
-    .section-title { font-size: 22px; font-weight: 700; margin: 30px 0 20px 0; border-left: 5px solid var(--primary-color); padding-left: 10px; }
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; }
+    .section-title { font-size: 22px; font-weight: 700; margin: 35px 0 20px 0; border-left: 5px solid var(--primary-color); padding-left: 12px; display: flex; align-items: center; justify-content: space-between; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 25px; }
 
-    .product-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; position: relative; }
-    .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+    .product-card { background: var(--card-bg); border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.06); transition: all 0.3s ease; display: flex; flex-direction: column; position: relative; border: 1px solid rgba(0,0,0,0.04); }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
 
-    .discount-badge { position: absolute; top: 15px; left: 15px; background: #e63946; color: white; padding: 4px 8px; border-radius: 4px; font-weight: 700; font-size: 12px; }
+    .discount-badge { position: absolute; top: 15px; left: 15px; background: linear-gradient(135deg, #ff4d4d, #dc3545); color: white; padding: 5px 10px; border-radius: 20px; font-weight: 800; font-size: 12px; z-index: 5; box-shadow: 0 4px 8px rgba(220,53,69,0.3); }
 
-    .product-img { width: 100%; height: 230px; object-fit: contain; padding: 20px; background-color: #fafafa; }
-    .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-    .product-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+    .product-img-wrap { width: 100%; height: 230px; padding: 25px; background: radial-gradient(circle, #ffffff 60%, #f0f4f8 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .product-img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
+    .product-card:hover .product-img { transform: scale(1.08); }
+
+    .product-info { padding: 22px; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; line-height: 1.4; color: #1a1a1a; }
 
     .price-container { margin-bottom: 15px; }
     .original-price { text-decoration: line-through; color: var(--text-muted); font-size: 13px; }
-    .current-price { font-size: 20px; font-weight: 800; color: #e63946; }
+    .current-price { font-size: 22px; font-weight: 800; color: #e63946; }
 
-    /* Heavy Raw Specs List for Version A (Information Overload) */
-    .specs-list { background: #f8f9fa; padding: 12px; border-radius: 6px; font-size: 12px; color: #444; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; border: 1px solid #e9ecef; list-style: none; }
-    .specs-list li { margin-bottom: 4px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 3px; }
+    /* Heavy Raw Specs List for Version A */
+    .specs-list { background: #f8fafc; padding: 14px; border-radius: 10px; font-size: 12px; color: #475569; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; border: 1px solid #e2e8f0; list-style: none; }
+    .specs-list li { margin-bottom: 5px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 4px; }
     .specs-list li:last-child { border-bottom: none; }
 
-    /* Buy Button */
-    .btn-buy { width: 100%; background: var(--secondary-color); color: white; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .btn-buy:hover { background: #e05d00; }
+    /* Animated Buy Button */
+    .btn-buy { 
+      width: 100%; 
+      background: linear-gradient(135deg, #ff6b00 0%, #ff8800 100%); 
+      color: white; 
+      border: none; 
+      padding: 14px; 
+      border-radius: 10px; 
+      font-size: 16px; 
+      font-weight: 800; 
+      cursor: pointer; 
+      transition: all 0.3s ease; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 10px; 
+      position: relative; 
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+    }
+    .btn-buy::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: 0.5s;
+    }
+    .btn-buy:hover::after { left: 100%; }
+    .btn-buy:hover { background: linear-gradient(135deg, #e05d00 0%, #ff6b00 100%); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(255, 107, 0, 0.45); }
+    .btn-buy:hover i { animation: shake 0.5s ease; }
 
-    footer { text-align: center; margin-top: 50px; padding: 20px; color: var(--text-muted); font-size: 13px; border-top: 1px solid #ddd; }
+    /* Keyframe Animations */
+    @keyframes floatHeadphone {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+    }
+    @keyframes floatBg { 0% { transform: translate(0, 0); } 100% { transform: translate(30px, 30px); } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+    @keyframes move-forever { 0% { transform: translate3d(-90px,0,0); } 100% { transform: translate3d(85px,0,0); } }
+
+    footer { text-align: center; margin-top: 60px; padding: 25px; color: var(--text-muted); font-size: 13px; border-top: 1px solid #e0e0e0; background: #ffffff; }
   </style>
 </head>
 <body>
 
   <div class="top-bar">
-    ⚡ 한성유니 Store 프리미엄 혜택: Apple 정품 신학기 특별 할인 진행 중!
+    <i class="fa-solid fa-bolt"></i> 한성유니 Store 프리미엄 혜택: Apple 정품 신학기 특별 할인 진행 중!
   </div>
 
   <header>
     <div class="header-container">
-      <a href="#" class="logo"><i class="fa-solid fa-headphones"></i> 한성유니 Store</a>
+      <a href="#" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-headphones"></i></div>
+        한성유니 Store
+      </a>
       <div class="search-box">
-        <input type="text" placeholder="AirPods Max 색상 및 사양 검색...">
+        <input type="text" placeholder="AirPods Max 색상 및 상세 사양 검색...">
         <button><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
     </div>
   </header>
 
+  <!-- Dynamic Animated Hero Banner -->
   <div class="hero-banner">
     <div class="hero-text">
-      <h1>Apple AirPods Max 라인업</h1>
-      <p>하이파이 오디오와 독보적인 디자인의 완벽한 조화</p>
+      <span class="hero-tag">✨ NEW ARRIVAL 2026</span>
+      <h1>Apple AirPods Max<br>프리미엄 오디오 라인업</h1>
+      <p>독보적인 하이파이 음향과 압도적인 노이즈 캔슬링의 완벽한 조화</p>
     </div>
+    <div class="hero-img-box">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=470&hei=556&fmt=png-alpha" alt="Hero AirPods Max">
+    </div>
+
+    <!-- SVG Moving Waves -->
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" />
+        <use xlink:href="#gentle-wave" x="48" y="3" />
+        <use xlink:href="#gentle-wave" x="48" y="5" />
+        <use xlink:href="#gentle-wave" x="48" y="7" />
+      </g>
+    </svg>
   </div>
 
   <div class="container">
-    <div class="section-title">전체 AirPods Max 상품 목록</div>
+    <div class="section-title">
+      <span>전체 AirPods Max 상품 목록</span>
+    </div>
 
     <div class="product-grid">
 
       <!-- Product 1 -->
       <div class="product-card">
         <div class="discount-badge">15% OFF</div>
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max Space Gray" class="product-img">
+        <div class="product-img-wrap">
+          <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max Space Gray" class="product-img">
+        </div>
         <div class="product-info">
           <div class="product-title">AirPods Max - 스페이스 그레이</div>
           <div class="price-container">
@@ -111,7 +228,7 @@
             <li><strong>무게:</strong> 384.8g</li>
             <li><strong>배터리:</strong> ANC 활성화 시 최대 20시간 연속 재생</li>
             <li><strong>충전 방식:</strong> Lightning 단자 충전 지원</li>
-            <li><strong>디스플레이:</strong> Smart Case 보관 시 초저전력 상태 전환</li>
+            <li><strong>디스플레이:</strong> Smart Case 보관 시 초저전력 전환</li>
             <li><strong>연결:</strong> Bluetooth 5.0 기술 적용</li>
           </ul>
 
@@ -124,7 +241,9 @@
       <!-- Product 2 -->
       <div class="product-card">
         <div class="discount-badge">12% OFF</div>
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-silver-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max Silver" class="product-img">
+        <div class="product-img-wrap">
+          <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-silver-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max Silver" class="product-img">
+        </div>
         <div class="product-info">
           <div class="product-title">AirPods Max - 실버</div>
           <div class="price-container">
@@ -152,7 +271,9 @@
       <!-- Product 3 -->
       <div class="product-card">
         <div class="discount-badge">10% OFF</div>
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-skyblue-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max Sky Blue" class="product-img">
+        <div class="product-img-wrap">
+          <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-skyblue-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max Sky Blue" class="product-img">
+        </div>
         <div class="product-info">
           <div class="product-title">AirPods Max - 스카이 블루</div>
           <div class="price-container">
@@ -180,7 +301,9 @@
       <!-- Product 4 -->
       <div class="product-card">
         <div class="discount-badge">14% OFF</div>
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-pink-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max Pink" class="product-img">
+        <div class="product-img-wrap">
+          <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-pink-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max Pink" class="product-img">
+        </div>
         <div class="product-info">
           <div class="product-title">AirPods Max - 핑크</div>
           <div class="price-container">
