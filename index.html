@@ -15,8 +15,8 @@
       --text-muted: #666666;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    html { scroll-behavior: smooth; }
     
-    /* Background Pattern */
     body { 
       background-color: var(--bg-light); 
       background-image: radial-gradient(#d0d7de 1px, transparent 1px);
@@ -55,7 +55,6 @@
       box-shadow: 0 10px 30px rgba(0, 86, 179, 0.25);
     }
 
-    /* Floating particles background */
     .hero-banner::before {
       content: '';
       position: absolute;
@@ -76,7 +75,7 @@
     .hero-img-box { z-index: 2; position: relative; }
     .hero-img-box img { width: 260px; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4)); animation: floatHeadphone 4s ease-in-out infinite; }
 
-    /* Waves Animation at Banner Bottom */
+    /* Waves Animation */
     .waves { position: absolute; bottom: 0; left: 0; width: 100%; height: 40px; margin-bottom: -1px; }
     .parallax > use { animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite; }
     .parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; fill: rgba(244,247,250,0.3); }
@@ -89,7 +88,7 @@
 
     /* Product Grid */
     .section-title { font-size: 22px; font-weight: 700; margin: 35px 0 20px 0; border-left: 5px solid var(--primary-color); padding-left: 12px; display: flex; align-items: center; justify-content: space-between; }
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 25px; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
 
     .product-card { background: var(--card-bg); border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.06); transition: all 0.3s ease; display: flex; flex-direction: column; position: relative; border: 1px solid rgba(0,0,0,0.04); }
     .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
@@ -145,10 +144,7 @@
     .btn-buy:hover i { animation: shake 0.5s ease; }
 
     /* Keyframe Animations */
-    @keyframes floatHeadphone {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(2deg); }
-    }
+    @keyframes floatHeadphone { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-12px) rotate(2deg); } }
     @keyframes floatBg { 0% { transform: translate(0, 0); } 100% { transform: translate(30px, 30px); } }
     @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
     @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
@@ -176,7 +172,6 @@
     </div>
   </header>
 
-  <!-- Dynamic Animated Hero Banner -->
   <div class="hero-banner">
     <div class="hero-text">
       <span class="hero-tag">✨ NEW ARRIVAL 2026</span>
@@ -187,7 +182,6 @@
       <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=470&hei=556&fmt=png-alpha" alt="Hero AirPods Max">
     </div>
 
-    <!-- SVG Moving Waves -->
     <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
       <defs>
         <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
