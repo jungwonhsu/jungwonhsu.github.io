@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>한성유니 Store - AirPods Max (Version B)</title>
+  <title>한성유니 Store - AirPods Max (Version A)</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
@@ -139,7 +139,6 @@
       overflow: visible;
     }
 
-    /* Glowing LED Animated Border Effect */
     .product-hero-card::before {
       content: '';
       position: absolute;
@@ -151,7 +150,6 @@
       opacity: 0.85;
     }
 
-    /* Snowy Top-Edge Decoration on Card */
     .snowy-roof {
       position: absolute;
       top: -12px;
@@ -165,7 +163,6 @@
       filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
     }
 
-    /* Interactive Gift Box Badge */
     .interactive-gift-box {
       position: absolute;
       top: 20px;
@@ -197,7 +194,6 @@
       animation: sparkleFloat 0.8s ease infinite alternate;
     }
 
-    /* Gallery & Floating Headphone */
     .product-gallery { text-align: center; position: relative; }
     .main-img-wrap { 
       width: 100%; 
@@ -207,7 +203,6 @@
       justify-content: center;
       position: relative;
     }
-    /* Halo / Glowing aura behind the product */
     .main-img-wrap::before {
       content: '';
       position: absolute;
@@ -228,7 +223,6 @@
       animation: floatHeadphone 4s ease-in-out infinite; 
     }
 
-    /* Color Selector Dots */
     .color-selector { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
     .color-dot {
       width: 28px; height: 28px; border-radius: 50%; cursor: pointer; border: 3px solid white; box-shadow: 0 0 0 1px #ccc; transition: all 0.2s ease;
@@ -239,7 +233,6 @@
     .dot-sky-blue { background: #87ceeb; }
     .dot-pink { background: #ffb6c1; }
 
-    /* Product Details */
     .product-details h1 { font-size: 30px; font-weight: 800; color: var(--primary-color); margin-bottom: 10px; }
     .product-subtitle { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; }
     
@@ -248,14 +241,9 @@
     .price-box .current { font-size: 32px; font-weight: 800; color: var(--secondary-color); margin-left: 10px; }
     .price-box .badge { background: var(--secondary-color); color: white; padding: 4px 10px; border-radius: 12px; font-size: 13px; font-weight: 700; vertical-align: middle; }
 
-    /* Comparison Table for Version B */
-    .comparison-title { font-size: 16px; font-weight: 800; margin-bottom: 12px; color: var(--primary-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-    .comparison-box { background: #eef6ff; border-radius: 14px; padding: 15px; margin-bottom: 25px; border: 1px solid #d0e1f9; }
-    .comp-item { display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px dashed #cbd5e1; }
-    .comp-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-    .comp-feature { font-weight: 700; color: #1e272e; }
-    .comp-airpods { font-weight: 800; color: #003366; }
-    .comp-others { color: #888888; font-size: 12px; text-decoration: line-through; }
+    .specs-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--primary-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
+    .specs-list { list-style: none; margin-bottom: 30px; font-size: 13px; color: #4a5568; line-height: 1.8; }
+    .specs-list li { border-bottom: 1px dashed #edf2f7; padding: 4px 0; }
 
     .btn-buy-hero {
       width: 100%;
@@ -276,7 +264,6 @@
     }
     .btn-buy-hero:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(214, 48, 49, 0.5); }
 
-    /* Keyframe Animations */
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes popUp { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-6px); } }
@@ -360,7 +347,7 @@
 
       <div class="product-details">
         <h1>Apple AirPods Max</h1>
-        <div class="product-subtitle">왜 AirPods Max를 선택해야 할까요? 핵심 가치 비교</div>
+        <div class="product-subtitle">하이파이 오디오와 액티브 노이즈 캔슬링 헤드폰</div>
         
         <div class="price-box">
           <span class="original">769,000원</span>
@@ -368,29 +355,15 @@
           <span class="badge">15% OFF</span>
         </div>
 
-        <div class="comparison-title"><i class="fa-solid fa-circle-check" style="color:#d63031;"></i> 구매 결정 핵심 비교 가이드 (Why Choose)</div>
-        <div class="comparison-box">
-          <div class="comp-item">
-            <span class="comp-feature">노이즈 캔슬링</span>
-            <span class="comp-airpods">8개 마이크 차음 (최상급)</span>
-            <span class="comp-others">일반 2~4개 마이크</span>
-          </div>
-          <div class="comp-item">
-            <span class="comp-feature">착용감 / 정수리 압박</span>
-            <span class="comp-airpods">통기성 니트 메쉬 캐노피</span>
-            <span class="comp-others">일반 인조가죽 헤드밴드</span>
-          </div>
-          <div class="comp-item">
-            <span class="comp-feature">공간 음향</span>
-            <span class="comp-airpods">동적 헤드 추적 입체 음향</span>
-            <span class="comp-others">일반 스테레오 음향</span>
-          </div>
-          <div class="comp-item">
-            <span class="comp-feature">배터리 및 급속 충전</span>
-            <span class="comp-airpods">5분 충전 시 1.5시간 재생</span>
-            <span class="comp-others">일반 충전 방식</span>
-          </div>
-        </div>
+        <div class="specs-title"><i class="fa-solid fa-microchip"></i> 기술 사양 정보 (Technical Specifications)</div>
+        <ul class="specs-list">
+          <li>• <strong>음향 드라이버:</strong> Apple 자체 설계 40mm 다이나믹 드라이버</li>
+          <li>• <strong>칩셋 구성:</strong> Apple H1 헤드폰 칩 (좌우 이어컵 각각 탑재)</li>
+          <li>• <strong>마이크 센서:</strong> 주변 소음 측정 및 차음용 총 9개 마이크</li>
+          <li>• <strong>배터리 수명:</strong> ANC 활성화 상태에서 최대 20시간 연속 재생</li>
+          <li>• <strong>구조 및 무게:</strong> 니트 메쉬 캐노피 / 무게 384.8g</li>
+          <li>• <strong>연결 및 통신:</strong> Bluetooth 5.0 무선 기술 지원</li>
+        </ul>
 
         <button id="buy-btn-airpods-max" class="btn-buy-hero" onclick="handleBuyClick()">
           <i class="fa-solid fa-cart-shopping"></i> 지금 바로 구매하기
@@ -400,7 +373,7 @@
   </div>
 
   <footer>
-    &copy; 2026 HansungUni Internet Business Research Center. All rights reserved. (Version B)
+    &copy; 2026 HansungUni Internet Business Research Center. All rights reserved. (Version A)
   </footer>
 
   <script>
@@ -454,7 +427,7 @@
     drawSnow();
 
     function handleBuyClick() {
-      console.log('Purchase Intent Event (Version B):', selectedColorName);
+      console.log('Purchase Intent Event (Version A):', selectedColorName);
       alert('AirPods Max (' + selectedColorName + ') 구매 페이지로 이동합니다.');
     }
   </script>
