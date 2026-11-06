@@ -22,7 +22,7 @@
                   url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
       background-size: cover;
       color: var(--text-dark); 
-      padding-bottom: 90px; 
+      padding-bottom: 100px; 
       position: relative;
       overflow-x: hidden;
       min-height: 100vh;
@@ -58,7 +58,6 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
       position: relative;
       animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      overflow: visible;
     }
 
     .mascot-frame-container {
@@ -121,7 +120,7 @@
     .logo { font-size: 24px; font-weight: 800; color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 10px; }
     .logo-icon { width: 40px; height: 40px; background: var(--primary-color); color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
 
-    /* Main Product Hero Container with Floating Effect */
+    /* Main Product Hero Container */
     .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; z-index: 2; position: relative; }
 
     .product-hero-card {
@@ -133,14 +132,12 @@
       grid-template-columns: 1fr 1fr;
       gap: 40px;
       align-items: center;
-      position: relative;
       border: 2px solid rgba(255, 255, 255, 0.8);
-      animation: floatCard 5s ease-in-out infinite;
     }
 
     .product-gallery { text-align: center; position: relative; }
-    .main-img-wrap { width: 100%; height: 320px; display: flex; align-items: center; justify-content: center; }
-    .main-img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 18px 25px rgba(0,0,0,0.2)); transition: all 0.4s ease; animation: floatHeadphone 4s ease-in-out infinite; }
+    .main-img-wrap { width: 100%; height: 300px; display: flex; align-items: center; justify-content: center; }
+    .main-img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 15px 20px rgba(0,0,0,0.15)); transition: transform 0.3s ease; }
 
     /* Color Selector Dots */
     .color-selector { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
@@ -162,12 +159,10 @@
     .price-box .current { font-size: 32px; font-weight: 800; color: var(--secondary-color); margin-left: 10px; }
     .price-box .badge { background: var(--secondary-color); color: white; padding: 4px 10px; border-radius: 12px; font-size: 13px; font-weight: 700; vertical-align: middle; }
 
-    /* Specs List for Version A */
     .specs-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--primary-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
     .specs-list { list-style: none; margin-bottom: 30px; font-size: 13px; color: #4a5568; line-height: 1.8; }
     .specs-list li { border-bottom: 1px dashed #edf2f7; padding: 4px 0; }
 
-    /* Single CTA Buy Button */
     .btn-buy-hero {
       width: 100%;
       background: linear-gradient(135deg, #d63031, #b22222);
@@ -187,44 +182,41 @@
     }
     .btn-buy-hero:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(214, 48, 49, 0.5); }
 
-    /* Santa Claus & Reindeer Sleigh Animation at Bottom */
+    /* Santa Claus & Reindeer Sleigh Animation */
     .santa-sleigh-container {
       position: fixed;
-      bottom: 20px;
-      left: -250px;
+      bottom: 15px;
+      left: -300px;
       z-index: 98;
       display: flex;
       align-items: center;
       pointer-events: none;
-      animation: driveSleigh 22s linear infinite;
+      animation: driveSleigh 20s linear infinite;
     }
     .cartoon-trail {
       position: absolute;
-      right: 120px;
-      top: 25px;
-      width: 180px;
-      height: 12px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(253,203,110,0.4), transparent);
+      right: 140px;
+      top: 22px;
+      width: 160px;
+      height: 10px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(253,203,110,0.5), transparent);
       border-radius: 10px;
       filter: blur(2px);
     }
     .santa-img {
-      width: 180px;
+      width: 170px;
       height: auto;
       filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
     }
 
-    /* Animations */
+    /* Keyframe Animations */
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes popUp { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-6px); } }
     @keyframes fireworkBurst { 0% { transform: scale(0.2); opacity: 1; } 100% { transform: scale(1.6); opacity: 0; } }
-    @keyframes floatCard { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
-    @keyframes floatHeadphone { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
     @keyframes driveSleigh {
-      0% { transform: translateX(-300px) translateY(0px); }
-      50% { transform: translateX(calc(100vw + 350px)) translateY(-25px); }
-      100% { transform: translateX(calc(100vw + 350px)) translateY(0px); }
+      0% { transform: translateX(0vw); }
+      100% { transform: translateX(calc(100vw + 400px)); }
     }
 
     footer { text-align: center; margin-top: 60px; padding: 25px; color: rgba(255,255,255,0.8); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.1); }
@@ -237,10 +229,8 @@
 </head>
 <body>
 
-  <!-- Snowfall Canvas -->
   <canvas id="snow-canvas"></canvas>
 
-  <!-- Welcome Mascot Modal -->
   <div class="welcome-modal-overlay" id="welcomeModal">
     <div class="welcome-modal">
       <div class="mascot-frame-container">
@@ -269,18 +259,14 @@
     </div>
   </div>
 
-  <!-- Santa Claus & Reindeer Sleigh Animation -->
   <div class="santa-sleigh-container">
     <div class="cartoon-trail"></div>
     <svg class="santa-img" viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
-      <!-- Simple vector reindeer & sleigh -->
       <path d="M20 80 Q 40 60 60 80 T 100 80" fill="none" stroke="#e1b12c" stroke-width="3" stroke-linecap="round"/>
       <circle cx="60" cy="55" r="8" fill="#c23616"/>
       <path d="M55 52 L 65 58 M65 52 L 55 58" stroke="#fff" stroke-width="2"/>
-      <!-- Sleigh Body -->
       <path d="M140 70 L 190 70 L 180 95 L 130 95 Z" fill="#b22222"/>
       <path d="M125 95 Q 160 105 200 95" fill="none" stroke="#f5cd79" stroke-width="5" stroke-linecap="round"/>
-      <!-- Santa silhouette -->
       <circle cx="160" cy="50" r="12" fill="#ff6b6b"/>
       <path d="M150 62 Q 160 55 170 62 Z" fill="#b22222"/>
       <path d="M200 40 Q 230 30 260 50 L 250 85 Q 220 90 200 70 Z" fill="#e84118" opacity="0.85"/>
@@ -371,7 +357,7 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    const particles = Array.from({ length: 50 }, () => ({
+    const particles = Array.from({ length: 45 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       radius: Math.random() * 3 + 1,
