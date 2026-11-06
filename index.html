@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>한성유니 Store - AirPods Max (Version A)</title>
+  <title>한성유니 Store - AirPods Max </title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
@@ -236,14 +236,31 @@
     .product-details h1 { font-size: 30px; font-weight: 800; color: var(--primary-color); margin-bottom: 10px; }
     .product-subtitle { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; }
     
-    .price-box { margin-bottom: 25px; }
+    .price-box { margin-bottom: 20px; }
     .price-box .original { text-decoration: line-through; color: var(--text-muted); font-size: 15px; }
     .price-box .current { font-size: 32px; font-weight: 800; color: var(--secondary-color); margin-left: 10px; }
     .price-box .badge { background: var(--secondary-color); color: white; padding: 4px 10px; border-radius: 12px; font-size: 13px; font-weight: 700; vertical-align: middle; }
 
-    .specs-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--primary-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
-    .specs-list { list-style: none; margin-bottom: 30px; font-size: 13px; color: #4a5568; line-height: 1.8; }
-    .specs-list li { border-bottom: 1px dashed #edf2f7; padding: 4px 0; }
+    /* Value Proposition Box for Version B (Subtle, Clean & Persuasive) */
+    .value-prop-box {
+      background: #f8fafc;
+      border-left: 4px solid var(--secondary-color);
+      padding: 15px 18px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .value-prop-item {
+      font-size: 13.5px;
+      color: #334155;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+    .value-prop-item:last-child { margin-bottom: 0; }
+    .value-prop-item i { color: var(--secondary-color); }
 
     .btn-buy-hero {
       width: 100%;
@@ -355,15 +372,20 @@
           <span class="badge">15% OFF</span>
         </div>
 
-        <div class="specs-title"><i class="fa-solid fa-microchip"></i> 기술 사양 정보 (Technical Specifications)</div>
-        <ul class="specs-list">
-          <li>• <strong>음향 드라이버:</strong> Apple 자체 설계 40mm 다이나믹 드라이버</li>
-          <li>• <strong>칩셋 구성:</strong> Apple H1 헤드폰 칩 (좌우 이어컵 각각 탑재)</li>
-          <li>• <strong>마이크 센서:</strong> 주변 소음 측정 및 차음용 총 9개 마이크</li>
-          <li>• <strong>배터리 수명:</strong> ANC 활성화 상태에서 최대 20시간 연속 재생</li>
-          <li>• <strong>구조 및 무게:</strong> 니트 메쉬 캐노피 / 무게 384.8g</li>
-          <li>• <strong>연결 및 통신:</strong> Bluetooth 5.0 무선 기술 지원</li>
-        </ul>
+        <div class="value-prop-box">
+          <div class="value-prop-item">
+            <i class="fa-solid fa-check"></i> 전문가가 인정한 최고급 ANC 노이즈 차단 성능
+          </div>
+          <div class="value-prop-item">
+            <i class="fa-solid fa-check"></i> 장시간 착용에도 정수리 압박 없는 통기성 메쉬 캐노피
+          </div>
+          <div class="value-prop-item">
+            <i class="fa-solid fa-check"></i> 동적 헤드 추적 기술로 완성된 압도적인 입체 음향
+          </div>
+          <div class="value-prop-item">
+            <i class="fa-solid fa-check"></i> 5분 충전으로 1.5시간 사용 가능한 급속 충전 지원
+          </div>
+        </div>
 
         <button id="buy-btn-airpods-max" class="btn-buy-hero" onclick="handleBuyClick()">
           <i class="fa-solid fa-cart-shopping"></i> 지금 바로 구매하기
@@ -373,7 +395,7 @@
   </div>
 
   <footer>
-    &copy; 2026 HansungUni Internet Business Research Center. All rights reserved. (Version A)
+    &copy; 2026 HansungUni Internet Business Research Center. All rights reserved. (Version B)
   </footer>
 
   <script>
@@ -427,7 +449,7 @@
     drawSnow();
 
     function handleBuyClick() {
-      console.log('Purchase Intent Event (Version A):', selectedColorName);
+      console.log('Purchase Intent Event (Version B):', selectedColorName);
       alert('AirPods Max (' + selectedColorName + ') 구매 페이지로 이동합니다.');
     }
   </script>
