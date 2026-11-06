@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>한성유니 Store - AirPods Max (Version A)</title>
+  <title>한성유니 Store - AirPods Max (Version B)</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
@@ -248,9 +248,14 @@
     .price-box .current { font-size: 32px; font-weight: 800; color: var(--secondary-color); margin-left: 10px; }
     .price-box .badge { background: var(--secondary-color); color: white; padding: 4px 10px; border-radius: 12px; font-size: 13px; font-weight: 700; vertical-align: middle; }
 
-    .specs-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--primary-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
-    .specs-list { list-style: none; margin-bottom: 30px; font-size: 13px; color: #4a5568; line-height: 1.8; }
-    .specs-list li { border-bottom: 1px dashed #edf2f7; padding: 4px 0; }
+    /* Comparison Table for Version B */
+    .comparison-title { font-size: 16px; font-weight: 800; margin-bottom: 12px; color: var(--primary-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .comparison-box { background: #eef6ff; border-radius: 14px; padding: 15px; margin-bottom: 25px; border: 1px solid #d0e1f9; }
+    .comp-item { display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px dashed #cbd5e1; }
+    .comp-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .comp-feature { font-weight: 700; color: #1e272e; }
+    .comp-airpods { font-weight: 800; color: #003366; }
+    .comp-others { color: #888888; font-size: 12px; text-decoration: line-through; }
 
     .btn-buy-hero {
       width: 100%;
@@ -355,7 +360,7 @@
 
       <div class="product-details">
         <h1>Apple AirPods Max</h1>
-        <div class="product-subtitle">하이파이 오디오와 노이즈 캔슬링의 완벽한 조화</div>
+        <div class="product-subtitle">왜 AirPods Max를 선택해야 할까요? 핵심 가치 비교</div>
         
         <div class="price-box">
           <span class="original">769,000원</span>
@@ -363,15 +368,29 @@
           <span class="badge">15% OFF</span>
         </div>
 
-        <div class="specs-title"><i class="fa-solid fa-list-check"></i> 제품 상세 하드웨어 사양 (Standard)</div>
-        <ul class="specs-list">
-          <li>• <strong>음향 드라이버:</strong> Apple 자체 설계 40mm 다이나믹 드라이버</li>
-          <li>• <strong>프로세서 칩셋:</strong> H1 헤드폰 칩 (양쪽 이어컵 각각 탑재)</li>
-          <li>• <strong>마이크 성능:</strong> 총 9개의 마이크 (액티브 노이즈 캔슬링 8개)</li>
-          <li>• <strong>배터리 성능:</strong> ANC 활성화 시 최대 20시간 연속 음악/통화</li>
-          <li>• <strong>착용 구조:</strong> 니트 메쉬 캐노피 headband 및 메모리 폼 이어쿠션</li>
-          <li>• <strong>무게 & 연결:</strong> 384.8g / Bluetooth 5.0 무선 연결 지원</li>
-        </ul>
+        <div class="comparison-title"><i class="fa-solid fa-circle-check" style="color:#d63031;"></i> 구매 결정 핵심 비교 가이드 (Why Choose)</div>
+        <div class="comparison-box">
+          <div class="comp-item">
+            <span class="comp-feature">노이즈 캔슬링</span>
+            <span class="comp-airpods">8개 마이크 차음 (최상급)</span>
+            <span class="comp-others">일반 2~4개 마이크</span>
+          </div>
+          <div class="comp-item">
+            <span class="comp-feature">착용감 / 정수리 압박</span>
+            <span class="comp-airpods">통기성 니트 메쉬 캐노피</span>
+            <span class="comp-others">일반 인조가죽 헤드밴드</span>
+          </div>
+          <div class="comp-item">
+            <span class="comp-feature">공간 음향</span>
+            <span class="comp-airpods">동적 헤드 추적 입체 음향</span>
+            <span class="comp-others">일반 스테레오 음향</span>
+          </div>
+          <div class="comp-item">
+            <span class="comp-feature">배터리 및 급속 충전</span>
+            <span class="comp-airpods">5분 충전 시 1.5시간 재생</span>
+            <span class="comp-others">일반 충전 방식</span>
+          </div>
+        </div>
 
         <button id="buy-btn-airpods-max" class="btn-buy-hero" onclick="handleBuyClick()">
           <i class="fa-solid fa-cart-shopping"></i> 지금 바로 구매하기
@@ -381,7 +400,7 @@
   </div>
 
   <footer>
-    &copy; 2026 HansungUni Internet Business Research Center. All rights reserved. (Version A)
+    &copy; 2026 HansungUni Internet Business Research Center. All rights reserved. (Version B)
   </footer>
 
   <script>
@@ -435,7 +454,7 @@
     drawSnow();
 
     function handleBuyClick() {
-      console.log('Purchase Intent Event (Version A):', selectedColorName);
+      console.log('Purchase Intent Event (Version B):', selectedColorName);
       alert('AirPods Max (' + selectedColorName + ') 구매 페이지로 이동합니다.');
     }
   </script>
