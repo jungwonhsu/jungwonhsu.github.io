@@ -10,7 +10,7 @@
       --primary-color: #003366;
       --secondary-color: #d63031;
       --accent-gold: #fdcb6e;
-      --card-bg: rgba(255, 255, 255, 0.96);
+      --card-bg: rgba(255, 255, 255, 0.97);
       --text-dark: #1e272e;
       --text-muted: #636e72;
     }
@@ -18,11 +18,11 @@
     html { scroll-behavior: smooth; }
     
     body { 
-      background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.90)),
+      background: linear-gradient(rgba(10, 25, 47, 0.88), rgba(10, 25, 47, 0.93)),
                   url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
       background-size: cover;
       color: var(--text-dark); 
-      padding-bottom: 100px; 
+      padding-bottom: 60px; 
       position: relative;
       overflow-x: hidden;
       min-height: 100vh;
@@ -120,24 +120,113 @@
     .logo { font-size: 24px; font-weight: 800; color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 10px; }
     .logo-icon { width: 40px; height: 40px; background: var(--primary-color); color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
 
-    /* Main Product Hero Container */
+    /* Main Container & Floating Card with Snowy & LED Border */
     .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; z-index: 2; position: relative; }
 
     .product-hero-card {
       background: var(--card-bg);
       border-radius: 28px;
-      box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.35), 0 0 25px rgba(253, 203, 110, 0.25);
       padding: 45px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
       align-items: center;
-      border: 2px solid rgba(255, 255, 255, 0.8);
+      position: relative;
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      animation: floatCard 5s ease-in-out infinite;
+      overflow: visible;
     }
 
+    /* Glowing LED Animated Border Effect */
+    .product-hero-card::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 31px;
+      background: linear-gradient(45deg, #d63031, #fdcb6e, #00cec9, #d63031);
+      z-index: -1;
+      animation: ledGlow 6s linear infinite;
+      opacity: 0.85;
+    }
+
+    /* Snowy Top-Edge Decoration on Card */
+    .snowy-roof {
+      position: absolute;
+      top: -12px;
+      left: 30px;
+      right: 30px;
+      height: 20px;
+      background: radial-gradient(circle, #fff 60%, transparent 61%);
+      background-size: 18px 20px;
+      z-index: 3;
+      pointer-events: none;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
+    }
+
+    /* Interactive Gift Box Badge */
+    .interactive-gift-box {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #ff7675, #d63031);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      box-shadow: 0 5px 15px rgba(214, 48, 49, 0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 5;
+    }
+    .interactive-gift-box:hover {
+      transform: scale(1.15) rotate(10deg);
+      box-shadow: 0 8px 25px rgba(253, 203, 110, 0.8);
+    }
+    .interactive-gift-box:hover::after {
+      content: '✨🎁✨';
+      position: absolute;
+      top: -30px;
+      font-size: 14px;
+      white-space: nowrap;
+      animation: sparkleFloat 0.8s ease infinite alternate;
+    }
+
+    /* Gallery & Floating Headphone */
     .product-gallery { text-align: center; position: relative; }
-    .main-img-wrap { width: 100%; height: 300px; display: flex; align-items: center; justify-content: center; }
-    .main-img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 15px 20px rgba(0,0,0,0.15)); transition: transform 0.3s ease; }
+    .main-img-wrap { 
+      width: 100%; 
+      height: 300px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      position: relative;
+    }
+    /* Halo / Glowing aura behind the product */
+    .main-img-wrap::before {
+      content: '';
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(116, 185, 255, 0.45) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 1;
+      animation: auraPulse 4s ease-in-out infinite;
+    }
+    .main-img { 
+      max-width: 100%; 
+      max-height: 100%; 
+      object-fit: contain; 
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 20px 25px rgba(0,51,102,0.25)); 
+      animation: floatHeadphone 4s ease-in-out infinite; 
+    }
 
     /* Color Selector Dots */
     .color-selector { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
@@ -182,48 +271,21 @@
     }
     .btn-buy-hero:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(214, 48, 49, 0.5); }
 
-    /* Santa Claus & Reindeer Sleigh Animation */
-    .santa-sleigh-container {
-      position: fixed;
-      bottom: 15px;
-      left: -300px;
-      z-index: 98;
-      display: flex;
-      align-items: center;
-      pointer-events: none;
-      animation: driveSleigh 20s linear infinite;
-    }
-    .cartoon-trail {
-      position: absolute;
-      right: 140px;
-      top: 22px;
-      width: 160px;
-      height: 10px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(253,203,110,0.5), transparent);
-      border-radius: 10px;
-      filter: blur(2px);
-    }
-    .santa-img {
-      width: 170px;
-      height: auto;
-      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
-    }
-
     /* Keyframe Animations */
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes popUp { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-6px); } }
     @keyframes fireworkBurst { 0% { transform: scale(0.2); opacity: 1; } 100% { transform: scale(1.6); opacity: 0; } }
-    @keyframes driveSleigh {
-      0% { transform: translateX(0vw); }
-      100% { transform: translateX(calc(100vw + 400px)); }
-    }
+    @keyframes floatCard { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+    @keyframes floatHeadphone { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+    @keyframes auraPulse { 0%, 100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.15); opacity: 0.7; } }
+    @keyframes ledGlow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+    @keyframes sparkleFloat { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-8px); opacity: 0.6; } }
 
     footer { text-align: center; margin-top: 60px; padding: 25px; color: rgba(255,255,255,0.8); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.1); }
 
     @media (max-width: 768px) {
       .product-hero-card { grid-template-columns: 1fr; padding: 25px; }
-      .santa-sleigh-container { display: none; }
     }
   </style>
 </head>
@@ -259,20 +321,6 @@
     </div>
   </div>
 
-  <div class="santa-sleigh-container">
-    <div class="cartoon-trail"></div>
-    <svg class="santa-img" viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 80 Q 40 60 60 80 T 100 80" fill="none" stroke="#e1b12c" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="60" cy="55" r="8" fill="#c23616"/>
-      <path d="M55 52 L 65 58 M65 52 L 55 58" stroke="#fff" stroke-width="2"/>
-      <path d="M140 70 L 190 70 L 180 95 L 130 95 Z" fill="#b22222"/>
-      <path d="M125 95 Q 160 105 200 95" fill="none" stroke="#f5cd79" stroke-width="5" stroke-linecap="round"/>
-      <circle cx="160" cy="50" r="12" fill="#ff6b6b"/>
-      <path d="M150 62 Q 160 55 170 62 Z" fill="#b22222"/>
-      <path d="M200 40 Q 230 30 260 50 L 250 85 Q 220 90 200 70 Z" fill="#e84118" opacity="0.85"/>
-    </svg>
-  </div>
-
   <div class="top-bar">
     <i class="fa-solid fa-snowflake"></i> 한성유니 Store 신학기 & 홀리데이 특별 혜택 진행 중! <i class="fa-solid fa-gift"></i>
   </div>
@@ -288,6 +336,11 @@
 
   <div class="container">
     <div class="product-hero-card">
+      <div class="snowy-roof"></div>
+      <div class="interactive-gift-box" title="홀리데이 서프라이즈 선물상자!">
+        <i class="fa-solid fa-gift"></i>
+      </div>
+
       <div class="product-gallery">
         <div class="main-img-wrap">
           <img id="productImage" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max" class="main-img">
