@@ -27,12 +27,14 @@
       overflow-x: hidden;
       min-height: 100vh;
     }
+
     #snow-canvas {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
       z-index: 99;
     }
+
     /* Welcome Modal Styles */
     .welcome-modal-overlay {
       position: fixed;
@@ -57,6 +59,7 @@
       position: relative;
       animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+
     .mascot-frame-container {
       position: relative;
       width: 130px;
@@ -82,6 +85,7 @@
       height: auto;
       animation: bounce 2s infinite;
     }
+
     .firework-star {
       position: absolute;
       color: var(--accent-gold);
@@ -93,8 +97,10 @@
     .star-2 { top: -20px; right: 25px; animation-delay: 0.4s; color: #fdcb6e; }
     .star-3 { top: 40px; left: -15px; animation-delay: 0.2s; color: #00d2d3; }
     .star-4 { top: 30px; right: -15px; animation-delay: 0.5s; color: #ff6b81; }
+
     .welcome-modal h2 { font-size: 22px; color: var(--primary-color); font-weight: 800; margin-bottom: 8px; }
     .welcome-modal p { font-size: 15px; color: #444; line-height: 1.5; font-weight: 600; }
+
     /* Top Christmas Banner */
     .top-bar { 
       background: linear-gradient(90deg, #b22222, #d63031, #b22222); 
@@ -107,6 +113,7 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
     .top-bar i { margin: 0 6px; color: var(--accent-gold); }
+
     /* Header Navigation */
     header { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
     .header-container { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; }
@@ -131,6 +138,7 @@
       animation: floatCard 5s ease-in-out infinite;
       overflow: visible;
     }
+
     .product-hero-card::before {
       content: '';
       position: absolute;
@@ -141,6 +149,7 @@
       animation: ledGlow 6s linear infinite;
       opacity: 0.85;
     }
+
     .snowy-roof {
       position: absolute;
       top: -12px;
@@ -153,6 +162,7 @@
       pointer-events: none;
       filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
     }
+
     .interactive-gift-box {
       position: absolute;
       top: 20px;
@@ -183,6 +193,7 @@
       white-space: nowrap;
       animation: sparkleFloat 0.8s ease infinite alternate;
     }
+
     .product-gallery { text-align: center; position: relative; }
     .main-img-wrap { 
       width: 100%; 
@@ -211,14 +222,17 @@
       filter: drop-shadow(0 20px 25px rgba(0,51,102,0.25)); 
       animation: floatHeadphone 4s ease-in-out infinite; 
     }
+
     .color-selector { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
     .color-dot {
       width: 28px; height: 28px; border-radius: 50%; cursor: pointer; border: 3px solid white; box-shadow: 0 0 0 1px #ccc; transition: all 0.2s ease;
+    }
     .color-dot:hover, .color-dot.active { transform: scale(1.2); box-shadow: 0 0 0 2px var(--primary-color); }
     .dot-space-gray { background: #4b4b4b; }
     .dot-silver { background: #e2e2e2; }
     .dot-sky-blue { background: #87ceeb; }
     .dot-pink { background: #ffb6c1; }
+
     .product-details h1 { font-size: 30px; font-weight: 800; color: var(--primary-color); margin-bottom: 10px; }
     .product-subtitle { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; }
     
@@ -226,9 +240,11 @@
     .price-box .original { text-decoration: line-through; color: var(--text-muted); font-size: 15px; }
     .price-box .current { font-size: 32px; font-weight: 800; color: var(--secondary-color); margin-left: 10px; }
     .price-box .badge { background: var(--secondary-color); color: white; padding: 4px 10px; border-radius: 12px; font-size: 13px; font-weight: 700; vertical-align: middle; }
+
     .specs-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--primary-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
     .specs-list { list-style: none; margin-bottom: 30px; font-size: 13px; color: #4a5568; line-height: 1.8; }
     .specs-list li { border-bottom: 1px dashed #edf2f7; padding: 4px 0; }
+
     .btn-buy-hero {
       width: 100%;
       background: linear-gradient(135deg, #d63031, #b22222);
@@ -247,6 +263,7 @@
       gap: 12px;
     }
     .btn-buy-hero:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(214, 48, 49, 0.5); }
+
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes popUp { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-6px); } }
@@ -256,21 +273,26 @@
     @keyframes auraPulse { 0%, 100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.15); opacity: 0.7; } }
     @keyframes ledGlow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
     @keyframes sparkleFloat { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-8px); opacity: 0.6; } }
+
     footer { text-align: center; margin-top: 60px; padding: 25px; color: rgba(255,255,255,0.8); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.1); }
+
     @media (max-width: 768px) {
       .product-hero-card { grid-template-columns: 1fr; padding: 25px; }
     }
   </style>
 </head>
 <body>
+
   <canvas id="snow-canvas"></canvas>
+
   <div class="welcome-modal-overlay" id="welcomeModal">
     <div class="welcome-modal">
       <div class="mascot-frame-container">
         <i class="fa-solid fa-star firework-star star-1"></i>
         <i class="fa-solid fa-star firework-star star-2"></i>
         <i class="fa-solid fa-star firework-star star-3"></i>
-        <i class="fa-solid fa-star firework-star star-4"></i>  
+        <i class="fa-solid fa-star firework-star star-4"></i>
+        
         <div class="mascot-circle">
           <svg class="mascot-svg" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
             <path d="M100 15 A 65 65 0 0 1 165 80 A 65 65 0 0 1 100 145 A 65 65 0 0 1 35 80 A 65 65 0 0 1 100 15 Z" fill="#ffffff" stroke="#003366" stroke-width="8"/>
@@ -290,9 +312,11 @@
       <p>❄️ WELLCOME! ❄️<br>한성유니 겨울 특별 스토어에 오신 것을<br>진심으로 환영합니다!</p>
     </div>
   </div>
+
   <div class="top-bar">
     <i class="fa-solid fa-snowflake"></i> 한성유니 Store 신학기 & 홀리데이 특별 혜택 진행 중! <i class="fa-solid fa-gift"></i>
   </div>
+
   <header>
     <div class="header-container">
       <a href="#" class="logo">
@@ -301,12 +325,14 @@
       </a>
     </div>
   </header>
+
   <div class="container">
     <div class="product-hero-card">
       <div class="snowy-roof"></div>
       <div class="interactive-gift-box" title="홀리데이 서프라이즈 선물상자!">
         <i class="fa-solid fa-gift"></i>
       </div>
+
       <div class="product-gallery">
         <div class="main-img-wrap">
           <img id="productImage" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max" class="main-img">
@@ -318,14 +344,17 @@
           <div class="color-dot dot-pink" title="핑크" onclick="selectColor('pink', 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-pink-202011?wid=470&hei=556&fmt=png-alpha', this)"></div>
         </div>
       </div>
+
       <div class="product-details">
         <h1>Apple AirPods Max</h1>
         <div class="product-subtitle">하이파이 오디오와 액티브 노이즈 캔슬링 헤드폰</div>
+        
         <div class="price-box">
           <span class="original">769,000원</span>
           <span class="current">653,650원</span>
           <span class="badge">15% OFF</span>
         </div>
+
         <div class="specs-title"><i class="fa-solid fa-microchip"></i> 기술 사양 정보 (Technical Specifications)</div>
         <ul class="specs-list">
           <li>• <strong>음향 드라이버:</strong> Apple 자체 설계 40mm 다이나믹 드라이버</li>
@@ -335,6 +364,7 @@
           <li>• <strong>구조 및 무게:</strong> 니트 메쉬 캐노피 / 무게 384.8g</li>
           <li>• <strong>연결 및 통신:</strong> Bluetooth 5.0 무선 기술 지원</li>
         </ul>
+
         <button id="buy-btn-airpods-max" class="btn-buy-hero" onclick="handleBuyClick()">
           <i class="fa-solid fa-cart-shopping"></i> 지금 바로 구매하기
         </button>
@@ -343,8 +373,9 @@
   </div>
 
   <footer>
-    &copy; 2026 HansungUni Internet Business Research Center. All rights reserved.
+    &copy; 2026 HansungUni Internet Business Research Center. All rights reserved. 
   </footer>
+
   <script>
     let selectedColorName = 'Space Gray';
 
@@ -354,6 +385,7 @@
       element.classList.add('active');
       selectedColorName = colorName;
     }
+
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         const modal = document.getElementById('welcomeModal');
@@ -363,11 +395,13 @@
         }
       }, 3000);
     });
+
     const canvas = document.getElementById('snow-canvas');
     const ctx = canvas.getContext('2d');
     function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
+
     const particles = Array.from({ length: 45 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -375,6 +409,7 @@
       speed: Math.random() * 0.8 + 0.4,
       wind: Math.random() * 0.4 - 0.2
     }));
+
     function drawSnow() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
@@ -390,6 +425,7 @@
       requestAnimationFrame(drawSnow);
     }
     drawSnow();
+
     function handleBuyClick() {
       console.log('Purchase Intent Event (Version A):', selectedColorName);
       alert('AirPods Max (' + selectedColorName + ') 구매 페이지로 이동합니다.');
