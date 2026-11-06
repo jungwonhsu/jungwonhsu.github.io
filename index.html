@@ -355,7 +355,6 @@
           <span class="badge">15% OFF</span>
         </div>
 
-        <div class="specs-title"><i class="fa-solid fa-microchip"></i> 기술 사양 정보 (Technical Specifications)</div>
         <ul class="specs-list">
           <li>• <strong>음향 드라이버:</strong> Apple 자체 설계 40mm 다이나믹 드라이버</li>
           <li>• <strong>칩셋 구성:</strong> Apple H1 헤드폰 칩 (좌우 이어컵 각각 탑재)</li>
