@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>한성유니 Store - AirPods Max (Version B)</title>
+  <title>한성유니 Store - AirPods Max (Version A)</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
@@ -241,43 +241,35 @@
     .price-box .current { font-size: 30px; font-weight: 800; color: var(--secondary-color); }
     .price-box .badge { background: var(--secondary-color); color: white; padding: 4px 10px; border-radius: 12px; font-size: 13px; font-weight: 700; }
 
-    /* Value Proposition Box for Version B (Super Sắc Nét, Cao cấp & Ấn tượng) */
-    .value-prop-box {
-      background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
-      border: 1px solid #cbd5e1;
-      border-left: 5px solid var(--secondary-color);
-      padding: 18px 20px;
-      border-radius: 14px;
-      margin-bottom: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    }
-    .value-prop-item {
-      font-size: 13.5px;
-      color: #1e293b;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
+    /* Natural Grid Specs Display for Version A */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
-      font-weight: 700;
-      transition: transform 0.2s ease, color 0.2s ease;
+      margin-bottom: 25px;
     }
-    .value-prop-item:last-child { margin-bottom: 0; }
-    .value-prop-item:hover {
-      transform: translateX(4px);
-      color: var(--secondary-color);
+    .spec-card-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
-    .value-prop-icon {
-      width: 24px;
-      height: 24px;
-      background: rgba(214, 48, 49, 0.1);
-      color: var(--secondary-color);
-      border-radius: 50%;
+    .spec-card-title {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 600;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      flex-shrink: 0;
-      box-shadow: 0 0 8px rgba(214, 48, 49, 0.2);
+      gap: 5px;
+    }
+    .spec-card-title i { color: var(--primary-color); }
+    .spec-card-value {
+      font-size: 13px;
+      color: var(--text-dark);
+      font-weight: 700;
     }
 
     .btn-buy-hero {
@@ -313,6 +305,7 @@
 
     @media (max-width: 768px) {
       .product-hero-card { grid-template-columns: 1fr; padding: 25px; }
+      .specs-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -390,23 +383,31 @@
           <span class="badge">15% OFF</span>
         </div>
 
-        <!-- Value Proposition Box: Đã nâng cấp sắc nét, nổi bật và cao cấp hơn -->
-        <div class="value-prop-box">
-          <div class="value-prop-item">
-            <div class="value-prop-icon"><i class="fa-solid fa-check"></i></div>
-            <span>전문가가 인정한 최고급 ANC 노이즈 차단 성능</span>
+        <!-- Natural Specs Grid Layout -->
+        <div class="specs-grid">
+          <div class="spec-card-item">
+            <span class="spec-card-title"><i class="fa-solid fa-volume-high"></i> 오디오 드라이버</span>
+            <span class="spec-card-value">Apple 40mm 다이나믹</span>
           </div>
-          <div class="value-prop-item">
-            <div class="value-prop-icon"><i class="fa-solid fa-check"></i></div>
-            <span>장시간 착용에도 정수리 압박 없는 통기성 메쉬 캐노피</span>
+          <div class="spec-card-item">
+            <span class="spec-card-title"><i class="fa-solid fa-microchip"></i> 프로세서 칩셋</span>
+            <span class="spec-card-value">Apple H1 칩 (좌우 탑재)</span>
           </div>
-          <div class="value-prop-item">
-            <div class="value-prop-icon"><i class="fa-solid fa-check"></i></div>
-            <span>동적 헤드 추적 기술로 완성된 압도적인 입체 음향</span>
+          <div class="spec-card-item">
+            <span class="spec-card-title"><i class="fa-solid fa-microphone-lines"></i> 마이크 센서</span>
+            <span class="spec-card-value">총 9개 (ANC 8개 지원)</span>
           </div>
-          <div class="value-prop-item">
-            <div class="value-prop-icon"><i class="fa-solid fa-check"></i></div>
-            <span>5분 충전으로 1.5시간 사용 가능한 급속 충전 지원</span>
+          <div class="spec-card-item">
+            <span class="spec-card-title"><i class="fa-solid fa-battery-full"></i> 배터리 지속력</span>
+            <span class="spec-card-value">최대 20시간 연속 재생</span>
+          </div>
+          <div class="spec-card-item">
+            <span class="spec-card-title"><i class="fa-solid fa-feather"></i> 착용 구조 & 무게</span>
+            <span class="spec-card-value">메쉬 캐노피 / 384.8g</span>
+          </div>
+          <div class="spec-card-item">
+            <span class="spec-card-title"><i class="fa-solid fa-wifi"></i> 무선 연결</span>
+            <span class="spec-card-value">Bluetooth 5.0 규격</span>
           </div>
         </div>
 
@@ -472,7 +473,7 @@
     drawSnow();
 
     function handleBuyClick() {
-      console.log('Purchase Intent Event (Version B):', selectedColorName);
+      console.log('Purchase Intent Event (Version A):', selectedColorName);
       alert('AirPods Max (' + selectedColorName + ') 구매 페이지로 이동합니다.');
     }
   </script>
