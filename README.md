@@ -260,33 +260,37 @@
           <span class="badge">15% OFF</span>
         </div>
 
-        <!-- Version A: Grid Thông số kỹ thuật -->
-         <div class="specs-grid">
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-microchip"></i> 프로세서</span>
-            <span class="spec-card-value">H1 칩 듀얼 탑재</span>
-          </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-compact-disc"></i> 드라이버</span>
-            <span class="spec-card-value">40mm 커스텀 드라이버</span>
-          </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-microphone-lines"></i> 마이크</span>
-            <span class="spec-card-value">9개 마이크 ANC 시스템</span>
-          </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-feather"></i> 무게</span>
-            <span class="spec-card-value">384.8g 가벼운 무게</span>
-          </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-battery-full"></i> 배터리</span>
-            <span class="spec-card-value">최대 20시간 재생</span>
-          </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-wifi"></i> 연결</span>
-            <span class="spec-card-value">Bluetooth 5.0 연결</span>
+        <!-- 👇 VÙNG ĐỊNH DANH ĐỂ VWO NHẬN DIỆN VÀ THAY THẾ AN TOÀN -->
+        <div id="ab-test-specs-container">
+          <!-- Version A: Grid Thông số kỹ thuật -->
+          <div class="specs-grid">
+            <div class="spec-card-item">
+              <span class="spec-card-title"><i class="fa-solid fa-microchip"></i> 프로세서</span>
+              <span class="spec-card-value">H1 칩 듀얼 탑재</span>
+            </div>
+            <div class="spec-card-item">
+              <span class="spec-card-title"><i class="fa-solid fa-compact-disc"></i> 드라이버</span>
+              <span class="spec-card-value">40mm 커스텀 드라이버</span>
+            </div>
+            <div class="spec-card-item">
+              <span class="spec-card-title"><i class="fa-solid fa-microphone-lines"></i> 마이크</span>
+              <span class="spec-card-value">9개 마이크 ANC 시스템</span>
+            </div>
+            <div class="spec-card-item">
+              <span class="spec-card-title"><i class="fa-solid fa-feather"></i> 무게</span>
+              <span class="spec-card-value">384.8g 가벼운 무게</span>
+            </div>
+            <div class="spec-card-item">
+              <span class="spec-card-title"><i class="fa-solid fa-battery-full"></i> 배터리</span>
+              <span class="spec-card-value">최대 20시간 재생</span>
+            </div>
+            <div class="spec-card-item">
+              <span class="spec-card-title"><i class="fa-solid fa-wifi"></i> 연결</span>
+              <span class="spec-card-value">Bluetooth 5.0 연결</span>
+            </div>
           </div>
         </div>
+        <!-- 👆 KẾT THÚC VÙNG ĐỊNH DANH VWO -->
 
         <div class="guarantee-row">
           <span><i class="fa-solid fa-check" style="color:var(--secondary-color);"></i> 무료 배송</span>
@@ -402,7 +406,6 @@
             <span class="review-date">2026.10.11</span>
           </div>
           <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <div class="score-stars"></div>
           <div class="review-comment">아이폰이랑 맥북 번갈아가면서 쓰는데 기기 전환 연동성이 예술입니다. 역시 애플 생태계 최고예요.</div>
           <div class="review-helpful"><i class="fa-regular fa-thumbs-up"></i> 도움이 되었어요 (19)</div>
         </div>
