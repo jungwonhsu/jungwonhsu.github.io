@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>한성유니 Store - AirPods Max (Version A)</title>
+  <title>한성유니 Store - AirPods Max (Version B)</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
@@ -121,7 +121,7 @@
     .logo-icon { width: 40px; height: 40px; background: var(--primary-color); color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
 
     /* Main Container & Floating Card with Snowy & LED Border */
-    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; z-index: 2; position: relative; }
+    .container { max-width: 1050px; margin: 40px auto; padding: 0 20px; z-index: 2; position: relative; }
 
     .product-hero-card {
       background: var(--card-bg);
@@ -129,7 +129,7 @@
       box-shadow: 0 20px 45px rgba(0,0,0,0.35), 0 0 25px rgba(253, 203, 110, 0.25);
       padding: 45px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.1fr;
       gap: 40px;
       align-items: center;
       position: relative;
@@ -185,19 +185,11 @@
       transform: scale(1.15) rotate(10deg);
       box-shadow: 0 8px 25px rgba(253, 203, 110, 0.8);
     }
-    .interactive-gift-box:hover::after {
-      content: '✨🎁✨';
-      position: absolute;
-      top: -30px;
-      font-size: 14px;
-      white-space: nowrap;
-      animation: sparkleFloat 0.8s ease infinite alternate;
-    }
 
     .product-gallery { text-align: center; position: relative; }
     .main-img-wrap { 
       width: 100%; 
-      height: 300px; 
+      height: 320px; 
       display: flex; 
       align-items: center; 
       justify-content: center;
@@ -206,8 +198,8 @@
     .main-img-wrap::before {
       content: '';
       position: absolute;
-      width: 220px;
-      height: 220px;
+      width: 230px;
+      height: 230px;
       background: radial-gradient(circle, rgba(116, 185, 255, 0.45) 0%, transparent 70%);
       border-radius: 50%;
       z-index: 1;
@@ -233,44 +225,79 @@
     .dot-sky-blue { background: #87ceeb; }
     .dot-pink { background: #ffb6c1; }
 
-    .product-details h1 { font-size: 30px; font-weight: 800; color: var(--primary-color); margin-bottom: 8px; }
-    .product-subtitle { font-size: 14.5px; color: var(--text-muted); margin-bottom: 18px; font-weight: 500; }
+    .product-details h1 { font-size: 30px; font-weight: 800; color: var(--primary-color); margin-bottom: 6px; }
+    .product-subtitle { font-size: 14.5px; color: var(--text-muted); margin-bottom: 16px; font-weight: 500; }
     
-    .price-box { margin-bottom: 22px; display: flex; align-items: center; gap: 12px; }
+    .price-box { margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
     .price-box .original { text-decoration: line-through; color: var(--text-muted); font-size: 15px; }
     .price-box .current { font-size: 30px; font-weight: 800; color: var(--secondary-color); }
     .price-box .badge { background: var(--secondary-color); color: white; padding: 4px 10px; border-radius: 12px; font-size: 13px; font-weight: 700; }
 
-    /* Natural Grid Specs Display for Version A */
-    .specs-grid {
+    /* 2x2 Feature Cards Grid Layout */
+    .value-cards-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
-    .spec-card-item {
-      background: #f8fafc;
+    .value-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
       border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 10px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+      border-radius: 14px;
+      padding: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
-    .spec-card-title {
-      font-size: 11.5px;
-      color: var(--text-muted);
-      font-weight: 600;
+    .value-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--secondary-color);
+      box-shadow: 0 8px 20px rgba(214, 48, 49, 0.12);
+    }
+    .value-card-header {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 10px;
+      margin-bottom: 6px;
     }
-    .spec-card-title i { color: var(--primary-color); }
-    .spec-card-value {
-      font-size: 13px;
-      color: var(--text-dark);
+    .value-card-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(214, 48, 49, 0.1);
+      color: var(--secondary-color);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .value-card-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary-color);
+    }
+    .value-card-desc {
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    /* Trust & Holiday Guarantee Banner */
+    .holiday-guarantee-bar {
+      background: #eef6ff;
+      border: 1px dashed #b9d7pt;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--primary-color);
       font-weight: 700;
     }
+    .holiday-guarantee-bar i { color: var(--secondary-color); }
 
     .btn-buy-hero {
       width: 100%;
@@ -299,13 +326,12 @@
     @keyframes floatHeadphone { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
     @keyframes auraPulse { 0%, 100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.15); opacity: 0.7; } }
     @keyframes ledGlow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
-    @keyframes sparkleFloat { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-8px); opacity: 0.6; } }
 
     footer { text-align: center; margin-top: 60px; padding: 25px; color: rgba(255,255,255,0.8); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.1); }
 
     @media (max-width: 768px) {
       .product-hero-card { grid-template-columns: 1fr; padding: 25px; }
-      .specs-grid { grid-template-columns: 1fr; }
+      .value-cards-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -383,32 +409,45 @@
           <span class="badge">15% OFF</span>
         </div>
 
-        <!-- Natural Specs Grid Layout -->
-        <div class="specs-grid">
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-volume-high"></i> 오디오 드라이버</span>
-            <span class="spec-card-value">Apple 40mm 다이나믹</span>
+        <!-- Corrected 2x2 Feature Cards Grid Layout -->
+        <div class="value-cards-grid">
+          <div class="value-card">
+            <div class="value-card-header">
+              <div class="value-card-icon"><i class="fa-solid fa-compact-disc"></i></div>
+              <span class="value-card-title">몰입감 넘치는 음향</span>
+            </div>
+            <div class="value-card-desc">영화관에 온 듯한 동적 헤드 추적 입체 음향 공간 제공</div>
           </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-microchip"></i> 프로세서 칩셋</span>
-            <span class="spec-card-value">Apple H1 칩 (좌우 탑재)</span>
+
+          <div class="value-card">
+            <div class="value-card-header">
+              <div class="value-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <span class="value-card-title">압도적 노이즈 차단</span>
+            </div>
+            <div class="value-card-desc">주변 소음을 완벽히 격리하는 최상급 ANC 소음 차단</div>
           </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-microphone-lines"></i> 마이크 센서</span>
-            <span class="spec-card-value">총 9개 (ANC 8개 지원)</span>
+
+          <div class="value-card">
+            <div class="value-card-header">
+              <div class="value-card-icon"><i class="fa-solid fa-cloud"></i></div>
+              <span class="value-card-title">극상의 편안한 착용감</span>
+            </div>
+            <div class="value-card-desc">정수리 압박을 줄여주는 통기성 니트 메쉬 캐노피 디자인</div>
           </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-battery-full"></i> 배터리 지속력</span>
-            <span class="spec-card-value">최대 20시간 연속 재생</span>
+
+          <div class="value-card">
+            <div class="value-card-header">
+              <div class="value-card-icon"><i class="fa-solid fa-bolt"></i></div>
+              <span class="value-card-title">초고속 급속 충전</span>
+            </div>
+            <div class="value-card-desc">단 5분 충전으로 1.5시간 동안 음악 감상 가능</div>
           </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-feather"></i> 착용 구조 & 무게</span>
-            <span class="spec-card-value">메쉬 캐노피 / 384.8g</span>
-          </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-wifi"></i> 무선 연결</span>
-            <span class="spec-card-value">Bluetooth 5.0 규격</span>
-          </div>
+        </div>
+
+        <div class="holiday-guarantee-bar">
+          <span><i class="fa-solid fa-truck-fast"></i> 무료 당일 배송</span>
+          <span><i class="fa-solid fa-rotate-left"></i> 14일 무료 반품</span>
+          <span><i class="fa-solid fa-gift"></i> 홀리데이 선물 포장</span>
         </div>
 
         <button id="buy-btn-airpods-max" class="btn-buy-hero" onclick="handleBuyClick()">
@@ -473,7 +512,7 @@
     drawSnow();
 
     function handleBuyClick() {
-      console.log('Purchase Intent Event (Version A):', selectedColorName);
+      console.log('Purchase Intent Event (Version B):', selectedColorName);
       alert('AirPods Max (' + selectedColorName + ') 구매 페이지로 이동합니다.');
     }
   </script>
