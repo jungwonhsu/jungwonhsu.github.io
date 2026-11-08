@@ -67,7 +67,7 @@
       background: var(--card-bg); border-radius: 28px;
       box-shadow: 0 20px 45px rgba(0,0,0,0.35), 0 0 25px rgba(253, 203, 110, 0.25);
       padding: 40px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; position: relative;
-      animation: floatCard 5s ease-in-out infinite; overflow: visible;
+      animation: floatCard 5s ease-in-out infinite; overflow: visible; margin-bottom: 40px;
     }
     .product-hero-card::before {
       content: ''; position: absolute; inset: -3px; border-radius: 31px;
@@ -91,17 +91,18 @@
     .product-details h1 { font-size: 28px; font-weight: 800; color: var(--primary-color); margin-bottom: 4px; }
     .product-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; font-weight: 500; }
 
-    /* Rating & Reviews Section */
-    .rating-box { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 13px; font-weight: 700; color: #d97706; }
+    /* Interactive Rating Summary Link */
+    .rating-box { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 13px; font-weight: 700; color: #d97706; cursor: pointer; }
     .rating-box .stars { color: #f59e0b; }
-    .rating-box .review-count { color: var(--text-muted); font-weight: 500; text-decoration: underline; cursor: pointer; }
+    .rating-box .review-count { color: var(--text-muted); font-weight: 500; text-decoration: underline; transition: color 0.2s; }
+    .rating-box:hover .review-count { color: var(--secondary-color); }
     
     .price-box { margin-bottom: 15px; display: flex; align-items: center; gap: 12px; }
     .price-box .original { text-decoration: line-through; color: var(--text-muted); font-size: 14px; }
     .price-box .current { font-size: 28px; font-weight: 800; color: var(--secondary-color); }
     .price-box .badge { background: var(--secondary-color); color: white; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; }
 
-    /* Version A: Grid Thông số Kỹ thuật chuẩn như ảnh mẫu */
+    /* Version A: Grid Thông số Kỹ thuật chuẩn */
     .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; }
     .spec-card-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; }
     .spec-card-title { font-size: 11px; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 5px; }
@@ -117,6 +118,30 @@
     }
     .btn-buy-hero:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(214, 48, 49, 0.5); }
 
+    /* Detailed Reviews Section */
+    .reviews-section {
+      background: var(--card-bg); border-radius: 24px; padding: 35px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25); scroll-margin-top: 100px;
+    }
+    .reviews-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; }
+    .reviews-header h2 { font-size: 22px; font-weight: 800; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
+    
+    .review-score-card { display: flex; align-items: center; gap: 20px; background: #f8fafc; padding: 20px; border-radius: 16px; margin-bottom: 25px; }
+    .big-score { font-size: 36px; font-weight: 900; color: var(--primary-color); }
+    .score-stars { color: #f59e0b; font-size: 18px; }
+
+    .reviews-list { display: flex; flex-direction: column; gap: 20px; }
+    .review-item { border-bottom: 1px solid #e2e8f0; padding-bottom: 20px; }
+    .review-item:last-child { border-bottom: none; }
+    .review-user-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; }
+    .review-user { font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 6px; }
+    .review-badge { background: #e0f2fe; color: #0284c7; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; }
+    .review-date { color: var(--text-muted); }
+    .review-comment { font-size: 14px; color: #334155; line-height: 1.6; margin-bottom: 10px; font-weight: 500; }
+    .review-photos { display: flex; gap: 10px; }
+    .review-photo-img { width: 70px; height: 70px; border-radius: 10px; object-fit: cover; border: 1px solid #cbd5e1; cursor: pointer; transition: transform 0.2s; }
+    .review-photo-img:hover { transform: scale(1.08); }
+
     /* Success Order Modal */
     .success-modal-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7);
@@ -126,7 +151,7 @@
       background: white; width: 90%; max-width: 360px; border-radius: 24px; padding: 30px 20px; text-align: center;
       animation: popUp 0.3s ease; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
-    .success-modal i.fa-flower, .success-icon { font-size: 45px; color: #10b981; margin-bottom: 12px; animation: bounce 1s infinite; }
+    .success-icon { font-size: 45px; color: #10b981; margin-bottom: 12px; animation: bounce 1s infinite; }
     .success-modal h3 { color: var(--primary-color); font-size: 20px; font-weight: 800; margin-bottom: 8px; }
     .success-modal p { font-size: 14px; color: #475569; line-height: 1.5; margin-bottom: 20px; font-weight: 600; }
     .btn-success-close { background: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 700; cursor: pointer; }
@@ -191,10 +216,11 @@
         <h1>Apple AirPods Max</h1>
         <div class="product-subtitle">하이파이 오디오와 액티브 노이즈 캔슬링 헤드폰</div>
         
-        <div class="rating-box">
+        <!-- Smooth Scroll Trigger -->
+        <div class="rating-box" onclick="scrollToReviews()">
           <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
           <span>4.9 / 5.0</span>
-          <span class="review-count">(구매후기 1,280건)</span>
+          <span class="review-count">(구매후기 1,280건 보기 ↓)</span>
         </div>
 
         <div class="price-box">
@@ -203,7 +229,7 @@
           <span class="badge">15% OFF</span>
         </div>
 
-        <!-- Version A: Grid Thông số kỹ thuật chuẩn như ảnh mẫu -->
+        <!-- Version A: Grid Thông số kỹ thuật -->
         <div class="specs-grid">
           <div class="spec-card-item">
             <span class="spec-card-title"><i class="fa-solid fa-microchip"></i> 프로세서</span>
@@ -242,6 +268,51 @@
         </button>
       </div>
     </div>
+
+    <!-- Detailed Reviews Section -->
+    <div class="reviews-section" id="reviewsSection">
+      <div class="reviews-header">
+        <h2><i class="fa-solid fa-comments"></i> 실구매자 상품 후기</h2>
+        <span style="font-size: 13px; color: var(--text-muted);">총 1,280개의 리뷰가 있습니다.</span>
+      </div>
+
+      <div class="review-score-card">
+        <div class="big-score">4.9</div>
+        <div>
+          <div class="score-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">구매자의 98%가 이 상품을 추천합니다.</div>
+        </div>
+      </div>
+
+      <div class="reviews-list">
+        <div class="review-item">
+          <div class="review-user-info">
+            <span class="review-user">kim*** <span class="review-badge">실제 구매자</span></span>
+            <span class="review-date">2026.11.02</span>
+          </div>
+          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="review-comment">노이즈 캔슬링 성능이 정말 미쳤습니다! 카페에서 공부할 때 소음 차단 확실하고, 디자인이 너무 예뻐서 매일 착용하고 다녀요. 강추합니다!</div>
+          <div class="review-photos">
+            <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=150&q=80" alt="Review photo" class="review-photo-img">
+          </div>
+        </div>
+
+        <div class="review-item">
+          <div class="review-user-info">
+            <span class="review-user">lee*** <span class="review-badge">실제 구매자</span></span>
+            <span class="review-date">2026.10.28</span>
+          </div>
+          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="review-comment">배송도 엄청 빠르고 홀리데이 포장까지 깔끔하게 와서 선물받는 느낌이었어요. 음질 공간 음향이 최고네요.</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Success Order Modal -->
@@ -271,6 +342,14 @@
         }
       }, 3000);
     });
+
+    // Smooth Scroll to Reviews
+    function scrollToReviews() {
+      const target = document.getElementById('reviewsSection');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
 
     function selectColor(colorName, imgSrc, auraColor, element) {
       document.getElementById('productImage').src = imgSrc;
