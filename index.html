@@ -23,7 +23,7 @@
                   url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
       background-size: cover;
       color: var(--text-dark); 
-      padding-bottom: 60px; 
+      padding-bottom: 90px; 
       position: relative;
       overflow-x: hidden;
       min-height: 100vh;
@@ -102,7 +102,7 @@
     .price-box .current { font-size: 28px; font-weight: 800; color: var(--secondary-color); }
     .price-box .badge { background: var(--secondary-color); color: white; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; }
 
-    /* Version A: Grid Thông số Kỹ thuật chuẩn */
+    /* Version A: Grid Thông số kỹ thuật chuẩn */
     .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; }
     .spec-card-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; }
     .spec-card-title { font-size: 11px; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 5px; }
@@ -118,19 +118,48 @@
     }
     .btn-buy-hero:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(214, 48, 49, 0.5); }
 
-    /* Detailed Reviews Section */
+    /* Sticky Bottom Buy Bar */
+    .sticky-buy-bar {
+      position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px); box-shadow: 0 -4px 20px rgba(0,0,0,0.15); padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between; z-index: 1000;
+      transform: translateY(100%); transition: transform 0.3s ease;
+    }
+    .sticky-buy-bar.visible { transform: translateY(0); }
+    .sticky-product-info { display: flex; align-items: center; gap: 12px; }
+    .sticky-product-info img { width: 45px; height: 45px; object-fit: contain; }
+    .sticky-product-info .title { font-size: 14px; font-weight: 800; color: var(--primary-color); }
+    .sticky-product-info .price { font-size: 15px; font-weight: 800; color: var(--secondary-color); }
+    .btn-sticky-buy {
+      background: linear-gradient(135deg, #d63031, #b22222); color: white; border: none; padding: 12px 28px;
+      border-radius: 10px; font-size: 15px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 15px rgba(214, 48, 49, 0.3);
+    }
+
+    /* Detailed Reviews Section & Filter Chips */
     .reviews-section {
       background: var(--card-bg); border-radius: 24px; padding: 35px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.25); scroll-margin-top: 100px;
     }
-    .reviews-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; }
+    .reviews-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; }
     .reviews-header h2 { font-size: 22px; font-weight: 800; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
     
-    .review-score-card { display: flex; align-items: center; gap: 20px; background: #f8fafc; padding: 20px; border-radius: 16px; margin-bottom: 25px; }
+    .review-score-card { display: flex; align-items: center; gap: 20px; background: #f8fafc; padding: 20px; border-radius: 16px; margin-bottom: 20px; }
     .big-score { font-size: 36px; font-weight: 900; color: var(--primary-color); }
     .score-stars { color: #f59e0b; font-size: 18px; }
 
-    .reviews-list { display: flex; flex-direction: column; gap: 20px; }
+    /* Filter Chips */
+    .filter-chips { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .chip { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 6px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 700; color: #475569; cursor: pointer; transition: all 0.2s; }
+    .chip.active, .chip:hover { background: var(--primary-color); color: white; border-color: var(--primary-color); }
+
+    /* Scrollable Reviews Container */
+    .reviews-scroll-container {
+      max-height: 520px; overflow-y: auto; padding-right: 10px;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .reviews-scroll-container::-webkit-scrollbar { width: 6px; }
+    .reviews-scroll-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
     .review-item { border-bottom: 1px solid #e2e8f0; padding-bottom: 20px; }
     .review-item:last-child { border-bottom: none; }
     .review-user-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; }
@@ -138,9 +167,11 @@
     .review-badge { background: #e0f2fe; color: #0284c7; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; }
     .review-date { color: var(--text-muted); }
     .review-comment { font-size: 14px; color: #334155; line-height: 1.6; margin-bottom: 10px; font-weight: 500; }
-    .review-photos { display: flex; gap: 10px; }
+    .review-photos { display: flex; gap: 10px; margin-bottom: 8px; }
     .review-photo-img { width: 70px; height: 70px; border-radius: 10px; object-fit: cover; border: 1px solid #cbd5e1; cursor: pointer; transition: transform 0.2s; }
     .review-photo-img:hover { transform: scale(1.08); }
+    .review-helpful { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 5px; cursor: pointer; }
+    .review-helpful:hover { color: var(--secondary-color); }
 
     /* Success Order Modal */
     .success-modal-overlay {
@@ -165,7 +196,7 @@
     @keyframes ledGlow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
 
     footer { text-align: center; margin-top: 50px; padding: 20px; color: rgba(255,255,255,0.8); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.1); }
-    @media (max-width: 768px) { .product-hero-card { grid-template-columns: 1fr; padding: 25px; } .specs-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .product-hero-card { grid-template-columns: 1fr; padding: 25px; } .specs-grid { grid-template-columns: 1fr; } .sticky-buy-bar { padding: 10px 15px; } }
   </style>
 </head>
 <body>
@@ -269,11 +300,11 @@
       </div>
     </div>
 
-    <!-- Detailed Reviews Section -->
+    <!-- Detailed Reviews Section with 10 Scrollable Reviews -->
     <div class="reviews-section" id="reviewsSection">
       <div class="reviews-header">
         <h2><i class="fa-solid fa-comments"></i> 실구매자 상품 후기</h2>
-        <span style="font-size: 13px; color: var(--text-muted);">총 1,280개의 리뷰가 있습니다.</span>
+        <span style="font-size: 13px; color: var(--text-muted);">총 1,280개의 리뷰 중 10개 표시</span>
       </div>
 
       <div class="review-score-card">
@@ -286,33 +317,143 @@
         </div>
       </div>
 
-      <div class="reviews-list">
+      <!-- Filter Chips -->
+      <div class="filter-chips">
+        <div class="chip active">전체보기 (1,280)</div>
+        <div class="chip">📸 포토 리뷰 (4)</div>
+        <div class="chip">⭐️ 5점 만점 (1,210)</div>
+        <div class="chip">🎨 스페이스 그레이</div>
+      </div>
+
+      <div class="reviews-scroll-container">
+        <!-- Review 1 -->
         <div class="review-item">
           <div class="review-user-info">
-            <span class="review-user">kim*** <span class="review-badge">실제 구매자</span></span>
+            <span class="review-user">kim*** <span class="review-badge">실제 구매자</span> [Space Gray]</span>
             <span class="review-date">2026.11.02</span>
           </div>
-          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
+          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <div class="review-comment">노이즈 캔슬링 성능이 정말 미쳤습니다! 카페에서 공부할 때 소음 차단 확실하고, 디자인이 너무 예뻐서 매일 착용하고 다녀요. 강추합니다!</div>
-          <div class="review-photos">
-            <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=150&q=80" alt="Review photo" class="review-photo-img">
-          </div>
+          <div class="review-photos"><img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=150&q=80" alt="photo" class="review-photo-img"></div>
+          <div class="review-helpful"><i class="fa-regular fa-thumbs-up"></i> 도움이 되었어요 (24)</div>
         </div>
 
+        <!-- Review 2 -->
         <div class="review-item">
           <div class="review-user-info">
-            <span class="review-user">lee*** <span class="review-badge">실제 구매자</span></span>
+            <span class="review-user">lee*** <span class="review-badge">실제 구매자</span> [Silver]</span>
             <span class="review-date">2026.10.28</span>
           </div>
-          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
+          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <div class="review-comment">배송도 엄청 빠르고 홀리데이 포장까지 깔끔하게 와서 선물받는 느낌이었어요. 음질 공간 음향이 최고네요.</div>
+          <div class="review-helpful"><i class="fa-regular fa-thumbs-up"></i> 도움이 되었어요 (18)</div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-item">
+          <div class="review-user-info">
+            <span class="review-user">park*** <span class="review-badge">실제 구매자</span> [Sky Blue]</span>
+            <span class="review-date">2026.10.25</span>
+          </div>
+          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="review-comment">색감이 실물이 훨씬 이쁩니다. 스카이 블루 고르길 정말 잘했어요. 영화 볼 때 사운드가 입체적으로 들려서 몰입감이 남다릅니다.</div>
+          <div class="review-photos"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=150&q=80" alt="photo" class="review-photo-img"></div>
+          <div class="review-helpful"><i class="fa-regular fa-thumbs-up"></i> 도움이 되었어요 (31)</div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-item">
+          <div class="review-user-info">
+            <span class="review-user">choi*** <span class="review-badge">실제 구매자</span> [Pink]</span>
+            <span class="review-date">2026.10.22</span>
+          </div>
+          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="review-comment">핑크색 너무 영롱해요. 무게감이 살짝 있지만 정수리 쿠션이 편해서 장시간 착용해도 편안합니다.</div>
+          <div class="review-helpful"><i class="fa-regular fa-thumbs-up"></i> 도움이 되었어요 (9)</div>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="review-item">
+          <div class="review-user-info">
+            <span class="review-user">nguyen*** <span class="review-badge">실제 구매자</span> [Space Gray]</span>
+            <span class="review-date">2026.10.19</span>
+          </div>
+          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="review-comment">대학생 과제할 때 도서관에서 쓰려고 샀는데 집중력 200% 상승했습니다. 배터리도 오래가서 충전 자주 안 해도 되니 편해요.</div>
+          <div class="review-photos"><img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=150&q=80" alt="photo" class="review-photo-img"></div>
+          <div class="review-helpful"><i class="fa-regular fa-thumbs-up"></i> 도움이 되었어요 (42)</div>
+        </div>
+
+        <!-- Review 6 -->
+        <div class="review-item">
+          <div class="review-user-info">
+            <span class="review-user">jung*** <span class="review-badge">실제 구매자</span> [Silver]</span>
+            <span class="review-date">2026.10.15</span>
+          </div>
+          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+          <div class="review-comment">제품 성능은 말할 것도 없이 훌륭합니다. 다만 기본 구성품에 스마트 케이스 외에 파우치가 하나 더 있었으면 좋겠어요. 그래도 대만족!</div>
+          <div class="review-helpful"><i class="fa-regular fa-thumbs-up"></i> 도움이 되었어요 (15)</div>
+        </div>
+
+        <!-- Review 7 -->
+        <div class="review-item">
+          <div class="review-user-info">
+            <span class="review-user">kang*** <span class="review-badge">실제 구매자</span> [Sky Blue]</span>
+            <span class="review-date">2026.10.11</span>
+          </div>
+          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="score-stars"></div>
+          <div class="review-comment">아이폰이랑 맥북 번갈아가면서 쓰는데 기기 전환 연동성이 예술입니다. 역시 애플 생태계 최고예요.</div>
+          <div class="review-helpful"><i class="fa-regular fa-thumbs-up"></i> 도움이 되었어요 (19)</div>
+        </div>
+
+        <!-- Review 8 -->
+        <div class="review-item">
+          <div class="review-user-info">
+            <span class="review-user">yoon*** <span class="review-badge">실제 구매자</span> [Space Gray]</span>
+            <span class="review-date">2026.10.05</span>
+          </div>
+          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="review-comment">급속 충전 기능 덕분에 아침에 씻을 때 잠깐 꽂아둬도 하루 종일 쓸 수 있어서 바쁜 직장인들에게 최고입니다.</div>
+          <div class="review-photos"><img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?auto=format&fit=crop&w=150&q=80" alt="photo" class="review-photo-img"></div>
+          <div class="review-helpful"><i class="fa-regular fa-thumbs-up"></i> 도움이 되었어요 (27)</div>
+        </div>
+
+        <!-- Review 9 -->
+        <div class="review-item">
+          <div class="review-user-info">
+            <span class="review-user">han*** <span class="review-badge">실제 구매자</span> [Pink]</span>
+            <span class="review-date">2026.09.30</span>
+          </div>
+          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="review-comment">친구 생일 선물로 구매했는데 포장도 너무 예쁘고 친구가 감동받았어요. 여기서 사길 정말 잘했습니다!</div>
+          <div class="review-helpful"><i class="fa-regular fa-thumbs-up"></i> 도움이 되었어요 (11)</div>
+        </div>
+
+        <!-- Review 10 -->
+        <div class="review-item">
+          <div class="review-user-info">
+            <span class="review-user">jang*** <span class="review-badge">실제 구매자</span> [Silver]</span>
+            <span class="review-date">2026.09.25</span>
+          </div>
+          <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="review-comment">귀를 감싸주는 이어쿠션 촉감이 아주 부드럽고 안경 착용하고 써도 귀가 안 아파요. 적극 추천합니다.</div>
+          <div class="review-helpful"><i class="fa-regular fa-thumbs-up"></i> 도움이 되었어요 (35)</div>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Sticky Bottom Buy Bar -->
+  <div class="sticky-buy-bar" id="stickyBar">
+    <div class="sticky-product-info">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=470&hei=556&fmt=png-alpha" alt="AirPods Max">
+      <div>
+        <div class="title">Apple AirPods Max</div>
+        <div class="price">653,650원 (15% OFF)</div>
+      </div>
+    </div>
+    <button class="btn-sticky-buy" onclick="handleBuyClick()">지금 바로 구매하기</button>
   </div>
 
   <!-- Success Order Modal -->
@@ -341,6 +482,19 @@
           setTimeout(() => modal.style.display = 'none', 500);
         }
       }, 3000);
+    });
+
+    // Sticky Buy Bar Scroll Trigger
+    window.addEventListener('scroll', () => {
+      const stickyBar = document.getElementById('stickyBar');
+      const heroCard = document.querySelector('.product-hero-card');
+      const heroBottom = heroCard.offsetTop + heroCard.offsetHeight;
+      
+      if (window.scrollY > heroBottom - 100) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
     });
 
     // Smooth Scroll to Reviews
