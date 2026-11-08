@@ -261,55 +261,32 @@
         </div>
 
         <!-- Version A: Grid Thông số kỹ thuật -->
-        <style>
-  .value-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; }
-  .value-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 1px solid #e2e8f0; border-radius: 12px;
-    padding: 10px; transition: all 0.3s ease; position: relative;
-  }
-  .value-card:hover { transform: translateY(-3px); border-color: var(--secondary-color); box-shadow: 0 8px 20px rgba(214, 48, 49, 0.12); }
-  .value-card-header { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
-  .value-card-icon {
-    width: 24px; height: 24px; background: rgba(214, 48, 49, 0.1); color: var(--secondary-color);
-    border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px;
-  }
-  .value-card-title { font-size: 12.5px; font-weight: 800; color: var(--primary-color); }
-  .value-card-desc { font-size: 11px; color: #475569; line-height: 1.3; font-weight: 500; }
-</style>
-
-<div class="value-cards-grid">
-  <div class="value-card">
-    <div class="value-card-header">
-      <div class="value-card-icon"><i class="fa-solid fa-compact-disc"></i></div>
-      <span class="value-card-title">몰입감 넘치는 음향</span>
-    </div>
-    <div class="value-card-desc">영화관 같은 입체 음향 공간 제공</div>
-  </div>
-
-  <div class="value-card">
-    <div class="value-card-header">
-      <div class="value-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-      <span class="value-card-title">압도적 노이즈 차단</span>
-    </div>
-    <div class="value-card-desc">최상급 ANC 소음 격리 성능</div>
-  </div>
-
-  <div class="value-card">
-    <div class="value-card-header">
-      <div class="value-card-icon"><i class="fa-solid fa-cloud"></i></div>
-      <span class="value-card-title">극상의 편안한 착용감</span>
-    </div>
-    <div class="value-card-desc">통기성 니트 메쉬 캐노피 디자인</div>
-  </div>
-
-  <div class="value-card">
-    <div class="value-card-header">
-      <div class="value-card-icon"><i class="fa-solid fa-bolt"></i></div>
-      <span class="value-card-title">초고속 급속 충전</span>
-    </div>
-    <div class="value-card-desc">5분 충전으로 1.5시간 재생</div>
-  </div>
-</div>
+         <div class="specs-grid">
+          <div class="spec-card-item">
+            <span class="spec-card-title"><i class="fa-solid fa-microchip"></i> 프로세서</span>
+            <span class="spec-card-value">H1 칩 듀얼 탑재</span>
+          </div>
+          <div class="spec-card-item">
+            <span class="spec-card-title"><i class="fa-solid fa-compact-disc"></i> 드라이버</span>
+            <span class="spec-card-value">40mm 커스텀 드라이버</span>
+          </div>
+          <div class="spec-card-item">
+            <span class="spec-card-title"><i class="fa-solid fa-microphone-lines"></i> 마이크</span>
+            <span class="spec-card-value">9개 마이크 ANC 시스템</span>
+          </div>
+          <div class="spec-card-item">
+            <span class="spec-card-title"><i class="fa-solid fa-feather"></i> 무게</span>
+            <span class="spec-card-value">384.8g 가벼운 무게</span>
+          </div>
+          <div class="spec-card-item">
+            <span class="spec-card-title"><i class="fa-solid fa-battery-full"></i> 배터리</span>
+            <span class="spec-card-value">최대 20시간 재생</span>
+          </div>
+          <div class="spec-card-item">
+            <span class="spec-card-title"><i class="fa-solid fa-wifi"></i> 연결</span>
+            <span class="spec-card-value">Bluetooth 5.0 연결</span>
+          </div>
+        </div>
 
         <div class="guarantee-row">
           <span><i class="fa-solid fa-check" style="color:var(--secondary-color);"></i> 무료 배송</span>
