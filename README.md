@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>한성유니 Store - AirPods Max (Version A)</title>
+  <title>한성유니 Store - AirPods Max (Version B)</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
@@ -102,12 +102,20 @@
     .price-box .current { font-size: 28px; font-weight: 800; color: var(--secondary-color); }
     .price-box .badge { background: var(--secondary-color); color: white; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; }
 
-    /* Version A: Grid Thông số kỹ thuật chuẩn */
-    .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; }
-    .spec-card-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; }
-    .spec-card-title { font-size: 11px; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 5px; }
-    .spec-card-title i { color: var(--primary-color); }
-    .spec-card-value { font-size: 12.5px; color: var(--text-dark); font-weight: 700; }
+    /* Version B: 2x2 Feature Cards Grid */
+    .value-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; }
+    .value-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 1px solid #e2e8f0; border-radius: 12px;
+      padding: 10px; transition: all 0.3s ease; position: relative;
+    }
+    .value-card:hover { transform: translateY(-3px); border-color: var(--secondary-color); box-shadow: 0 8px 20px rgba(214, 48, 49, 0.12); }
+    .value-card-header { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+    .value-card-icon {
+      width: 24px; height: 24px; background: rgba(214, 48, 49, 0.1); color: var(--secondary-color);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px;
+    }
+    .value-card-title { font-size: 12.5px; font-weight: 800; color: var(--primary-color); }
+    .value-card-desc { font-size: 11px; color: #475569; line-height: 1.3; font-weight: 500; }
 
     .guarantee-row { display: flex; justify-content: space-around; background: #f1f5f9; padding: 8px; border-radius: 10px; font-size: 11.5px; font-weight: 700; color: #334155; margin-bottom: 15px; }
 
@@ -196,7 +204,7 @@
     @keyframes ledGlow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
 
     footer { text-align: center; margin-top: 50px; padding: 20px; color: rgba(255,255,255,0.8); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.1); }
-    @media (max-width: 768px) { .product-hero-card { grid-template-columns: 1fr; padding: 25px; } .specs-grid { grid-template-columns: 1fr; } .sticky-buy-bar { padding: 10px 15px; } }
+    @media (max-width: 768px) { .product-hero-card { grid-template-columns: 1fr; padding: 25px; } .sticky-buy-bar { padding: 10px 15px; } }
   </style>
 </head>
 <body>
@@ -260,31 +268,38 @@
           <span class="badge">15% OFF</span>
         </div>
 
-        <!-- Version A: Grid Thông số kỹ thuật -->
-        <div class="specs-grid">
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-microchip"></i> 프로세서</span>
-            <span class="spec-card-value">H1 칩 듀얼 탑재</span>
+        <!-- Version B: 2x2 Feature Cards Grid -->
+        <div class="value-cards-grid">
+          <div class="value-card">
+            <div class="value-card-header">
+              <div class="value-card-icon"><i class="fa-solid fa-compact-disc"></i></div>
+              <span class="value-card-title">몰입감 넘치는 음향</span>
+            </div>
+            <div class="value-card-desc">영화관 같은 입체 음향 공간 제공</div>
           </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-compact-disc"></i> 드라이버</span>
-            <span class="spec-card-value">40mm 커스텀 드라이버</span>
+
+          <div class="value-card">
+            <div class="value-card-header">
+              <div class="value-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <span class="value-card-title">압도적 노이즈 차단</span>
+            </div>
+            <div class="value-card-desc">최상급 ANC 소음 격리 성능</div>
           </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-microphone-lines"></i> 마이크</span>
-            <span class="spec-card-value">9개 마이크 ANC 시스템</span>
+
+          <div class="value-card">
+            <div class="value-card-header">
+              <div class="value-card-icon"><i class="fa-solid fa-cloud"></i></div>
+              <span class="value-card-title">극상의 편안한 착용감</span>
+            </div>
+            <div class="value-card-desc">통기성 니트 메쉬 캐노피 디자인</div>
           </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-feather"></i> 무게</span>
-            <span class="spec-card-value">384.8g 가벼운 무게</span>
-          </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-battery-full"></i> 배터리</span>
-            <span class="spec-card-value">최대 20시간 재생</span>
-          </div>
-          <div class="spec-card-item">
-            <span class="spec-card-title"><i class="fa-solid fa-wifi"></i> 연결</span>
-            <span class="spec-card-value">Bluetooth 5.0 연결</span>
+
+          <div class="value-card">
+            <div class="value-card-header">
+              <div class="value-card-icon"><i class="fa-solid fa-bolt"></i></div>
+              <span class="value-card-title">초고속 급속 충전</span>
+            </div>
+            <div class="value-card-desc">5분 충전으로 1.5시간 재생</div>
           </div>
         </div>
 
@@ -402,7 +417,6 @@
             <span class="review-date">2026.10.11</span>
           </div>
           <div class="score-stars" style="font-size: 12px; margin-bottom: 6px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <div class="score-stars"></div>
           <div class="review-comment">아이폰이랑 맥북 번갈아가면서 쓰는데 기기 전환 연동성이 예술입니다. 역시 애플 생태계 최고예요.</div>
           <div class="review-helpful"><i class="fa-regular fa-thumbs-up"></i> 도움이 되었어요 (19)</div>
         </div>
@@ -514,7 +528,7 @@
     }
 
     function handleBuyClick() {
-      console.log('Purchase Success (Version A):', selectedColorName);
+      console.log('Purchase Success (Version B):', selectedColorName);
       document.getElementById('successModal').style.display = 'flex';
     }
 
