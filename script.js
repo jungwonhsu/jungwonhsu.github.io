@@ -154,9 +154,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Continue shopping button (Fixed: Hides cart-modal successfully)
   if (btnCartContinue) {
-    btnCartContinue.addEventListener("click", () => cartModal.classList.add("hidden"));
+    btnCartContinue.addEventListener("click", () => {
+      cartModal.classList.add("hidden");
+    });
   }
+
   if (btnCartCheckout) {
     btnCartCheckout.addEventListener("click", () => {
       cartModal.classList.add("hidden");
@@ -200,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (badge) badge.textContent = totalCount;
 
     if (cartItems.length === 0) {
-      listWrapper.innerHTML = `<p class="empty-cart-text">장바구니가 비어 있습니다.</p>";
+      listWrapper.innerHTML = `<p class="empty-cart-text">장바구니가 비어 있습니다.</p>`;
       if (subtotalEl) subtotalEl.textContent = "₩0";
       if (discountEl) discountEl.textContent = "-₩0";
       if (totalPriceEl) totalPriceEl.textContent = "₩0";
