@@ -276,10 +276,9 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-});
-  // =========================================
-  // VERSION B: 상세 정보 토글 스크립트
-  // =========================================
+    // ==========================================
+  // [BỔ SUNG CHO VERSION B] Xử lý ẩn/hiện thông số
+  // ==========================================
   const btnToggleSpecs = document.getElementById("btn-toggle-specs");
   const specsDropdown = document.getElementById("specs-dropdown");
   
@@ -291,3 +290,4 @@ document.addEventListener("DOMContentLoaded", function () {
         : "📦 상품 상세 정보 및 기술 스펙 접기 ▲";
     });
   }
+});
