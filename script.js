@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   
-  // Cart state storage
   let cartItems = [];
 
-  // 1. Coupon Modal Initialization (Pop up on load)
+  // 1. Coupon Modal Initialization
   const couponModal = document.getElementById("coupon-modal");
   const btnCouponClose = document.getElementById("btn-coupon-close");
   const btnCouponApply = document.getElementById("btn-coupon-apply");
@@ -47,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 5. Color Selector Logic & Dynamic Image Switch
+  // 5. Color Selector Logic & Official Apple CDN Image Switch
   const colorDots = document.querySelectorAll(".color-dot");
   const selectedColorName = document.getElementById("selected-color-name");
   const mainProductImg = document.getElementById("main-product-img");
@@ -135,7 +134,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnBuyClose = document.getElementById("btn-buy-close");
   const drawerCheckoutBtn = document.getElementById("drawer-checkout-btn");
 
-  // Add to cart action
   if (btnAddToCart) {
     btnAddToCart.addEventListener("click", () => {
       const title = document.getElementById("product-title").textContent;
@@ -147,14 +145,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Buy now action
   if (btnBuyNow) {
     btnBuyNow.addEventListener("click", () => {
       buyModal.classList.remove("hidden");
     });
   }
 
-  // Cart modal buttons
   if (btnCartContinue) {
     btnCartContinue.addEventListener("click", () => cartModal.classList.add("hidden"));
   }
@@ -168,7 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
     btnBuyClose.addEventListener("click", () => buyModal.classList.add("hidden"));
   }
 
-  // Header cart drawer toggle
   if (headerCartBtn) {
     headerCartBtn.addEventListener("click", () => cartDrawer.classList.remove("hidden"));
   }
@@ -182,7 +177,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Update Cart Drawer & Badge UI
   function updateCartUI() {
     const badge = document.getElementById("cart-badge");
     const listWrapper = document.getElementById("drawer-items-list");
@@ -202,7 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
           <strong>${item.price}</strong>
         </div>`;
         
-        // Simple number parse for sum
         let cleanPrice = parseInt(item.price.replace(/[^0-9]/g, "")) || 0;
         totalSum += cleanPrice;
       });
