@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   
+  // Cart items array storing object: { title, price, qty }
   let cartItems = [];
 
   // 1. Coupon Modal Initialization
@@ -97,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // 8. Review Filters Logic (All, Photo, Video, Normal)
+  // 8. Review Filters Logic
   const filterButtons = document.querySelectorAll(".filter-btn");
   const reviewItems = document.querySelectorAll(".review-item");
 
@@ -134,12 +135,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnBuyClose = document.getElementById("btn-buy-close");
   const drawerCheckoutBtn = document.getElementById("drawer-checkout-btn");
 
+  // Add to cart with quantity check
   if (btnAddToCart) {
     btnAddToCart.addEventListener("click", () => {
       const title = document.getElementById("product-title").textContent;
       const price = document.getElementById("current-price-display").textContent;
       
-      cartItems.push({ title, price });
+      // Check if item already exists in cart
+      const existingItem = cartItems.find(item => item.title === title);
+      if (existingItem) {
+        existingItem.qty += 1;
+      } else {
+        cartItems.push({ title, price, qty: 1 });
+      }
+
       updateCartUI();
       cartModal.classList.remove("hidden");
     });
@@ -147,6 +156,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (btnBuyNow) {
     btnBuyNow.addEventListener("click", () => {
+      // Direct buy also resets cart count to 0 as requested
+      cartItems = [];
+      updateCartUI();
       buyModal.classList.remove("hidden");
     });
   }
@@ -160,6 +172,8 @@ document.addEventListener("DOMContentLoaded", function () {
       cartDrawer.classList.remove("hidden");
     });
   }
+  
+  // Close buy modal and keep cart at 0
   if (btnBuyClose) {
     btnBuyClose.addEventListener("click", () => buyModal.classList.add("hidden"));
   }
@@ -170,19 +184,30 @@ document.addEventListener("DOMContentLoaded", function () {
   if (drawerCloseBtn) {
     drawerCloseBtn.addEventListener("click", () => cartDrawer.classList.add("hidden"));
   }
+
+  // Checkout from drawer -> Reset cart items to 0 and show bouquet modal
   if (drawerCheckoutBtn) {
     drawerCheckoutBtn.addEventListener("click", () => {
+      if (cartItems.length === 0) {
+        alert("장바구니가 비어 있습니다.");
+        return;
+      }
+      cartItems = []; // Reset to 0
+      updateCartUI();
       cartDrawer.classList.add("hidden");
       buyModal.classList.remove("hidden");
     });
   }
 
+  // Update Cart UI & handle qty change / delete events globally inside drawer list
   function updateCartUI() {
     const badge = document.getElementById("cart-badge");
     const listWrapper = document.getElementById("drawer-items-list");
     const totalPriceEl = document.getElementById("drawer-total-price");
 
-    if (badge) badge.textContent = cartItems.length;
+    // Total quantity badge calculation
+    const totalCount = cartItems.reduce((sum, item) => sum + item.qty, 0);
+    if (badge) badge.textContent = totalCount;
 
     if (cartItems.length === 0) {
       listWrapper.innerHTML = `<p class="empty-cart-text">장바구니가 비어 있습니다.</p>`;
@@ -190,17 +215,66 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       let html = "";
       let totalSum = 0;
+
       cartItems.forEach((item, index) => {
-        html += `<div class="cart-item-row">
-          <span>${index + 1}. ${item.title}</span>
-          <strong>${item.price}</strong>
-        </div>`;
-        
         let cleanPrice = parseInt(item.price.replace(/[^0-9]/g, "")) || 0;
-        totalSum += cleanPrice;
+        let itemTotal = cleanPrice * item.qty;
+        totalSum += itemTotal;
+
+        html += `
+          <div class="cart-item-row" data-index="${index}">
+            <div class="cart-item-info">
+              <div class="cart-item-title">${item.title}</div>
+              <div class="cart-item-price">${item.price}</div>
+            </div>
+            <div class="cart-item-actions">
+              <button class="qty-btn decrease-btn" data-index="${index}">-</button>
+              <span class="qty-num">${item.qty}</span>
+              <button class="qty-btn increase-btn" data-index="${index}">+</button>
+              <button class="delete-btn" data-index="${index}" title="삭제">🗑️</button>
+            </div>
+          </div>
+        `;
       });
+
       listWrapper.innerHTML = html;
       if (totalPriceEl) totalPriceEl.textContent = `₩${totalSum.toLocaleString()}`;
+
+      // Attach event listeners for dynamic quantity and delete buttons
+      attachCartItemEvents();
     }
+  }
+
+  function attachCartItemEvents() {
+    // Decrease quantity
+    document.querySelectorAll(".decrease-btn").forEach(btn => {
+      btn.addEventListener("click", function() {
+        const idx = this.getAttribute("data-index");
+        if (cartItems[idx].qty > 1) {
+          cartItems[idx].qty -= 1;
+        } else {
+          cartItems.splice(idx, 1); // remove if 0
+        }
+        updateCartUI();
+      });
+    });
+
+    // Increase quantity
+    document.querySelectorAll(".increase-btn").forEach(btn => {
+      btn.addEventListener("click", function() {
+        const idx = this.getAttribute("data-index");
+        cartItems[idx].qty += 1;
+        updateCartUI();
+      });
+    });
+
+    // Delete item
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+      btn.addEventListener("click", function() {
+        const idx = this.getAttribute("data-index");
+        cartItems.splice(idx, 1);
+        updateCartUI();
+      });
+    });
   }
 });
