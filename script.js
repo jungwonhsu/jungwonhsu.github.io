@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Continue shopping button (Fixed: Hides cart-modal successfully)
+  // Continue shopping button -> Hides cart modal successfully
   if (btnCartContinue) {
     btnCartContinue.addEventListener("click", () => {
       cartModal.classList.add("hidden");
