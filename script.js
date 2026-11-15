@@ -277,3 +277,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+  // =========================================
+  // VERSION B: 상세 정보 토글 스크립트
+  // =========================================
+  const btnToggleSpecs = document.getElementById("btn-toggle-specs");
+  const specsDropdown = document.getElementById("specs-dropdown");
+  
+  if (btnToggleSpecs && specsDropdown) {
+    btnToggleSpecs.addEventListener("click", function () {
+      specsDropdown.classList.toggle("hidden");
+      this.textContent = specsDropdown.classList.contains("hidden") 
+        ? "📦 상품 상세 정보 및 기술 스펙 보기 ▼" 
+        : "📦 상품 상세 정보 및 기술 스펙 접기 ▲";
+    });
+  }
