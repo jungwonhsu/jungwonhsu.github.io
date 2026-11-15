@@ -4,13 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 1. Coupon Modal Initialization
   const couponModal = document.getElementById("coupon-modal");
-  const btnCouponClose = document.getElementById("btn-coupon-close");
   const btnCouponApply = document.getElementById("btn-coupon-apply");
 
-  if (btnCouponClose) btnCouponClose.addEventListener("click", () => couponModal.classList.add("hidden"));
   if (btnCouponApply) {
     btnCouponApply.addEventListener("click", () => {
-      alert("20% 할인 쿠폰이 성공적으로 발급되었습니다!");
       couponModal.classList.add("hidden");
     });
   }
@@ -69,19 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // 6. Specs Toggle Accordion
-  const btnToggleSpecs = document.getElementById("btn-toggle-specs");
-  const specsDropdown = document.getElementById("specs-dropdown");
-  if (btnToggleSpecs && specsDropdown) {
-    btnToggleSpecs.addEventListener("click", function () {
-      specsDropdown.classList.toggle("hidden");
-      this.textContent = specsDropdown.classList.contains("hidden") 
-        ? "📦 상세 기술 스펙 보기 ▼" 
-        : "📦 상세 기술 스펙 접기 ▲";
-    });
-  }
-
-  // 7. Related Apple Headphones Switcher & Dynamic Color Selector Display
+  // 6. Related Apple Headphones Switcher & Dynamic Color Selector Display
   const productCards = document.querySelectorAll(".product-card");
   const colorSelectorSection = document.getElementById("color-selector-section");
 
@@ -106,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // 8. Review Filters Logic
+  // 7. Review Filters Logic
   const filterButtons = document.querySelectorAll(".filter-btn");
   const reviewItems = document.querySelectorAll(".review-item");
 
@@ -128,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // 9. Cart & Buy Flow Modals
+  // 8. Cart & Buy Flow Modals
   const cartModal = document.getElementById("cart-modal");
   const buyModal = document.getElementById("buy-modal");
   const cartDrawer = document.getElementById("cart-drawer");
@@ -207,22 +192,26 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateCartUI() {
     const badge = document.getElementById("cart-badge");
     const listWrapper = document.getElementById("drawer-items-list");
+    const subtotalEl = document.getElementById("cart-subtotal");
+    const discountEl = document.getElementById("cart-discount");
     const totalPriceEl = document.getElementById("drawer-total-price");
 
     const totalCount = cartItems.reduce((sum, item) => sum + item.qty, 0);
     if (badge) badge.textContent = totalCount;
 
     if (cartItems.length === 0) {
-      listWrapper.innerHTML = `<p class="empty-cart-text">장바구니가 비어 있습니다.</p>`;
+      listWrapper.innerHTML = `<p class="empty-cart-text">장바구니가 비어 있습니다.</p>";
+      if (subtotalEl) subtotalEl.textContent = "₩0";
+      if (discountEl) discountEl.textContent = "-₩0";
       if (totalPriceEl) totalPriceEl.textContent = "₩0";
     } else {
       let html = "";
-      let totalSum = 0;
+      let subtotalSum = 0;
 
       cartItems.forEach((item, index) => {
         let cleanPrice = parseInt(item.price.replace(/[^0-9]/g, "")) || 0;
         let itemTotal = cleanPrice * item.qty;
-        totalSum += itemTotal;
+        subtotalSum += itemTotal;
 
         html += `
           <div class="cart-item-row" data-index="${index}">
@@ -241,7 +230,14 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       listWrapper.innerHTML = html;
-      if (totalPriceEl) totalPriceEl.textContent = `₩${totalSum.toLocaleString()}`;
+
+      // Apply 20% discount on total order sum
+      let discountAmount = Math.round(subtotalSum * 0.20);
+      let finalTotal = subtotalSum - discountAmount;
+
+      if (subtotalEl) subtotalEl.textContent = `₩${subtotalSum.toLocaleString()}`;
+      if (discountEl) discountEl.textContent = `-₩${discountAmount.toLocaleString()}`;
+      if (totalPriceEl) totalPriceEl.textContent = `₩${finalTotal.toLocaleString()}`;
 
       attachCartItemEvents();
     }
