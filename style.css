@@ -271,131 +271,48 @@ h1 { font-size: 26px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5
   .reviews-container { padding: 20px; margin: 20px 10px; }
 }
 /* ==========================================
-   [BỔ SUNG CHO VERSION B] Hiệu ứng & Accordion
+   [BỔ SUNG CHO BẢN A] Tăng độ nhận diện thương hiệu
    ========================================= */
 
-/* 1. Hiệu ứng hào quang (Ambient Glow) phía sau ảnh sản phẩm */
-.product-gallery {
-  position: relative;
-}
-.product-gallery::before {
-  content: '';
-  position: absolute;
-  width: 260px;
-  height: 260px;
-  background: radial-gradient(circle, rgba(0, 113, 227, 0.18) 0%, rgba(255, 255, 255, 0) 75%);
-  border-radius: 50%;
-  z-index: 0;
-  filter: blur(15px);
-  pointer-events: none;
-}
-.product-gallery img {
-  position: relative;
-  z-index: 1;
-}
-
-/* 2. Hiệu ứng nhịp đập (Pulse Animation) cho nút Mua ngay */
-@keyframes cta-pulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 113, 227, 0.4); }
-  70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(0, 113, 227, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 113, 227, 0); }
-}
-.btn-buy {
-  animation: cta-pulse 2.2s infinite ease-in-out;
-}
-.btn-buy:hover {
-  animation: none; /* Dừng hiệu ứng khi rê chuột vào */
-}
-
-/* 3. Định dạng giao diện khung thông số kỹ thuật ẩn/hiện */
-.specs-toggle-section { 
-  margin-bottom: 20px; 
-}
-.btn-specs-toggle {
-  background: #f5f5f7;
-  border: 1px solid #d2d2d7;
-  padding: 12px 16px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-  color: #1d1d1f;
-  transition: background 0.2s;
-}
-.btn-specs-toggle:hover { 
-  background: #e8e8ed; 
-}
-.specs-content {
-  background: #fafafc;
-  padding: 16px;
-  border-radius: 10px;
-  font-size: 13px;
-  color: #333336;
-  margin-top: 8px;
-  border: 1px solid #e5e5e7;
-}
-.specs-content.hidden { 
-  display: none !important; 
-}
-.specs-subtitle { 
-  font-size: 13px; 
-  font-weight: 700; 
-  color: #0071e3; 
-  margin-bottom: 4px; 
-}
-.specs-content ul { 
-  padding-left: 18px; 
-}
-.specs-content li { 
-  margin-bottom: 4px; 
-  line-height: 1.4; 
-}
-/* ==========================================
-   [BỔ SUNG CHO VERSION B] Hiệu ứng sinh động & Nổi bật
-   ========================================= */
-
-/* 1. Thanh thông báo ưu đãi đỉnh trang */
-.promo-banner {
-  background: linear-gradient(135deg, #ff5e62 0%, #ff9966 100%);
-  color: #fff;
-  text-align: center;
-  padding: 10px 16px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
-  box-shadow: 0 2px 10px rgba(255, 94, 98, 0.35);
-  animation: banner-pulse 3s infinite alternate;
-}
-@keyframes banner-pulse {
-  0% { filter: brightness(1); }
-  100% { filter: brightness(1.08); }
-}
-
-/* 2. Đổi màu nút Mua ngay sang Gradient rực rỡ & Hiệu ứng nổi */
-.btn-buy {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
-  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4) !important;
-  transition: all 0.3s ease !important;
-  border: none !important;
-}
-.btn-buy:hover {
-  background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.6) !important;
-  animation: none !important;
-}
-
-/* 3. Tinh chỉnh phông chữ tiêu đề sản phẩm đậm và hiện đại hơn */
-.product-info h1 {
-  font-weight: 700;
+/* 1. Tăng kích thước, độ dày và bố cục logo */
+.logo {
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   color: #111827;
-  letter-spacing: -0.8px;
 }
 
-/* 4. Khung sản phẩm chính có viền sáng và bóng đổ hiện đại */
-.product-container {
-  border: 1px solid rgba(124, 58, 237, 0.15);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
+/* 2. Hiệu ứng phát sáng nhẹ (Glow) cho biểu tượng Apple */
+.logo span {
+  color: #0071e3;
+  font-size: 24px;
+  font-weight: 900;
+  text-shadow: 0 0 12px rgba(0, 113, 227, 0.45);
+  animation: logo-glow 2.5s infinite alternate;
+}
+@keyframes logo-glow {
+  0% { text-shadow: 0 0 8px rgba(0, 113, 227, 0.3); }
+  100% { text-shadow: 0 0 16px rgba(0, 113, 227, 0.7); }
+}
+
+/* 3. Huy hiệu định vị thương hiệu cao cấp */
+.brand-badge {
+  background: #e8f2fc;
+  color: #0071e3;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(0, 113, 227, 0.2);
+}
+
+/* 4. Tinh chỉnh khung Header sang trọng hơn cho Bản A */
+.header-container {
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+  border-bottom: 2px solid rgba(0, 113, 227, 0.12) !important;
 }
