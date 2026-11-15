@@ -270,11 +270,11 @@ h1 { font-size: 26px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5
   .products-grid { grid-template-columns: repeat(2, 1fr); }
   .reviews-container { padding: 20px; margin: 20px 10px; }
 }
-/* =========================================
-   VERSION B: 비주얼 효과 및 상세 정보 스타일
+/* ==========================================
+   [BỔ SUNG CHO VERSION B] Hiệu ứng & Accordion
    ========================================= */
 
-/* 1. 제품 이미지 배경 빛(광원) 효과 - Ambient Glow */
+/* 1. Hiệu ứng hào quang (Ambient Glow) phía sau ảnh sản phẩm */
 .product-gallery {
   position: relative;
 }
@@ -292,32 +292,22 @@ h1 { font-size: 26px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5
 .product-gallery img {
   position: relative;
   z-index: 1;
-  transition: opacity 0.2s ease; /* 이미지 전환 시 부드러운 페이드 효과 */
 }
 
-/* 2. '바로 구매하기' 버튼 맥박(Pulse) 강조 효과 */
+/* 2. Hiệu ứng nhịp đập (Pulse Animation) cho nút Mua ngay */
 @keyframes cta-pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0, 113, 227, 0.4);
-  }
-  70% {
-    transform: scale(1.02);
-    box-shadow: 0 0 0 10px rgba(0, 113, 227, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0, 113, 227, 0);
-  }
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 113, 227, 0.4); }
+  70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(0, 113, 227, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 113, 227, 0); }
 }
 .btn-buy {
   animation: cta-pulse 2.2s infinite ease-in-out;
 }
 .btn-buy:hover {
-  animation: none; /* 마우스 오버 시 애니메이션 일시정지 */
+  animation: none; /* Dừng hiệu ứng khi rê chuột vào */
 }
 
-/* 3. 상품 상세 정보 아코디언 스타일 */
+/* 3. Định dạng giao diện khung thông số kỹ thuật ẩn/hiện */
 .specs-toggle-section { 
   margin-bottom: 20px; 
 }
