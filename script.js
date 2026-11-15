@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   
-  // Cart items array storing object: { title, price, qty }
   let cartItems = [];
 
   // 1. Coupon Modal Initialization
@@ -82,8 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 7. Related Apple Headphones Switcher
+  // 7. Related Apple Headphones Switcher & Dynamic Color Selector Display
   const productCards = document.querySelectorAll(".product-card");
+  const colorSelectorSection = document.getElementById("color-selector-section");
+
   productCards.forEach((card) => {
     card.addEventListener("click", function () {
       const cardTitle = this.querySelector(".card-title").textContent;
@@ -93,6 +94,13 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("product-title").textContent = cardTitle;
       document.getElementById("current-price-display").textContent = cardPrice;
       document.getElementById("main-product-img").src = cardImgSrc;
+
+      // Show color selector only if it is AirPods Max
+      if (cardTitle.includes("AirPods Max")) {
+        if (colorSelectorSection) colorSelectorSection.style.display = "block";
+      } else {
+        if (colorSelectorSection) colorSelectorSection.style.display = "none";
+      }
 
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
@@ -135,13 +143,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnBuyClose = document.getElementById("btn-buy-close");
   const drawerCheckoutBtn = document.getElementById("drawer-checkout-btn");
 
-  // Add to cart with quantity check
   if (btnAddToCart) {
     btnAddToCart.addEventListener("click", () => {
       const title = document.getElementById("product-title").textContent;
       const price = document.getElementById("current-price-display").textContent;
       
-      // Check if item already exists in cart
       const existingItem = cartItems.find(item => item.title === title);
       if (existingItem) {
         existingItem.qty += 1;
@@ -154,9 +160,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Buy Now -> Resets cart to 0 and shows bouquet success modal
   if (btnBuyNow) {
     btnBuyNow.addEventListener("click", () => {
-      // Direct buy also resets cart count to 0 as requested
       cartItems = [];
       updateCartUI();
       buyModal.classList.remove("hidden");
@@ -173,7 +179,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   
-  // Close buy modal and keep cart at 0
   if (btnBuyClose) {
     btnBuyClose.addEventListener("click", () => buyModal.classList.add("hidden"));
   }
@@ -185,27 +190,25 @@ document.addEventListener("DOMContentLoaded", function () {
     drawerCloseBtn.addEventListener("click", () => cartDrawer.classList.add("hidden"));
   }
 
-  // Checkout from drawer -> Reset cart items to 0 and show bouquet modal
+  // Drawer Checkout -> Resets cart to 0 and shows bouquet modal
   if (drawerCheckoutBtn) {
     drawerCheckoutBtn.addEventListener("click", () => {
       if (cartItems.length === 0) {
         alert("장바구니가 비어 있습니다.");
         return;
       }
-      cartItems = []; // Reset to 0
+      cartItems = [];
       updateCartUI();
       cartDrawer.classList.add("hidden");
       buyModal.classList.remove("hidden");
     });
   }
 
-  // Update Cart UI & handle qty change / delete events globally inside drawer list
   function updateCartUI() {
     const badge = document.getElementById("cart-badge");
     const listWrapper = document.getElementById("drawer-items-list");
     const totalPriceEl = document.getElementById("drawer-total-price");
 
-    // Total quantity badge calculation
     const totalCount = cartItems.reduce((sum, item) => sum + item.qty, 0);
     if (badge) badge.textContent = totalCount;
 
@@ -224,8 +227,8 @@ document.addEventListener("DOMContentLoaded", function () {
         html += `
           <div class="cart-item-row" data-index="${index}">
             <div class="cart-item-info">
-              <div class="cart-item-title">${item.title}</div>
-              <div class="cart-item-price">${item.price}</div>
+              <span class="cart-item-title">${item.title}</span>
+              <span class="cart-item-price">${item.price}</span>
             </div>
             <div class="cart-item-actions">
               <button class="qty-btn decrease-btn" data-index="${index}">-</button>
@@ -240,26 +243,23 @@ document.addEventListener("DOMContentLoaded", function () {
       listWrapper.innerHTML = html;
       if (totalPriceEl) totalPriceEl.textContent = `₩${totalSum.toLocaleString()}`;
 
-      // Attach event listeners for dynamic quantity and delete buttons
       attachCartItemEvents();
     }
   }
 
   function attachCartItemEvents() {
-    // Decrease quantity
     document.querySelectorAll(".decrease-btn").forEach(btn => {
       btn.addEventListener("click", function() {
         const idx = this.getAttribute("data-index");
         if (cartItems[idx].qty > 1) {
           cartItems[idx].qty -= 1;
         } else {
-          cartItems.splice(idx, 1); // remove if 0
+          cartItems.splice(idx, 1);
         }
         updateCartUI();
       });
     });
 
-    // Increase quantity
     document.querySelectorAll(".increase-btn").forEach(btn => {
       btn.addEventListener("click", function() {
         const idx = this.getAttribute("data-index");
@@ -268,7 +268,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // Delete item
     document.querySelectorAll(".delete-btn").forEach(btn => {
       btn.addEventListener("click", function() {
         const idx = this.getAttribute("data-index");
