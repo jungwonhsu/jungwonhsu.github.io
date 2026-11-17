@@ -3,20 +3,183 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hansunguni - Apple Audio Store</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Hansunguni - Apple Audio Store (Version A)</title>
+  <style>
+    /* --- CSS nhúng trực tiếp vào tệp --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif; }
+    body { background-color: #f5f5f7; color: #1d1d1f; line-height: 1.5; }
+
+    /* Header */
+    .header-container {
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .logo { font-weight: 700; font-size: 18px; color: #1d1d1f; }
+    .logo span { color: #0071e3; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: #515154; text-decoration: none; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: #000; }
+    .header-actions { display: flex; align-items: center; }
+    .cart-icon-btn { background: none; border: none; font-size: 20px; cursor: pointer; position: relative; }
+    #cart-badge { background: #ff3b30; color: #fff; font-size: 11px; padding: 2px 6px; border-radius: 10px; position: absolute; top: -6px; right: -10px; font-weight: bold; }
+
+    /* Main Product Container */
+    .product-container {
+      max-width: 1050px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      gap: 50px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .product-gallery { flex: 1; display: flex; align-items: center; justify-content: center; }
+    .product-gallery img { width: 100%; max-width: 420px; border-radius: 12px; object-fit: contain; transition: opacity 0.2s ease; }
+    .product-info { flex: 1; position: relative; }
+
+    .top-action-bar { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 12px; }
+    .btn-icon {
+      border: none; background: #f0f0f2; width: 38px; height: 38px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+    }
+    .btn-icon:hover { background: #e2e2e5; }
+    .btn-icon.active svg { fill: #ff3b30; stroke: #ff3b30; }
+
+    h1 { font-size: 26px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5px; }
+
+    .rating-container { font-size: 14px; margin-bottom: 16px; display: flex; gap: 8px; align-items: center; }
+    .stars { color: #ffcc00; }
+    .review-count-link { color: #0066cc; text-decoration: none; font-weight: 500; }
+    .review-count-link:hover { text-decoration: underline; }
+
+    .price-container { margin-bottom: 20px; }
+    .current-price { font-size: 28px; font-weight: 700; color: #1d1d1f; }
+    .divider { border: 0; border-top: 1px solid #e5e5e5; margin: 20px 0; }
+
+    /* Color Selector */
+    .option-selector { margin-bottom: 20px; }
+    .option-label { font-size: 14px; font-weight: 600; display: block; margin-bottom: 12px; }
+    .color-options { display: flex; gap: 14px; }
+    .color-dot {
+      width: 32px; height: 32px; border-radius: 50%; border: 2px solid #fff;
+      outline: 1px solid #ccc; cursor: pointer; transition: transform 0.2s, outline 0.2s;
+    }
+    .color-dot.active { outline: 2px solid #0071e3; transform: scale(1.1); }
+
+    /* Benefits & CTA */
+    .benefit-box { background: #f5f5f7; padding: 16px; border-radius: 12px; font-size: 13px; margin-bottom: 24px; color: #515154; }
+    .benefit-box p { margin-bottom: 6px; }
+    .benefit-box p:last-child { margin-bottom: 0; }
+
+    .cta-container { display: flex; gap: 12px; }
+    .btn-cart, .btn-buy {
+      flex: 1; height: 48px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-cart { border: 1px solid #0071e3; background: #fff; color: #0071e3; }
+    .btn-cart:hover { background: #f0f7ff; }
+    .btn-buy { border: none; background: #0071e3; color: #fff; }
+    .btn-buy:hover { background: #0077ed; }
+
+    /* Related Products */
+    .other-products-section { max-width: 1050px; margin: 40px auto; padding: 0 20px; }
+    .other-products-section h2 { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .product-card { background: #fff; border-radius: 14px; padding: 16px; text-align: center; transition: transform 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.02); cursor: pointer; }
+    .product-card:hover { transform: translateY(-4px); }
+    .product-card img { width: 100%; height: 130px; object-fit: contain; border-radius: 8px; margin-bottom: 10px; }
+    .card-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; height: 38px; overflow: hidden; }
+    .card-price { font-size: 13px; color: #86868b; margin-bottom: 12px; }
+    .btn-card-select { width: 100%; padding: 8px; border: none; background: #f5f5f7; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; }
+    .btn-card-select:hover { background: #e8e8ed; }
+
+    /* Reviews */
+    .reviews-container { max-width: 1050px; margin: 40px auto 80px auto; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+    .reviews-container h2 { font-size: 20px; margin-bottom: 16px; font-weight: 600; }
+    .review-filters { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+    .filter-btn { background: #f5f5f7; border: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; color: #515154; transition: all 0.2s; }
+    .filter-btn.active { background: #1d1d1f; color: #fff; }
+    .review-item { border-bottom: 1px solid #f0f0f0; padding: 16px 0; }
+    .review-item:last-child { border-bottom: none; }
+    .review-header { display: flex; gap: 12px; font-size: 13px; margin-bottom: 6px; }
+    .user-name { font-weight: 600; }
+    .review-date { color: #86868b; }
+    .review-content { font-size: 14px; color: #333336; margin-bottom: 6px; }
+    .media-tag.photo-tag { color: #0066cc; }
+    .media-tag.video-tag { color: #34c759; }
+
+    /* Modals & Drawer */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center; z-index: 1000;
+    }
+    .modal-overlay.hidden { display: none !important; }
+    .modal-content {
+      background: #fff; padding: 32px; border-radius: 16px; max-width: 400px; width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .modal-content h2 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+    .modal-content p { font-size: 14px; color: #515154; margin-bottom: 24px; }
+    .modal-buttons { display: flex; gap: 10px; }
+    .single-btn { justify-content: center; }
+    .btn-modal-close { flex: 1; height: 40px; border: 1px solid #ccc; background: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; }
+    .btn-modal-action { flex: 1; height: 40px; border: none; background: #0071e3; color: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; }
+    .text-center { text-align: center; }
+    .flower-icon { font-size: 48px; margin-bottom: 10px; }
+
+    /* Cart Drawer */
+    .drawer-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4); z-index: 1100; display: flex; justify-content: flex-end;
+    }
+    .drawer-overlay.hidden { display: none !important; }
+    .drawer-content { width: 380px; max-width: 100%; background: #fff; height: 100%; display: flex; flex-direction: column; padding: 24px; box-shadow: -5px 0 20px rgba(0,0,0,0.1); }
+    .drawer-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 16px; }
+    .drawer-close { background: none; border: none; font-size: 24px; cursor: pointer; }
+    .drawer-body { flex: 1; overflow-y: auto; padding: 16px 0; }
+    .empty-cart-text { text-align: center; color: #86868b; margin-top: 40px; font-size: 14px; }
+    .drawer-footer { border-top: 1px solid #eee; padding-top: 16px; }
+
+    .summary-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; color: #515154; }
+    .discount-row { color: #d70015; font-weight: 600; }
+    .total-price-row { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 16px; font-weight: 700; color: #1d1d1f; border-top: 1px dashed #e5e5e5; padding-top: 10px; }
+    .full-btn { width: 100%; }
+
+    .cart-item-row { display: flex; flex-direction: column; gap: 8px; padding: 12px 0; border-bottom: 1px solid #f0f0f2; }
+    .cart-item-info { display: flex; justify-content: space-between; font-size: 13px; font-weight: 500; }
+    .cart-item-title { max-width: 220px; }
+    .cart-item-price { color: #86868b; }
+    .cart-item-actions { display: flex; align-items: center; gap: 8px; justify-content: flex-end; }
+    .qty-btn { background: #f5f5f7; border: 1px solid #d2d2d7; width: 24px; height: 24px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+    .qty-num { font-size: 13px; font-weight: 600; min-width: 20px; text-align: center; }
+    .delete-btn { background: none; border: none; cursor: pointer; font-size: 14px; margin-left: 8px; }
+
+    @media (max-width: 768px) {
+      .product-container { flex-direction: column; padding: 20px; margin: 20px 10px; gap: 20px; }
+      .header-container { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-container { padding: 20px; margin: 20px 10px; }
+    }
+  </style>
 </head>
 <body>
 
   <!-- HEADER -->
   <header class="header-container">
-    <div class="logo">
-      한성유니 <span>🐯</span> 
-      <small class="brand-badge">Hansunguni</small>
-    </div>
+    <div class="logo">Hansunguni <span></span></div>
     <nav class="nav-links">
       <a href="#product-detail-section">스토어</a>
-      <a href="#related-products-section">Airpods</a>
+      <a href="#related-products-section">헤드폰 라인업</a>
       <a href="#reviews-section">고객 리뷰</a>
     </nav>
     <div class="header-actions">
@@ -28,15 +191,11 @@
 
   <!-- MAIN PRODUCT SECTION -->
   <main class="product-container" id="product-detail-section">
-    
-    <!-- GALLERY -->
     <div class="product-gallery">
       <img id="main-product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=800&hei=800&fmt=jpeg&qlt=90&.v=1604022301000" alt="AirPods Max - 스페이스 그레이">
     </div>
 
-    <!-- PRODUCT INFO -->
     <div class="product-info">
-      
       <div class="top-action-bar">
         <button class="btn-icon" id="btn-share" title="공유하기">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
@@ -51,18 +210,16 @@
       <div class="rating-container" id="rating-score-section">
         <span class="stars">★★★★★</span>
         <a href="#reviews-section" class="review-count-link" id="review-scroll-trigger">
-          <span id="review-count"> </span> 리뷰 전체보기
+          <span id="review-count">20</span>개 리뷰 전체보기
         </a>
       </div>
 
-      <!-- PRICE (Original Price Display) -->
       <div class="price-container" id="price-section">
-        <span class="current-price" id="current-price-display">₩429,000</span>
+        <span class="current-price" id="current-price-display">₩829,000</span>
       </div>
 
       <hr class="divider">
 
-      <!-- COLOR SELECTOR (Only shown for AirPods Max) -->
       <div class="option-selector" id="color-selector-section">
         <label class="option-label">마감 색상: <span id="selected-color-name">스페이스 그레이</span></label>
         <div class="color-options">
@@ -79,51 +236,47 @@
         <p>🎟️ <strong>20% 환영 쿠폰</strong> 결제 시 총액 적용 가능</p>
       </div>
 
-      <!-- CTA BUTTONS -->
       <div class="cta-container" id="cta-action-section">
         <button class="btn-cart" id="btn-add-to-cart">장바구니 담기</button>
         <button class="btn-buy" id="btn-buy-now">바로 구매하기</button>
       </div>
-
     </div>
   </main>
 
-  <!-- RELATED APPLE HEADPHONES (4 PRODUCTS) -->
+  <!-- RELATED PRODUCTS -->
   <section class="other-products-section" id="related-products-section">
     <h2>Hansunguni 추천 Apple 헤드폰 및 이어폰</h2>
     <div class="products-grid">
-      <div class="product-card" data-id="p1" id="rel-product-1">
+      <div class="product-card" data-id="p1">
         <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=800&hei=800&fmt=jpeg&qlt=90&.v=1604022301000" alt="AirPods Max">
         <div class="card-title">AirPods Max</div>
-        <div class="card-price">₩429,000</div>
+        <div class="card-price">₩829,000</div>
         <button class="btn-card-select">선택하기</button>
       </div>
-      <div class="product-card" data-id="p2" id="rel-product-2">
+      <div class="product-card" data-id="p2">
         <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQD83?wid=800&hei=800&fmt=jpeg&qlt=90&.v=1660803972361" alt="AirPods Pro 2">
         <div class="card-title">AirPods Pro (2세대)</div>
-        <div class="card-price">₩159,000</div>
+        <div class="card-price">₩359,000</div>
         <button class="btn-card-select">선택하기</button>
       </div>
-      <div class="product-card" data-id="p3" id="rel-product-3">
+      <div class="product-card" data-id="p3">
         <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MXP63?wid=800&hei=800&fmt=jpeg&qlt=90&.v=1723180295120" alt="AirPods 4">
         <div class="card-title">AirPods 4 액티브 노이즈 캔슬링</div>
-        <div class="card-price">₩249,000</div>
+        <div class="card-price">₩269,000</div>
         <button class="btn-card-select">선택하기</button>
       </div>
-      <div class="product-card" data-id="p4" id="rel-product-4">
+      <div class="product-card" data-id="p4">
         <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MMTN2?wid=800&hei=800&fmt=jpeg&qlt=90&.v=1542139626602" alt="EarPods">
         <div class="card-title">Apple EarPods (Lightning)</div>
-        <div class="card-price">₩48,000</div>
+        <div class="card-price">₩28,000</div>
         <button class="btn-card-select">선택하기</button>
       </div>
     </div>
   </section>
 
-  <!-- REVIEWS SECTION WITH FILTERS (20 REVIEWS) -->
+  <!-- REVIEWS SECTION -->
   <section class="reviews-container" id="reviews-section">
     <h2>고객 리뷰 (<span id="total-reviews-count">20</span>)</h2>
-    
-    <!-- Review Filters -->
     <div class="review-filters">
       <button class="filter-btn active" data-filter="all">전체보기 (20)</button>
       <button class="filter-btn" data-filter="photo">포토 리뷰 (8)</button>
@@ -132,132 +285,24 @@
     </div>
 
     <div class="review-list" id="review-list-wrapper">
-      <!-- Review 1 (Photo) -->
       <div class="review-item" data-type="photo">
         <div class="review-header"><span class="user-name">김*진</span><span class="stars">★★★★★</span><span class="review-date">2026.11.08</span></div>
         <div class="review-content">노이즈 캔슬링 성능이 압도적입니다. 디자인도 고급스러워요!</div>
         <div class="review-media"><span class="media-tag photo-tag">📷 포토 첨부됨</span></div>
       </div>
-      <!-- Review 2 (Video) -->
       <div class="review-item" data-type="video">
         <div class="review-header"><span class="user-name">이*준</span><span class="stars">★★★★★</span><span class="review-date">2026.11.05</span></div>
-        <div class="review-content">공간 음향 기능이 영화 볼 때 진가를 발휘합니다. 영상 첨부합니다.</div>
+        <div class="review-content">공간 음향 기능이 영화 볼 때 진가를 발휘합니다.</div>
         <div class="review-media"><span class="media-tag video-tag">🎥 동영상 첨부됨</span></div>
       </div>
-      <!-- Review 3 (Normal) -->
       <div class="review-item" data-type="normal">
         <div class="review-header"><span class="user-name">박*우</span><span class="stars">★★★★☆</span><span class="review-date">2026.11.02</span></div>
         <div class="review-content">음질은 최고인데 약간 무게감이 있네요. 적응되면 편합니다.</div>
       </div>
-      <!-- Review 4 (Photo) -->
-      <div class="review-item" data-type="photo">
-        <div class="review-header"><span class="user-name">최*서</span><span class="stars">★★★★★</span><span class="review-date">2026.10.29</span></div>
-        <div class="review-content">스페이스 그레이 색상 너무 영롱합니다. Hansunguni 배송도 빠름!</div>
-        <div class="review-media"><span class="media-tag photo-tag">📷 포토 첨부됨</span></div>
-      </div>
-      <!-- Review 5 (Normal) -->
-      <div class="review-item" data-type="normal">
-        <div class="review-header"><span class="user-name">정*훈</span><span class="stars">★★★★★</span><span class="review-date">2026.10.25</span></div>
-        <div class="review-content">마감 품질이 Apple다운 완벽함을 보여줍니다.</div>
-      </div>
-      <!-- Review 6 (Video) -->
-      <div class="review-item" data-type="video">
-        <div class="review-header"><span class="user-name">강*아</span><span class="stars">★★★★★</span><span class="review-date">2026.10.20</span></div>
-        <div class="review-content">쿠폰 할인받아서 기분 좋게 구매했습니다. 언박싱 영상입니다.</div>
-        <div class="review-media"><span class="media-tag video-tag">🎥 동영상 첨부됨</span></div>
-      </div>
-      <!-- Review 7 (Photo) -->
-      <div class="review-item" data-type="photo">
-        <div class="review-header"><span class="user-name">조*현</span><span class="stars">★★★★☆</span><span class="review-date">2026.10.18</span></div>
-        <div class="review-content">헤드밴드가 통기성이 좋아서 오래 써도 답답하지 않아요.</div>
-        <div class="review-media"><span class="media-tag photo-tag">📷 포토 첨부됨</span></div>
-      </div>
-      <!-- Review 8 (Normal) -->
-      <div class="review-item" data-type="normal">
-        <div class="review-header"><span class="user-name">윤*호</span><span class="stars">★★★★★</span><span class="review-date">2026.10.15</span></div>
-        <div class="review-content">귀 전체를 감싸주는 쿠션감이 최고입니다.</div>
-      </div>
-      <!-- Review 9 (Photo) -->
-      <div class="review-item" data-type="photo">
-        <div class="review-header"><span class="user-name">장*은</span><span class="stars">★★★★★</span><span class="review-date">2026.10.11</span></div>
-        <div class="review-content">실물 색상이 사진보다 훨씬 고급스럽습니다.</div>
-        <div class="review-media"><span class="media-tag photo-tag">📷 포토 첨부됨</span></div>
-      </div>
-      <!-- Review 10 (Normal) -->
-      <div class="review-item" data-type="normal">
-        <div class="review-header"><span class="user-name">임*혁</span><span class="stars">★★★★★</span><span class="review-date">2026.10.08</span></div>
-        <div class="review-content">연동성이 기막힙니다. iPhone, Mac 전환이 순식간이에요.</div>
-      </div>
-      <!-- Review 11 (Video) -->
-      <div class="review-item" data-type="video">
-        <div class="review-header"><span class="user-name">한*지</span><span class="stars">★★★★★</span><span class="review-date">2026.10.05</span></div>
-        <div class="review-content">선물용으로 샀는데 받는 사람이 너무 좋아하네요. 작동 테스트 영상.</div>
-        <div class="review-media"><span class="media-tag video-tag">🎥 동영상 첨부됨</span></div>
-      </div>
-      <!-- Review 12 (Normal) -->
-      <div class="review-item" data-type="normal">
-        <div class="review-header"><span class="user-name">오*성</span><span class="stars">★★★★☆</span><span class="review-date">2026.10.01</span></div>
-        <div class="review-content">케이스가 조금 독특하지만 제품 자체는 매우 만족스럽습니다.</div>
-      </div>
-      <!-- Review 13 (Photo) -->
-      <div class="review-item" data-type="photo">
-        <div class="review-header"><span class="user-name">서*연</span><span class="stars">★★★★★</span><span class="review-date">2026.09.28</span></div>
-        <div class="review-content">음악 들을 때 악기 소리가 하나하나 다 구분되어 들립니다.</div>
-        <div class="review-media"><span class="media-tag photo-tag">📷 포토 첨부됨</span></div>
-      </div>
-      <!-- Review 14 (Normal) -->
-      <div class="review-item" data-type="normal">
-        <div class="review-header"><span class="user-name">신*우</span><span class="stars">★★★★★</span><span class="review-date">2026.09.25</span></div>
-        <div class="review-content">비싼 값을 하는 헤드폰입니다. 후회 없어요.</div>
-      </div>
-      <!-- Review 15 (Photo) -->
-      <div class="review-item" data-type="photo">
-        <div class="review-header"><span class="user-name">권*민</span><span class="stars">★★★★★</span><span class="review-date">2026.09.20</span></div>
-        <div class="review-content">통화 품질도 예상보다 훨씬 깨끗해서 업무용으로도 씁니다.</div>
-        <div class="review-media"><span class="media-tag photo-tag">📷 포토 첨부됨</span></div>
-      </div>
-      <!-- Review 16 (Normal) -->
-      <div class="review-item" data-type="normal">
-        <div class="review-header"><span class="user-name">황*나</span><span class="stars">★★★★★</span><span class="review-date">2026.09.15</span></div>
-        <div class="review-content">패키징부터 감동입니다. 배송도 안전하게 도착했어요.</div>
-      </div>
-      <!-- Review 17 (Normal) -->
-      <div class="review-item" data-type="normal">
-        <div class="review-header"><span class="user-name">안*찬</span><span class="stars">★★★★☆</span><span class="review-date">2026.09.10</span></div>
-        <div class="review-content">배터리가 진짜 오래 가네요. 매우 만족스럽습니다.</div>
-      </div>
-      <!-- Review 18 (Video) -->
-      <div class="review-item" data-type="video">
-        <div class="review-header"><span class="user-name">송*희</span><span class="stars">★★★★★</span><span class="review-date">2026.09.05</span></div>
-        <div class="review-content">카페에서 공부할 때 소음 차단에 최고입니다. 실사용기 영상.</div>
-        <div class="review-media"><span class="media-tag video-tag">🎥 동영상 첨부됨</span></div>
-      </div>
-      <!-- Review 19 (Photo) -->
-      <div class="review-item" data-type="photo">
-        <div class="review-header"><span class="user-name">전*수</span><span class="stars">★★★★★</span><span class="review-date">2026.09.01</span></div>
-        <div class="review-content">스카이 블루 사려다가 스페이스 그레이 샀는데 대만족!</div>
-        <div class="review-media"><span class="media-tag photo-tag">📷 포토 첨부됨</span></div>
-      </div>
-      <!-- Review 20 (Normal) -->
-      <div class="review-item" data-type="normal">
-        <div class="review-header"><span class="user-name">홍*림</span><span class="stars">★★★★★</span><span class="review-date">2026.08.28</span></div>
-        <div class="review-content">최고의 음향 경험입니다. 고민은 배송만 늦출 뿐!</div>
-      </div>
     </div>
   </section>
 
-  <!-- MODAL 1: COUPON POPUP -->
-  <div class="modal-overlay" id="coupon-modal">
-    <div class="modal-content">
-      <h2>🎉 Hansunguni 단독 환영 혜택!</h2>
-      <p>지금 첫 방문 고객님께 <strong>20% 할인 쿠폰</strong>이 지급되었습니다. 장바구니 결제 시 총액에서 자동 적용됩니다.</p>
-      <div class="modal-buttons single-btn">
-        <button class="btn-modal-action" id="btn-coupon-apply">쇼핑 시작하기</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL 2: ADD TO CART SUCCESS -->
+  <!-- MODALS & DRAWER (Không còn popup chào mừng ban đầu) -->
   <div class="modal-overlay hidden" id="cart-modal">
     <div class="modal-content">
       <h2>🛒 장바구니 담기 완료</h2>
@@ -269,19 +314,17 @@
     </div>
   </div>
 
-  <!-- MODAL 3: BUY NOW SUCCESS (WITH BOUQUET) -->
   <div class="modal-overlay hidden" id="buy-modal">
     <div class="modal-content text-center">
       <div class="flower-icon">💐✨</div>
       <h2>주문이 완료되었습니다!</h2>
-      <p>Hansunguni를 이용해 주셔서 감사합니다.<br>20% 할인 혜택이 적용된 주문이 정상 접수되었습니다!</p>
+      <p>Hansunguni를 이용해 주셔서 감사합니다.</p>
       <div class="modal-buttons single-btn">
         <button class="btn-modal-action" id="btn-buy-close">확인</button>
       </div>
     </div>
   </div>
 
-  <!-- DRAWER: CART ITEMS VIEW WITH 20% TOTAL DISCOUNT -->
   <div class="drawer-overlay hidden" id="cart-drawer">
     <div class="drawer-content">
       <div class="drawer-header">
@@ -300,6 +343,282 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    /* --- JS nhúng trực tiếp vào tệp --- */
+    document.addEventListener("DOMContentLoaded", function () {
+      let cartItems = [];
+
+      // Wishlist toggle
+      const btnHeart = document.getElementById("btn-heart");
+      if (btnHeart) {
+        btnHeart.addEventListener("click", function () {
+          this.classList.toggle("active");
+        });
+      }
+
+      // Share button
+      const btnShare = document.getElementById("btn-share");
+      if (btnShare) {
+        btnShare.addEventListener("click", function () {
+          if (navigator.share) {
+            navigator.share({ title: "Hansunguni Apple Store", url: window.location.href });
+          } else {
+            alert("상품 링크가 클립보드에 복사되었습니다!");
+          }
+        });
+      }
+
+      // Scroll to reviews
+      const reviewScrollTrigger = document.getElementById("review-scroll-trigger");
+      const reviewsSection = document.getElementById("reviews-section");
+      if (reviewScrollTrigger && reviewsSection) {
+        reviewScrollTrigger.addEventListener("click", function (e) {
+          e.preventDefault();
+          reviewsSection.scrollIntoView({ behavior: "smooth" });
+        });
+      }
+
+      // Color selector
+      const colorDots = document.querySelectorAll(".color-dot");
+      const selectedColorName = document.getElementById("selected-color-name");
+      const mainProductImg = document.getElementById("main-product-img");
+      const productTitle = document.getElementById("product-title");
+
+      colorDots.forEach((dot) => {
+        dot.addEventListener("click", function () {
+          colorDots.forEach((d) => d.classList.remove("active"));
+          this.classList.add("active");
+
+          const color = this.getAttribute("data-color");
+          const imgSrc = this.getAttribute("data-img");
+
+          if (selectedColorName) selectedColorName.textContent = color;
+          if (mainProductImg && imgSrc) {
+            mainProductImg.style.opacity = "0.3";
+            setTimeout(() => {
+              mainProductImg.src = imgSrc;
+              mainProductImg.style.opacity = "1";
+            }, 150);
+          }
+          
+          if (productTitle.textContent.includes("AirPods Max")) {
+            productTitle.textContent = `AirPods Max - ${color}`;
+          }
+        });
+      });
+
+      // Related products switcher
+      const productCards = document.querySelectorAll(".product-card");
+      const colorSelectorSection = document.getElementById("color-selector-section");
+
+      productCards.forEach((card) => {
+        card.addEventListener("click", function () {
+          const cardTitle = this.querySelector(".card-title").textContent;
+          const cardPrice = this.querySelector(".card-price").textContent;
+          const cardImgSrc = this.querySelector("img").src;
+
+          document.getElementById("product-title").textContent = cardTitle;
+          document.getElementById("current-price-display").textContent = cardPrice;
+          if (mainProductImg) {
+            mainProductImg.style.opacity = "0.3";
+            setTimeout(() => {
+              mainProductImg.src = cardImgSrc;
+              mainProductImg.style.opacity = "1";
+            }, 150);
+          }
+
+          if (cardTitle.includes("AirPods Max")) {
+            if (colorSelectorSection) colorSelectorSection.style.display = "block";
+          } else {
+            if (colorSelectorSection) colorSelectorSection.style.display = "none";
+          }
+
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+
+      // Review filters
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const reviewItems = document.querySelectorAll(".review-item");
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          filterButtons.forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+
+          const filterType = this.getAttribute("data-filter");
+
+          reviewItems.forEach((item) => {
+            const itemType = item.getAttribute("data-type");
+            if (filterType === "all" || itemType === filterType) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Cart & Checkout Flow
+      const cartModal = document.getElementById("cart-modal");
+      const buyModal = document.getElementById("buy-modal");
+      const cartDrawer = document.getElementById("cart-drawer");
+      
+      const btnAddToCart = document.getElementById("btn-add-to-cart");
+      const btnBuyNow = document.getElementById("btn-buy-now");
+      const headerCartBtn = document.getElementById("header-cart-btn");
+      const drawerCloseBtn = document.getElementById("drawer-close-btn");
+
+      const btnCartContinue = document.getElementById("btn-cart-continue");
+      const btnCartCheckout = document.getElementById("btn-cart-checkout");
+      const btnBuyClose = document.getElementById("btn-buy-close");
+      const drawerCheckoutBtn = document.getElementById("drawer-checkout-btn");
+
+      if (btnAddToCart) {
+        btnAddToCart.addEventListener("click", () => {
+          const title = document.getElementById("product-title").textContent;
+          const price = document.getElementById("current-price-display").textContent;
+          
+          const existingItem = cartItems.find(item => item.title === title);
+          if (existingItem) {
+            existingItem.qty += 1;
+          } else {
+            cartItems.push({ title, price, qty: 1 });
+          }
+
+          updateCartUI();
+          cartModal.classList.remove("hidden");
+        });
+      }
+
+      if (btnBuyNow) {
+        btnBuyNow.addEventListener("click", () => {
+          cartItems = [];
+          updateCartUI();
+          buyModal.classList.remove("hidden");
+        });
+      }
+
+      if (btnCartContinue) {
+        btnCartContinue.addEventListener("click", () => {
+          cartModal.classList.add("hidden");
+        });
+      }
+
+      if (btnCartCheckout) {
+        btnCartCheckout.addEventListener("click", () => {
+          cartModal.classList.add("hidden");
+          cartDrawer.classList.remove("hidden");
+        });
+      }
+      
+      if (btnBuyClose) {
+        btnBuyClose.addEventListener("click", () => buyModal.classList.add("hidden"));
+      }
+
+      if (headerCartBtn) {
+        headerCartBtn.addEventListener("click", () => cartDrawer.classList.remove("hidden"));
+      }
+      if (drawerCloseBtn) {
+        drawerCloseBtn.addEventListener("click", () => cartDrawer.classList.add("hidden"));
+      }
+
+      if (drawerCheckoutBtn) {
+        drawerCheckoutBtn.addEventListener("click", () => {
+          if (cartItems.length === 0) {
+            alert("장바구니가 비어 있습니다.");
+            return;
+          }
+          cartItems = [];
+          updateCartUI();
+          cartDrawer.classList.add("hidden");
+          buyModal.classList.remove("hidden");
+        });
+      }
+
+      function updateCartUI() {
+        const badge = document.getElementById("cart-badge");
+        const listWrapper = document.getElementById("drawer-items-list");
+        const subtotalEl = document.getElementById("cart-subtotal");
+        const discountEl = document.getElementById("cart-discount");
+        const totalPriceEl = document.getElementById("drawer-total-price");
+
+        const totalCount = cartItems.reduce((sum, item) => sum + item.qty, 0);
+        if (badge) badge.textContent = totalCount;
+
+        if (cartItems.length === 0) {
+          listWrapper.innerHTML = `<p class="empty-cart-text">장바구니가 비어 있습니다.</p>`;
+          if (subtotalEl) subtotalEl.textContent = "₩0";
+          if (discountEl) discountEl.textContent = "-₩0";
+          if (totalPriceEl) totalPriceEl.textContent = "₩0";
+        } else {
+          let html = "";
+          let subtotalSum = 0;
+
+          cartItems.forEach((item, index) => {
+            let cleanPrice = parseInt(item.price.replace(/[^0-9]/g, "")) || 0;
+            let itemTotal = cleanPrice * item.qty;
+            subtotalSum += itemTotal;
+
+            html += `
+              <div class="cart-item-row" data-index="${index}">
+                <div class="cart-item-info">
+                  <span class="cart-item-title">${item.title}</span>
+                  <span class="cart-item-price">${item.price}</span>
+                </div>
+                <div class="cart-item-actions">
+                  <button class="qty-btn decrease-btn" data-index="${index}">-</button>
+                  <span class="qty-num">${item.qty}</span>
+                  <button class="qty-btn increase-btn" data-index="${index}">+</button>
+                  <button class="delete-btn" data-index="${index}" title="삭제">🗑️</button>
+                </div>
+              </div>
+            `;
+          });
+
+          listWrapper.innerHTML = html;
+
+          let discountAmount = Math.round(subtotalSum * 0.20);
+          let finalTotal = subtotalSum - discountAmount;
+
+          if (subtotalEl) subtotalEl.textContent = `₩${subtotalSum.toLocaleString()}`;
+          if (discountEl) discountEl.textContent = `-₩${discountAmount.toLocaleString()}`;
+          if (totalPriceEl) totalPriceEl.textContent = `₩${finalTotal.toLocaleString()}`;
+
+          attachCartItemEvents();
+        }
+      }
+
+      function attachCartItemEvents() {
+        document.querySelectorAll(".decrease-btn").forEach(btn => {
+          btn.addEventListener("click", function() {
+            const idx = this.getAttribute("data-index");
+            if (cartItems[idx].qty > 1) {
+              cartItems[idx].qty -= 1;
+            } else {
+              cartItems.splice(idx, 1);
+            }
+            updateCartUI();
+          });
+        });
+
+        document.querySelectorAll(".increase-btn").forEach(btn => {
+          btn.addEventListener("click", function() {
+            const idx = this.getAttribute("data-index");
+            cartItems[idx].qty += 1;
+            updateCartUI();
+          });
+        });
+
+        document.querySelectorAll(".delete-btn").forEach(btn => {
+          btn.addEventListener("click", function() {
+            const idx = this.getAttribute("data-index");
+            cartItems.splice(idx, 1);
+            updateCartUI();
+          });
+        });
+      }
+    });
+  </script>
 </body>
 </html>
